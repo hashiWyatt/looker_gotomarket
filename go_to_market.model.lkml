@@ -75,7 +75,7 @@ explore: leads {
 
   join: users {
     type: left_outer
-    sql_on: ${users.id} = ${leads.id} ;;
+    sql_on: ${users.id} = ${leads.owner_id} ;;
     relationship: many_to_one
   }
 
