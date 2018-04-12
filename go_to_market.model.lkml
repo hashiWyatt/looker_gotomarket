@@ -68,7 +68,7 @@ explore: accounts {}
 
 explore: leads {
   join: tasks {
-    type: inner
+    type: left_outer
     sql_on: ${leads.id} = ${tasks.who_id} ;;
     relationship: one_to_many
   }
