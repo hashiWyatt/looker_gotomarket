@@ -66,7 +66,26 @@ explore: accounts {}
 #   }
 # }
 
-explore: leads {}
+explore: leads {
+  join: tasks {
+    type: inner
+    sql_on: ${leads.created_by_id} = ${tasks.who_id} ;;
+    relationship: one_to_many
+  }
+
+  join: users {
+    type: left_outer
+    sql_on: ${users.id} = ${leads.created_by_id} ;;
+    relationship: many_to_one
+  }
+
+  join: role {
+    type: left_outer
+    sql_on: ${role.id} = ${users.user_role_id} ;;
+    relationship: many_to_one
+  }
+}
+
 
 # explore: notes {}
 #
