@@ -90,12 +90,6 @@ explore: leads {
 # explore: notes {}
 #
 explore: opportunities {
-#   join: campaigns {
-#     type: left_outer
-#     sql_on: ${opportunities.campaign_id} = ${campaigns.id} ;;
-#     relationship: many_to_one
-#   }
-#
   join: accounts {
     type: left_outer
     sql_on: ${opportunities.account_id} = ${accounts.id} ;;
@@ -107,7 +101,12 @@ explore: opportunities {
     relationship: one_to_many
   }
   }
-
+# explore: opportunities {
+#   join: campaigns {
+#     type: left_outer
+#     sql_on: ${opportunities.campaign_id} = ${campaigns.id} ;;
+#     relationship: many_to_one
+#   }
 
 # explore: opportunity_contact_role {
 #   join: contacts {
