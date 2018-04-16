@@ -89,19 +89,25 @@ explore: leads {
 
 # explore: notes {}
 #
-# explore: opportunities {
+explore: opportunities {
 #   join: campaigns {
 #     type: left_outer
 #     sql_on: ${opportunities.campaign_id} = ${campaigns.id} ;;
 #     relationship: many_to_one
 #   }
 #
-#   join: accounts {
-#     type: left_outer
-#     sql_on: ${opportunities.account_id} = ${accounts.id} ;;
-#     relationship: many_to_one
-#   }
-# }
+  join: accounts {
+    type: left_outer
+    sql_on: ${opportunities.account_id} = ${accounts.id} ;;
+    relationship: many_to_one
+  }
+  join: opportunity_stage {
+    type: left_outer
+    sql_on: ${opportunities.stage_name} = ${opportunity_stage.id} ;;
+    relationship: one_to_many
+  }
+  }
+
 
 # explore: opportunity_contact_role {
 #   join: contacts {
