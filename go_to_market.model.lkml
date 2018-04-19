@@ -84,6 +84,12 @@ explore: leads {
     sql_on: ${role.id} = ${users.user_role_id} ;;
     relationship: many_to_one
   }
+
+  join: sla_first_touch {
+    type: :left_outer
+    sql_on: ${leads.id} = ${sla_first_touch.count_leads} ;;
+    relationship: one_to_many
+  }
 }
 
 
