@@ -1,4 +1,4 @@
-view: final_sla_first_touch {
+view: sla_first_touch {
   derived_table: {
     sql: Select
       count(main1.who_id) as count_leads,
