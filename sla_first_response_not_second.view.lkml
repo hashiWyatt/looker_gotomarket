@@ -1,6 +1,16 @@
 view: sla_first_response_not_second {
   derived_table: {
-    sql: SELECT
+    sql: Select
+      count(main1.who_id) as count_leads,
+      count(main1.who_id)*100 /sum(count(*)) over ()  as Percent_leads,
+      main1.avg_days
+      from
+      (Select
+      temp.who_id,
+      avg (temp.tasks_created_date - temp.leads_created_date) as Avg_days,
+      temp.Rep_name
+      from
+      (SELECT
         tasks.who_id as who_id,
        first_value (DATE(leads.created_date)) over(partition by tasks.who_id order by leads.created_date asc rows between unbounded preceding and unbounded following  ) leads_created_date,
         first_value (DATE(tasks.created_date)) over(partition by tasks.who_id order by tasks.created_date asc rows between unbounded preceding and unbounded following  ) tasks_created_date,
@@ -14,6 +24,10 @@ view: sla_first_response_not_second {
       AND (tasks.subject LIKE 'Reply%')
       AND (tasks.subject not LIKE 'Reply: RE%')
       AND (role.name LIKE '%Inside Sales%')
+     ) temp
+      group by 1,3) as main1
+      group by main1.avg_days
+      order by main1.avg_days
  ;;
   }
 
@@ -22,27 +36,22 @@ view: sla_first_response_not_second {
     drill_fields: [detail*]
   }
 
-  dimension: who_id {
-    type: string
-    sql: ${TABLE}.who_id ;;
+  dimension: count_leads {
+    type: number
+    sql: ${TABLE}.count_leads ;;
   }
 
-  dimension: leads_created_date {
-    type: date
-    sql: ${TABLE}.leads_created_date ;;
+  dimension: percent_leads {
+    type: number
+    sql: ${TABLE}.percent_leads ;;
   }
 
-  dimension: tasks_created_date {
-    type: date
-    sql: ${TABLE}.tasks_created_date ;;
-  }
-
-  dimension: rep_name {
-    type: string
-    sql: ${TABLE}.rep_name ;;
+  dimension: avg_days {
+    type: number
+    sql: ${TABLE}.avg_days ;;
   }
 
   set: detail {
-    fields: [who_id, leads_created_date, tasks_created_date, rep_name]
+    fields: [count_leads, percent_leads, avg_days]
   }
 }
