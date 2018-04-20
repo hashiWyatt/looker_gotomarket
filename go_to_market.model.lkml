@@ -93,7 +93,7 @@ explore: leads {
 
   explore: sla_first_response {}
 
-
+  explore: sla_first_response_not_second {}
 # explore: notes {}
 #
 explore: opportunities {
