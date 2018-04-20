@@ -91,7 +91,7 @@ explore: leads {
 #     sql_on: ${leads.id} = ${sla_first_touch.count_leads} ;;
 #     relationship: one_to_many
 
-#   explore: sla_first_response {}
+  explore: sla_first_response {}
 
 
 # explore: notes {}
