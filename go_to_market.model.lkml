@@ -104,7 +104,7 @@ explore: opportunities {
   }
   join: opportunity_stage {
     type: left_outer
-    sql_on: ${opportunities.stage_name} = ${opportunity_stage.id} ;;
+    sql_on: ${opportunities.stage_name} = ${opportunity_stage.api_name} ;;
     relationship: one_to_many
   }
   }
