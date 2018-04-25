@@ -149,7 +149,7 @@ explore: opportunities {
 #
 # explore: price_books {}
 #
-# explore: products {}
+explore: products {}
 #
 # explore: profile {}
 #
