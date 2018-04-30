@@ -139,15 +139,15 @@ explore: opportunities {
 #
 # explore: opportunity_history {}
 #
-# explore: opportunity_product {}
+explore: opportunity_product {}
 #
 # explore: opportunity_stage {}
 #
 # explore: period {}
 #
-# explore: price_book_entries {}
+explore: price_book_entries {}
 #
-# explore: price_books {}
+explore: price_books {}
 #
 explore: products {}
 #
