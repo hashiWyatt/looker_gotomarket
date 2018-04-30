@@ -139,7 +139,13 @@ explore: opportunities {
 #
 # explore: opportunity_history {}
 #
-explore: opportunity_product {}
+explore: opportunity_product {
+  join: products{
+    type: left_outer
+    sql_on: ${products.id} = ${opportunity_product.product_2_id} ;;
+    relationship: many_to_many
+    }
+  }
 #
 # explore: opportunity_stage {}
 #
@@ -149,7 +155,13 @@ explore: price_book_entries {}
 #
 explore: price_books {}
 #
-explore: products {}
+explore: products {
+  join: price_book_entries{
+    type: left_outer
+    sql_on: ${products.id} = ${price_book_entries.product_2_id} ;;
+    relationship: one_to_many
+    }
+    }
 #
 # explore: profile {}
 #
