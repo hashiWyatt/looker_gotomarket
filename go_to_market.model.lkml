@@ -107,7 +107,11 @@ explore: opportunities {
     sql_on: ${opportunities.stage_name} = ${opportunity_stage.api_name} ;;
     relationship: one_to_many
   }
-
+  join: opportunity_product {
+    type: left_outer
+    sql_on: ${opportunity_product.opportunity_id}= ${opportunities.id} ;;
+    relationship: one_to_many
+  }
   join: users {
     type: left_outer
     sql_on: ${users.id} = ${opportunities.owner_id} ;;
