@@ -8,7 +8,13 @@ include: "*.dashboard"
 
 # explore: _group {}
 
-explore: accounts {}
+explore: accounts {
+  join: opportunities{
+    type: left_outer
+    sql_on: ${accounts.id} = ${opportunities.account_id} ;;
+    relationship: one_to_many
+  }
+}
 
 # explore: campaign_members {
 #   join: contacts {
