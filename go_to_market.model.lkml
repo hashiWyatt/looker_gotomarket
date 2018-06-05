@@ -6,7 +6,7 @@ include: "*.view"
 # include all the dashboards
 include: "*.dashboard"
 
-fiscal_month_offset: 1
+fiscal_month_offset: 13
 
 # explore: _group {}
 
