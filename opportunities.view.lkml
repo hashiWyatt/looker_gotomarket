@@ -78,7 +78,7 @@ view: opportunities {
       week,
       month,
       quarter,
-      year
+      year,fiscal_quarter,fiscal_quarter_of_year,fiscal_year,fiscal_month_num
     ]
     sql: ${TABLE}.close_date ;;
   }
