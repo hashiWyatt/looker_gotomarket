@@ -15,7 +15,7 @@ view: opportunities_usa_by_state_g2000 {
   }
 
   dimension: state {
-    type: string
+    map_layer_name: us_states
     sql: ${TABLE}.state ;;
   }
 
