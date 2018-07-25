@@ -221,4 +221,9 @@ explore: products {
 #   }
 # }
 
-explore:  salesforce_qualified_leads{}
+# explore:  salesforce_qualified_leads{}
+explore:  leads_newworking_g2000 {}
+explore:  leads_qualified_g2000 {}
+explore:  opportunities_created_g2000 {}
+explore:  opportunities_closedwon_g2000 {}
+explore:  customers_created_g2000 {}
