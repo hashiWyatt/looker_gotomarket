@@ -227,3 +227,5 @@ explore:  leads_qualified_g2000 {}
 explore:  opportunities_created_g2000 {}
 explore:  opportunities_closedwon_g2000 {}
 explore:  customers_created_g2000 {}
+explore:  leads_usa_by_state_g2000 {}
+explore:  opportunities_usa_by_state_g2000 {}
