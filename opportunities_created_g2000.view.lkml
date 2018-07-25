@@ -5,7 +5,7 @@ view: opportunities_created_g2000 {
 FROM "salesforce"."opportunities" as o
 INNER JOIN salesforce.accounts as a ON (a.id = o.account_id)
 INNER JOIN hashicorp_internal_data.forbes_global2000 as g ON (a.website = g.domain)
-GROUP BY month;
+GROUP BY month
  ;;
   }
 

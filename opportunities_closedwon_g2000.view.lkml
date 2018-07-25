@@ -7,7 +7,7 @@ INNER JOIN salesforce.opportunities as o ON (h.opportunity_id = o.id)
 INNER JOIN salesforce.accounts as a ON (a.id = o.account_id)
 INNER JOIN hashicorp_internal_data.forbes_global2000 as g ON (a.website = g.domain)
 WHERE h.stage_name = 'Closed/Won'
-GROUP BY month;
+GROUP BY month
  ;;
   }
 

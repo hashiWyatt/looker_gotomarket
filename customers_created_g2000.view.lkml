@@ -5,7 +5,7 @@ view: customers_created_g2000 {
 FROM salesforce.accounts as a
 INNER JOIN hashicorp_internal_data.forbes_global2000 as g ON (a.website = g.domain)
 WHERE a.type = 'Customer'
-GROUP BY month;
+GROUP BY month
  ;;
   }
 
