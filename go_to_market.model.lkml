@@ -16,6 +16,12 @@ explore: accounts {
     sql_on: ${accounts.id} = ${opportunities.account_id} ;;
     relationship: one_to_many
   }
+
+  join: forbes_global2000 {
+    type:  left_outer
+    sql_on: ${forbes_global2000.domain} = ${accounts.website} ;;
+    relationship: one_to_many
+  }
 }
 
 # explore: campaign_members {
@@ -91,6 +97,12 @@ explore: leads {
     type: left_outer
     sql_on: ${role.id} = ${users.user_role_id} ;;
     relationship: many_to_one
+  }
+
+  join: forbes_global2000 {
+    type: left_outer
+    sql_on: ${forbes_global2000.domain} = ${leads.website} ;;
+    relationship: one_to_many
   }
   }
 
@@ -208,3 +220,5 @@ explore: products {
 #     relationship: many_to_one
 #   }
 # }
+
+explore:  salesforce_qualified_leads{}
