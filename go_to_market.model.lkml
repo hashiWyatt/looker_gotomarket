@@ -235,3 +235,12 @@ explore:  opportunities_closedwon_g2000 {}
 explore:  customers_created_g2000 {}
 explore:  leads_usa_by_state_g2000 {}
 explore:  opportunities_usa_by_state_g2000 {}
+
+explore:  user_profiles {
+  label: "Hull User Profiles"
+  join: forbes_global2000 {
+    type: left_outer
+    sql_on: ${forbes_global2000.domain} = ${user_profiles.domain} ;;
+    relationship: one_to_many
+  }
+}
