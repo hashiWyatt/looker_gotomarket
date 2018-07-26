@@ -691,8 +691,8 @@ view: opportunities {
   }
 
   dimension: y_1_acv_c {
-    type: string
-    sql: ${TABLE}.y_1_acv_c ;;
+    type: number
+    sql: to_number(${TABLE}.y_1_acv_c, '9G999G999.9') ;;
   }
 
   dimension: y_2_acv_c {
@@ -708,6 +708,11 @@ view: opportunities {
   measure: count {
     type: count
     drill_fields: [detail*]
+  }
+
+  measure: total_y_1_acv_c {
+    type: sum
+    sql: ${y_1_acv_c};;
   }
 
   # ----- Sets of fields for drilling ------

@@ -104,6 +104,12 @@ explore: leads {
     sql_on: ${forbes_global2000.domain} = ${leads.website} ;;
     relationship: one_to_many
   }
+
+  join: opportunities {
+    type: left_outer
+    sql_on: ${leads.converted_opportunity_id} = ${opportunities.id} ;;
+    relationship: one_to_many
+  }
   }
 
   explore: sla_first_touch {}
