@@ -235,6 +235,9 @@ explore:  opportunities_closedwon_g2000 {}
 explore:  customers_created_g2000 {}
 explore:  leads_usa_by_state_g2000 {}
 explore:  opportunities_usa_by_state_g2000 {}
+explore:  user_profiles_g2000 {
+  label: "Hull User Profiles (G2000)"
+}
 
 explore:  user_profiles {
   label: "Hull User Profiles"
