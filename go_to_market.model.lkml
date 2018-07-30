@@ -247,3 +247,5 @@ explore:  user_profiles {
     relationship: one_to_many
   }
 }
+
+explore:  lead_to_opp_funnel {}
