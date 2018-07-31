@@ -4,7 +4,10 @@ view: lead_to_opp_funnel {
         created_leads.id as lead_id,
         created_leads.created_date as created_lead,
         converted_leads.converted_date as converted_lead,
-        won_opps.close_date as won_opp
+        won_opps.close_date as won_opp,
+        reps.name as rep,
+        created_leads.lead_product_c as product,
+        created_leads.country as country
       FROM
         -- Created leads
         (SELECT *
@@ -21,6 +24,11 @@ view: lead_to_opp_funnel {
           FROM salesforce.opportunities
           WHERE close_date IS NOT NULL AND is_won = true) AS won_opps
         ON won_opps.id = converted_leads.converted_opportunity_id
+        -- Reps
+        LEFT JOIN
+        (SELECT *
+          FROM salesforce.users) as reps
+        ON reps.id = created_leads.owner_id
        ;;
   }
 
@@ -48,6 +56,21 @@ view: lead_to_opp_funnel {
   dimension_group: won_opp {
     type: time
     sql: ${TABLE}.won_opp ;;
+  }
+
+  dimension: sales_rep {
+    type: string
+    sql:  ${TABLE}.rep ;;
+  }
+
+  dimension: product {
+    type:  string
+    sql:  ${TABLE}.product ;;
+  }
+
+  dimension: country {
+    type: string
+    sql:  ${TABLE}.country ;;
   }
 
   set: detail {
