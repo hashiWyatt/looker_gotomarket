@@ -54,6 +54,7 @@ view: opportunity_product_fullinfo {
   dimension: op_id {
     type: string
     sql: ${TABLE}.op_id ;;
+    primary_key: yes
   }
 
   dimension_group: created_date {
