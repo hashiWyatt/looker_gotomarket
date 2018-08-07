@@ -143,6 +143,11 @@ explore: opportunities {
     sql_on: ${users.id} = ${opportunities.owner_id} ;;
     relationship: many_to_one
   }
+  join: opportunity_product_fullinfo {
+    type: left_outer
+    sql_on: ${opportunity_product_fullinfo.opportunity_id}= ${opportunities.id} ;;
+    relationship: one_to_many
+  }
   }
 # explore: opportunities {
 #   join: campaigns {

@@ -12,20 +12,20 @@ view: lead_to_opp_funnel {
         -- Created leads
         (SELECT *
           FROM salesforce.leads) as created_leads
-        LEFT JOIN
+        LEFT OUTER JOIN
         -- Converted leads
         (SELECT *
           FROM salesforce.leads
           WHERE converted_date IS NOT NULL) as converted_leads
         ON created_leads.id = converted_leads.id
         -- Closed/Won Opps
-        LEFT JOIN
+        LEFT OUTER JOIN
         (SELECT *
           FROM salesforce.opportunities
           WHERE close_date IS NOT NULL AND is_won = true) AS won_opps
         ON won_opps.id = converted_leads.converted_opportunity_id
         -- Reps
-        LEFT JOIN
+        LEFT OUTER JOIN
         (SELECT *
           FROM salesforce.users) as reps
         ON reps.id = created_leads.owner_id
