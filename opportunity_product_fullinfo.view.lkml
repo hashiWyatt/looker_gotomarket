@@ -251,6 +251,16 @@ view: opportunity_product_fullinfo {
     sql: ${TABLE}.minimum_quantity_c ;;
   }
 
+  dimension: line_revenue {
+    type: number
+    sql:  ${quantity} * ${unit_price} ;;
+  }
+
+  measure:  total_revenue {
+    type: sum
+    sql: ${line_revenue} ;;
+  }
+
   set: detail {
     fields: [
       op_id,
@@ -292,7 +302,8 @@ view: opportunity_product_fullinfo {
       entitlements_c,
       is_product_visible_c,
       services_events_sku_c,
-      minimum_quantity_c
+      minimum_quantity_c,
+      line_revenue
     ]
   }
 }

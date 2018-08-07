@@ -631,10 +631,16 @@ view: leads {
     sql: ${TABLE}.zendesk_zendesk_outof_sync_c ;;
   }
 
+  dimension:  conversion_time_days {
+    type: number
+    sql: DATEDIFF(day, ${created_raw}, ${converted_raw}) ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
   }
+
 
   # ----- Sets of fields for drilling ------
   set: detail {

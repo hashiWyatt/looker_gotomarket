@@ -148,6 +148,11 @@ explore: opportunities {
     sql_on: ${opportunity_product_fullinfo.opportunity_id}= ${opportunities.id} ;;
     relationship: one_to_many
   }
+  join: leads {
+    type: left_outer
+    sql_on: ${leads.converted_opportunity_id} = ${opportunities.id} ;;
+    relationship: many_to_one
+  }
   }
 # explore: opportunities {
 #   join: campaigns {
