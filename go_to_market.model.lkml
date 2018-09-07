@@ -52,13 +52,13 @@ explore: accounts {
 
 # explore: campaigns {}
 
-# explore: contacts {
-#   join: accounts {
-#     type: left_outer
-#     sql_on: ${contacts.account_id} = ${accounts.id} ;;
-#     relationship: many_to_one
-#   }
-# }
+ explore: contacts {
+   join: accounts {
+     type: left_outer
+     sql_on: ${contacts.account_id} = ${accounts.id} ;;
+     relationship: many_to_one
+   }
+ }
 #
 # explore: contracts {
 #   join: accounts {
