@@ -18,6 +18,18 @@ view: oss_downloads {
         FROM vault_oss_site.download
         WHERE timestamp::timestamp AT TIME ZONE 'UTC' >= (SELECT current_timestamp - INTERVAL '2 hours')
       )
+      UNION
+      (
+        SELECT product, context_ip, timestamp
+        FROM nomad_oss_site.download
+        WHERE timestamp::timestamp AT TIME ZONE 'UTC' >= (SELECT current_timestamp - INTERVAL '2 hours')
+      )
+      UNION
+      (
+        SELECT product, context_ip, timestamp
+        FROM packer_oss_site.download
+        WHERE timestamp::timestamp AT TIME ZONE 'UTC' >= (SELECT current_timestamp - INTERVAL '2 hours')
+      )
       ORDER BY timestamp DESC
        ;;
   }
