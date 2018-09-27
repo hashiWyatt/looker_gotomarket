@@ -1,6 +1,6 @@
 view: oss_downloads {
   derived_table: {
-    sql: -- Get OSS downloads in the last 2 hours
+    sql:
       (
         SELECT product, context_ip, timestamp
         FROM consul_oss_site.download
@@ -18,7 +18,7 @@ view: oss_downloads {
         FROM vault_oss_site.download
         WHERE timestamp::timestamp AT TIME ZONE 'UTC' >= (SELECT current_timestamp - INTERVAL '2 hours')
       )
-      ORDER BY timestamp DESC;
+      ORDER BY timestamp DESC
        ;;
   }
 
