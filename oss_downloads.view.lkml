@@ -1,60 +1,41 @@
 view: oss_downloads {
-  derived_table: {
-    sql:
-      (
-        SELECT product, context_ip, timestamp
-        FROM consul_oss_site.download
-        WHERE timestamp::timestamp AT TIME ZONE 'UTC' >= (SELECT current_timestamp - INTERVAL '2 hours')
-      )
-      UNION
-      (
-        SELECT product, context_ip, timestamp
-        FROM terraform_oss_site.download
-        WHERE timestamp::timestamp AT TIME ZONE 'UTC' >= (SELECT current_timestamp - INTERVAL '2 hours')
-      )
-      UNION
-      (
-        SELECT product, context_ip, timestamp
-        FROM vault_oss_site.download
-        WHERE timestamp::timestamp AT TIME ZONE 'UTC' >= (SELECT current_timestamp - INTERVAL '2 hours')
-      )
-      UNION
-      (
-        SELECT product, context_ip, timestamp
-        FROM nomad_oss_site.download
-        WHERE timestamp::timestamp AT TIME ZONE 'UTC' >= (SELECT current_timestamp - INTERVAL '2 hours')
-      )
-      UNION
-      (
-        SELECT product, context_ip, timestamp
-        FROM packer_oss_site.download
-        WHERE timestamp::timestamp AT TIME ZONE 'UTC' >= (SELECT current_timestamp - INTERVAL '2 hours')
-      )
-      ORDER BY timestamp DESC
-       ;;
-  }
+  sql_table_name:  oss_downloads ;;
 
-  measure: count {
-    type: count
-    drill_fields: [detail*]
+  dimension: id {
+    primary_key: yes
+    type: string
+    sql: ${TABLE}.id ;;
   }
 
   dimension: product {
-    type: string
-    sql: ${TABLE}.product ;;
+    type:  string
+    sql: ${TABLE}.product;;
   }
 
   dimension: context_ip {
-    type: string
+    type:  string
     sql: ${TABLE}.context_ip ;;
+    hidden: yes
   }
 
   dimension_group: timestamp {
     type: time
+    timeframes: [
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}.timestamp ;;
   }
 
-  set: detail {
-    fields: [product, context_ip, timestamp_time]
+  measure: downloads_count {
+    type: count
+    drill_fields: [id, product]
+  }
+
+  measure: downloads_count_unique_ips {
+    type: count_distinct
+    sql: ${context_ip} ;;
   }
 }
