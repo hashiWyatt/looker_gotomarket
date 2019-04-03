@@ -18,6 +18,26 @@ view: oss_downloads {
     hidden: yes
   }
 
+  dimension: operating_system  {
+    type:  string
+    sql: ${TABLE}.operating_system ;;
+  }
+
+  dimension: context_page_referrer {
+    type:  string
+    sql:  ${TABLE}.context_page_referrer ;;
+  }
+
+  dimension:  version {
+    type:  string
+    sql: ${TABLE}.version ;;
+  }
+
+  dimension: architecture {
+    type:  string
+    sql:  ${TABLE}.architecture ;;
+  }
+
   dimension_group: timestamp {
     type: time
     timeframes: [
