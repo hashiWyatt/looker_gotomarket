@@ -246,6 +246,9 @@ explore: products {
 explore:  oss_downloads {
   label: "OSS Downloads"
 }
+explore:  enriched_oss_downloads {
+  label: "Enriched OSS Downloads"
+}
 explore:  leads_newworking_g2000 {}
 explore:  leads_qualified_g2000 {}
 explore:  opportunities_created_g2000 {}
