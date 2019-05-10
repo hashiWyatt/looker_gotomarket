@@ -1,8 +1,12 @@
 view: funnel_metrics {
   sql_table_name: salesforce.funnel_metrics;;
 
-  dimension: date {
-    type:  date
+  dimension_group: date {
+    type:  time
+    timeframes: [
+      month,
+      year
+    ]
     sql: ${TABLE}.uv_monthyear ;;
   }
 
