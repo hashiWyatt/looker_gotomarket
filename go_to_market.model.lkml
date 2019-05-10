@@ -252,6 +252,10 @@ explore:  enriched_oss_downloads {
 explore:  named_account_penetration {
   label: "Named Account Penetration"
 }
+
+explore: funnel_metrics {
+  label: "Funnel Metrics"
+}
 explore:  leads_newworking_g2000 {}
 explore:  leads_qualified_g2000 {}
 explore:  opportunities_created_g2000 {}
