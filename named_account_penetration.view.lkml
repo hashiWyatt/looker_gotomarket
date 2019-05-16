@@ -31,10 +31,10 @@ view: named_account_penetration {
     sql: ${TABLE}.owner_job_role_c ;;
   }
 
-  dimension: account_type {
+  dimension: account_tier {
     description: "Type of account - either Strategic or Enterprise"
     type: string
-    sql: ${TABLE}.account_type ;;
+    sql: ${TABLE}.account_tier_c ;;
   }
 
   dimension: num_contacts {
