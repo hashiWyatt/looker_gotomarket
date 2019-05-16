@@ -1,54 +1,52 @@
 view: funnel_metrics {
   sql_table_name: salesforce.funnel_metrics;;
 
-  dimension_group: date {
-    type:  time
-    timeframes: [
-      month,
-      year
-    ]
-    sql: ${TABLE}.uv_monthyear ;;
+  dimension: date {
+    type: date_month
+    sql: ${TABLE}.monthyear ;;
   }
 
-  dimension: unique_visitors {
-    type:  number
+  measure: unique_visitors {
+    type:  max
     sql: ${TABLE}.unique_visitors ;;
   }
 
-  dimension: known_names {
-    type:  number
+
+  measure: known_names {
+    type:  max
     sql: ${TABLE}.known_names ;;
   }
 
-  dimension: mql {
-    type:  number
-    sql: ${TABLE}.mql ;;
+  measure: mql {
+    type:  max
+    sql: ${TABLE}.num_mql ;;
   }
 
-  dimension: sal {
-    type:  number
-    sql: ${TABLE}.sal ;;
+  measure: sal {
+    type:  max
+    sql: ${TABLE}.num_sal ;;
   }
 
-  dimension: sal_plus_working {
-    type:  number
-    sql: ${TABLE}.sal_plus_working ;;
+  measure: sal_plus_working_sal {
+    type:  max
+    sql: ${TABLE}.num_sal_plus_working ;;
   }
 
-  dimension: sqo {
-    type:  number
-    sql: ${TABLE}.sqo ;;
+  measure: sqo {
+    type:  max
+    sql: ${TABLE}.num_sqo ;;
   }
 
-  dimension: cwo {
-    type:  number
-    sql: ${TABLE}.cwo ;;
+  measure: cwo {
+    type:  max
+    sql: ${TABLE}.num_cwo ;;
   }
 
-  dimension: unqualified {
-    type:  number
-    sql: ${TABLE}.unqualified ;;
+  measure: unqualified {
+    type:  max
+    sql: ${TABLE}.num_unqualified ;;
   }
+
   # # You can specify the table name if it's different from the view name:
   # sql_table_name: my_schema_name.tester ;;
   #
