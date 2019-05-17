@@ -5,6 +5,8 @@ view: terraform_cloud_state_version_viewed_counts {
             state_version_show.organization  AS "organization",
             COUNT(*) AS "state_version_show_count"
             FROM terraform_cloud.state_version_show  AS state_version_show
+            WHERE
+              (((state_version_show.timestamp ) >= ((DATEADD(day,-29, DATE_TRUNC('day',GETDATE()) ))) AND (state_version_show.timestamp ) < ((DATEADD(day,30, DATEADD(day,-29, DATE_TRUNC('day',GETDATE()) ) )))))
           GROUP BY state_version_show.organization, state_version_show.plan
           ORDER BY state_version_show_count DESC
           LIMIT 500;;
