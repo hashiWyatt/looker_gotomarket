@@ -335,6 +335,18 @@ explore: state_version_show {
   label: "Terraform Cloud State Version Show"
 }
 
+explore:  terraform_cloud_oganization_workspace_counts{
+  label: "Terraform Cloud Organization Counts"
+}
+
+explore: terraform_cloud_state_version_viewed_counts {
+  label: "Terraform Cloud State Version Viewed Counts"
+}
+
+explore: terraform_cloud_state_version_created_counts {
+  label: "Terraform Cloud State Version Created Counts"
+}
+
 explore: tracks {
   label: "Terraform Cloud Tracks"
 }
