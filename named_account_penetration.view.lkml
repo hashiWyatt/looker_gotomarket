@@ -58,7 +58,25 @@ view: named_account_penetration {
   dimension: status {
     description: "status of the account"
     type: string
-    sql: ${TABLE}.status ;;
+    case: {
+      when: {
+        sql: ${TABLE}.status = 'inactive' ;;
+        label: "inactive"
+      }
+      when: {
+        sql: ${TABLE}.status = 'active' ;;
+        label: "active"
+      }
+      when: {
+        sql: ${TABLE}.status = 'oppty' ;;
+        label: "oppty"
+      }
+      when: {
+        sql: ${TABLE}.status = 'won' ;;
+        label: "won"
+      }
+    }
+
   }
   measure: count_of_accounts {
     type:  count
