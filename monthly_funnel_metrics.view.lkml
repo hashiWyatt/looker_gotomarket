@@ -1,4 +1,4 @@
-view: funnel_metrics {
+view: monthly_funnel_metrics {
   sql_table_name: salesforce.monthly_funnel_metrics;;
 
   dimension: month {
