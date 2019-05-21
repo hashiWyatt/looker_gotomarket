@@ -55,6 +55,7 @@ view: named_account_penetration {
     sql: ${TABLE}.num_closed_won_deals ;;
   }
 
+
   dimension: status {
     description: "status of the account"
     type: string
