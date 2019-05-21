@@ -277,3 +277,76 @@ explore:  user_profiles {
 }
 
 explore:  lead_to_opp_funnel {}
+
+
+explore: create_account {
+  label: "Terraform Cloud Create Account"
+}
+
+explore: create_oauth_client {
+  label: "Terraform Cloud Create OAuth Client"
+}
+
+explore: create_organization {
+  label: "Terraform Cloud Create Organization"
+}
+
+explore: create_registry_module {
+  label: "Terraform Cloud Create Registry Module"
+}
+
+explore: create_run {
+  label: "Terraform Cloud Create Run"
+}
+
+explore: create_team {
+  label: "Terraform Cloud Create Team"
+}
+
+explore: create_workspace {
+  label: "Terraform Cloud Create Workspace"
+}
+
+explore: identifies {
+  label: "Terraform Cloud Identifies"
+}
+
+explore: login {
+  label: "Terraform Cloud Login"
+}
+
+explore: pages {
+  label: "Terraform Cloud Pages"
+}
+
+explore: remove_user_from_team {
+  label: "Terraform Cloud Remove User From Team"
+}
+
+explore: show_workspace {
+  label: "Terraform Cloud Show Workspace"
+}
+
+explore: state_version_created {
+  label: "Terraform Cloud State Version Created"
+}
+
+explore: state_version_show {
+  label: "Terraform Cloud State Version Show"
+}
+
+explore:  terraform_cloud_oganization_workspace_counts{
+  label: "Terraform Cloud Organization Counts"
+}
+
+explore: terraform_cloud_state_version_viewed_counts {
+  label: "Terraform Cloud State Version Viewed Counts"
+}
+
+explore: terraform_cloud_state_version_created_counts {
+  label: "Terraform Cloud State Version Created Counts"
+}
+
+explore: tracks {
+  label: "Terraform Cloud Tracks"
+}
