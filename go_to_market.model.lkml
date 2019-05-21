@@ -253,7 +253,7 @@ explore:  named_account_penetration {
   label: "Named Account Penetration"
 }
 explore: monthly_funnel_metrics {
-  label: "Weekly Funnel Metrics"
+  label: "Monthly Funnel Metrics"
 }
 
 explore: weekly_funnel_metrics {
