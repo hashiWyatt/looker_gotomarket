@@ -7,17 +7,17 @@ view: terraform_cloud_utm_funnel {
     sql: ${TABLE}.utm_source ;;
   }
 
-  dimension:visited_signup_page {
+  measure:visited_signup_page {
     type: number
     sql: ${TABLE}.visited_signup_page;;
   }
 
-  dimension:clicked_signup {
+  measure:clicked_signup {
     type: number
     sql: ${TABLE}.clicked_signup;;
   }
 
-  dimension:created_accounts {
+  measure:created_accounts {
     type: number
     sql: ${TABLE}.created_accounts;;
   }
