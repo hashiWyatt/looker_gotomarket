@@ -46,7 +46,7 @@ view: named_account_penetration {
   dimension: geo {
     description: "Geo of account - either NA or INTL"
     type: string
-    sql: ${TABLE}.geo ;;
+    sql: ${TABLE}.account_geo_c ;;
   }
 
   dimension: job_role {
