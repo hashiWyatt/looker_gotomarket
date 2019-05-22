@@ -281,6 +281,9 @@ explore:  user_profiles {
 
 explore:  lead_to_opp_funnel {}
 
+explore:  terraform_cloud_utm_funnel {
+  label: "Terraform Cloud UTM Funnel"
+}
 
 explore: create_account {
   label: "Terraform Cloud Create Account"
