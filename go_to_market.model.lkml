@@ -249,6 +249,9 @@ explore:  oss_downloads {
 explore:  enriched_oss_downloads {
   label: "Enriched OSS Downloads"
 }
+explore: enriched_product_pageviews {
+  label: "Enriched Product Pageviews"
+}
 explore:  named_account_penetration {
   label: "Named Account Penetration"
 }
