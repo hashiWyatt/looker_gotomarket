@@ -262,6 +262,10 @@ explore: monthly_funnel_metrics {
 explore: weekly_funnel_metrics {
   label: "Weekly Funnel Metrics"
 }
+
+explore: mqls_by_product {
+  label: "MQLs by Product"
+}
 explore:  leads_newworking_g2000 {}
 explore:  leads_qualified_g2000 {}
 explore:  opportunities_created_g2000 {}
