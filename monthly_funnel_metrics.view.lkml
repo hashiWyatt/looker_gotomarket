@@ -3,7 +3,7 @@ view: monthly_funnel_metrics {
 
   dimension: month {
     type: date_month
-    sql: ${TABLE}.monthyear ;;
+    sql: ${TABLE}.month ;;
   }
 
   measure: unique_visitors {
