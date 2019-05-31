@@ -2,7 +2,7 @@ view: weekly_funnel_metrics {
   sql_table_name: salesforce.weekly_funnel_metrics;;
 
   dimension: week {
-    type: date_week
+    type: date
     sql: ${TABLE}.week ;;
   }
 
