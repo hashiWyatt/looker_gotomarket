@@ -6,8 +6,7 @@ view: terraform_cloud_oganization_workspace_counts {
     COUNT(*) AS "workspace_count"
     FROM terraform_cloud.create_workspace  AS create_workspace
   GROUP BY create_workspace.organization, create_workspace.plan
-  ORDER BY workspace_count DESC
-  LIMIT 500;;
+  ORDER BY workspace_count DESC;;
  }
 
   dimension: plan {}
