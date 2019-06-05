@@ -249,12 +249,22 @@ explore:  oss_downloads {
 explore:  enriched_oss_downloads {
   label: "Enriched OSS Downloads"
 }
+explore: enriched_product_pageviews {
+  label: "Enriched Product Pageviews"
+}
 explore:  named_account_penetration {
   label: "Named Account Penetration"
 }
+explore: monthly_funnel_metrics {
+  label: "Monthly Funnel Metrics"
+}
 
-explore: funnel_metrics {
-  label: "Funnel Metrics"
+explore: weekly_funnel_metrics {
+  label: "Weekly Funnel Metrics"
+}
+
+explore: mqls_by_product {
+  label: "MQLs by Product"
 }
 explore:  leads_newworking_g2000 {}
 explore:  leads_qualified_g2000 {}
@@ -278,6 +288,9 @@ explore:  user_profiles {
 
 explore:  lead_to_opp_funnel {}
 
+explore:  terraform_cloud_utm_funnel {
+  label: "Terraform Cloud UTM Funnel"
+}
 
 explore: create_account {
   label: "Terraform Cloud Create Account"

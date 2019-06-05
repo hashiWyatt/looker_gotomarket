@@ -13,16 +13,40 @@ view: named_account_penetration {
     sql: ${TABLE}.name ;;
   }
 
-  dimension: region {
-    description: "Region of the account"
-    type: string
-    sql: ${TABLE}.owner_territory_c ;;
-  }
+  dimension:  region {
+    type:  string
+    sql:  CASE WHEN
+            ${TABLE}.owner_territory_c = 'EMEA Strategic' OR ${TABLE}.owner_territory_c = 'EMEA'
+            THEN 'EMEA'
+            WHEN ${TABLE}.owner_territory_c = 'NA Northeast'
+            THEN 'NA Northeast'
+            WHEN ${TABLE}.owner_territory_c = 'APAC'
+            THEN 'APAC'
+            WHEN ${TABLE}.owner_territory_c = 'NA South'
+            THEN 'NA South'
+            WHEN ${TABLE}.owner_territory_c = 'NA Midwest'
+            THEN 'NA Midwest'
+            WHEN ${TABLE}.owner_territory_c = 'NA Great Lakes'
+            THEN 'NA Great Lakes'
+            WHEN ${TABLE}.owner_territory_c = 'NA West'
+            THEN 'NA West'
+            WHEN ${TABLE}.owner_territory_c = 'NA NYMetro'
+            THEN 'NA NYMetro'
+            WHEN ${TABLE}.owner_territory_c = 'NA Enterprise West'
+            THEN 'NA Enterprise West'
+            WHEN ${TABLE}.owner_territory_c = 'NA Enterprise East'
+            THEN 'NA Enterprise East'
+            WHEN ${TABLE}.owner_territory_c = 'EMEA Enterprise'
+            THEN 'EMEA Enterprise'
+            ELSE 'Other'
+            END;;
+            }
+
 
   dimension: geo {
     description: "Geo of account - either NA or INTL"
     type: string
-    sql: ${TABLE}.geo ;;
+    sql: ${TABLE}.account_geo_c ;;
   }
 
   dimension: job_role {
@@ -55,10 +79,29 @@ view: named_account_penetration {
     sql: ${TABLE}.num_closed_won_deals ;;
   }
 
+
   dimension: status {
     description: "status of the account"
     type: string
-    sql: ${TABLE}.status ;;
+    case: {
+      when: {
+        sql: ${TABLE}.status = 'inactive' ;;
+        label: "inactive"
+      }
+      when: {
+        sql: ${TABLE}.status = 'active' ;;
+        label: "active"
+      }
+      when: {
+        sql: ${TABLE}.status = 'oppty' ;;
+        label: "oppty"
+      }
+      when: {
+        sql: ${TABLE}.status = 'won' ;;
+        label: "won"
+      }
+    }
+
   }
   measure: count_of_accounts {
     type:  count

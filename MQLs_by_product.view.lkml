@@ -1,55 +1,22 @@
-view: funnel_metrics {
-  sql_table_name: salesforce.monthly_funnel_metrics;;
+view: mqls_by_product {
+  sql_table_name: salesforce.daily_marketing_qualified_leads_by_product ;;
 
-  dimension: month {
-    type: date_month
-    sql: ${TABLE}.monthyear ;;
+  dimension_group: mql_date {
+    type:  time
+    timeframes: [date, week, month, year]
+    sql: ${TABLE}.lead_stage_date ;;
   }
 
-  measure: unique_visitors {
-    type:  max
-    sql: ${TABLE}.unique_visitors ;;
+  dimension:  product {
+    type:  string
+    sql:  ${TABLE}.product ;;
   }
 
-
-  measure: known_names {
-    type:  max
-    sql: ${TABLE}.known_names ;;
+  measure:  total {
+    type:  count_distinct
+    sql: ${TABLE}.id ;;
   }
 
-  measure: mql {
-    type:  max
-    sql: ${TABLE}.num_mql ;;
-  }
-
-  measure: sal {
-    type:  max
-    sql: ${TABLE}.num_sal ;;
-  }
-
-  measure: sal_plus_working_sal {
-    type:  max
-    sql: ${TABLE}.num_sal_plus_working ;;
-  }
-
-  measure: sqo {
-    type:  max
-    sql: ${TABLE}.num_sqo ;;
-  }
-
-  measure: cwo {
-    type:  max
-    sql: ${TABLE}.num_cwo ;;
-  }
-
-  measure: unqualified {
-    type:  max
-    sql: ${TABLE}.num_unqualified ;;
-  }
-
-  # # You can specify the table name if it's different from the view name:
-  # sql_table_name: my_schema_name.tester ;;
-  #
   # # Define your dimensions and measures here, like this:
   # dimension: user_id {
   #   description: "Unique ID for each user that has ordered"
@@ -77,7 +44,7 @@ view: funnel_metrics {
   # }
 }
 
-# view: funnel_metrics {
+# view: mqls_by_product {
 #   # Or, you could make this view a derived table, like this:
 #   derived_table: {
 #     sql: SELECT
