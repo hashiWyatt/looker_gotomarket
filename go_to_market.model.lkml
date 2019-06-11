@@ -266,6 +266,10 @@ explore: weekly_funnel_metrics {
 explore: mqls_by_product {
   label: "MQLs by Product"
 }
+
+explore:  product_learn_unique_visitors {
+  label: "Learn Unique Visitors"
+}
 explore:  leads_newworking_g2000 {}
 explore:  leads_qualified_g2000 {}
 explore:  opportunities_created_g2000 {}
