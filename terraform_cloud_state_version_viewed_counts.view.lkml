@@ -8,8 +8,7 @@ view: terraform_cloud_state_version_viewed_counts {
             WHERE
               (((state_version_show.timestamp ) >= ((DATEADD(day,-29, DATE_TRUNC('day',GETDATE()) ))) AND (state_version_show.timestamp ) < ((DATEADD(day,30, DATEADD(day,-29, DATE_TRUNC('day',GETDATE()) ) )))))
           GROUP BY state_version_show.organization, state_version_show.plan
-          ORDER BY state_version_show_count DESC
-          LIMIT 500;;
+          ORDER BY state_version_show_count DESC;;
     }
 
     dimension: plan {}
