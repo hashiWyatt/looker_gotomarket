@@ -3,7 +3,7 @@ view: product_io_unique_visitors {
     sql: SELECT
 *
 FROM
-(SELECT
+((SELECT
 date_trunc('month', timestamp) AS visitor_month,
 count(distinct(anonymous_id)) AS unique_visitors,
 'Consul' AS product
@@ -25,7 +25,8 @@ count(distinct(anonymous_id)) AS unique_visitors,
 'Terraform' AS product
 FROM terraform_oss_site.pages
 WHERE visitor_month >= '2019-02-01'
-GROUP BY visitor_month)
+GROUP BY visitor_month))
+WHERE visitor_month != '2029-02-01'
              ;;
   }
 
