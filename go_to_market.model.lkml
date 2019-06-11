@@ -270,6 +270,10 @@ explore: mqls_by_product {
 explore:  product_learn_unique_visitors {
   label: "Learn Unique Visitors"
 }
+
+explore:  product_io_unique_visitors {
+  label: ".io Unique Visitors"
+}
 explore:  leads_newworking_g2000 {}
 explore:  leads_qualified_g2000 {}
 explore:  opportunities_created_g2000 {}
