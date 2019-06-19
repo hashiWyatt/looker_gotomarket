@@ -259,6 +259,10 @@ explore: monthly_funnel_metrics {
   label: "Monthly Funnel Metrics"
 }
 
+explore: cam_monthly_funnel_metrics {
+  label: "CAM Monthly Funnel Metrics"
+}
+
 explore: weekly_funnel_metrics {
   label: "Weekly Funnel Metrics"
 }
