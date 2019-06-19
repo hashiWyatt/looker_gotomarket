@@ -278,6 +278,11 @@ explore:  product_learn_unique_visitors {
 explore:  product_io_unique_visitors {
   label: ".io Unique Visitors"
 }
+
+explore:  opportunity_revenue_amounts {
+  label: "Opportunity Revenue"
+}
+
 explore:  leads_newworking_g2000 {}
 explore:  leads_qualified_g2000 {}
 explore:  opportunities_created_g2000 {}
