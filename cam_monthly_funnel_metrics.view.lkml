@@ -26,6 +26,11 @@ view: cam_monthly_funnel_metrics {
     sql: ${TABLE}.num_sqo ;;
   }
 
+  measure: sqo_to_eams {
+    type:  max
+    sql: ${TABLE}.num_sqo_to_eams ;;
+  }
+
   measure: cwo {
     type:  max
     sql: ${TABLE}.num_cwo ;;
