@@ -10,6 +10,7 @@ view: opportunity_revenue_amounts {
   dimension_group: created_date {
     type:  time
     timeframes: [
+      date,
       week,
       month,
       quarter,
