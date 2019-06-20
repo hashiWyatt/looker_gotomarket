@@ -24,6 +24,11 @@ view: opportunity_revenue_amounts {
     sql: ${TABLE}.name ;;
   }
 
+  dimension: stage_name {
+    type:  string
+    sql: ${TABLE}.stage_name ;;
+  }
+
   measure: sum_amount {
     type:  sum
     sql: ${TABLE}.amount ;;
