@@ -19,6 +19,18 @@ view: opportunity_revenue_amounts {
     sql:  ${TABLE}.created_date ;;
   }
 
+  dimension_group: close_date {
+    type:  time
+    timeframes: [
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql:  ${TABLE}.close_date ;;
+  }
+
   dimension: opportunity_name {
     type:  string
     sql: ${TABLE}.name ;;
