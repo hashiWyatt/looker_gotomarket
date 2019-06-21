@@ -24,6 +24,11 @@ view: opportunity_revenue_amounts {
     sql: ${TABLE}.name ;;
   }
 
+  dimension: owner_territory {
+    type:  string
+    sql: ${TABLE}.owner_territory ;;
+  }
+
   dimension: stage_name {
     type:  string
     sql: ${TABLE}.stage_name ;;
