@@ -243,6 +243,9 @@ explore: products {
 # }
 
 # explore:  salesforce_qualified_leads{}
+explore:  clearbit_companies {
+  label: "Clearbit Companies"
+}
 explore:  oss_downloads {
   label: "OSS Downloads"
 }
