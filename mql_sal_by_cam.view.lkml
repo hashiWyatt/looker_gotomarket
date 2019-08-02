@@ -58,13 +58,13 @@ view: mql_sal_by_cam {
     sql: ${TABLE}.lead_owner ;;
   }
 
-  dimension: num_mql {
-    type: number
+  measure: num_mql {
+    type: max
     sql: ${TABLE}.num_mql ;;
   }
 
-  dimension: num_sal {
-    type: number
+  measure: num_sal {
+    type: max
     sql: ${TABLE}.num_sal ;;
   }
 
