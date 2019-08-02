@@ -286,6 +286,10 @@ explore:  opportunity_revenue_amounts {
   label: "Opportunity Revenue"
 }
 
+explore: mql_sal_by_cam {
+  label: "Monthly MQL, SAL by CAM"
+}
+
 explore:  leads_newworking_g2000 {}
 explore:  leads_qualified_g2000 {}
 explore:  opportunities_created_g2000 {}
