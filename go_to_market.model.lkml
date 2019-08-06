@@ -290,6 +290,10 @@ explore: revenue_metrics_by_cam {
   label: "Monthly MQL, SAL, SQO, Closed by CAM"
 }
 
+explore: closed_opportunities {
+  label: "Closed Opportunities"
+}
+
 explore:  leads_newworking_g2000 {}
 explore:  leads_qualified_g2000 {}
 explore:  opportunities_created_g2000 {}
