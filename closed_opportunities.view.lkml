@@ -48,13 +48,13 @@ view: closed_opportunities {
   dimension: y_1_acv {
     type: number
     sql: ${TABLE}.y_1_acv_c ;;
-    value_format: "$#.00;($#.00)"
+    value_format: "#,##0.00"
   }
 
   dimension: amount {
     type: number
     sql: ${TABLE}.amount ;;
-    value_format: "$#.00;($#.00)"
+    value_format: "#,##0.00"
   }
 
   dimension: stage_name {
