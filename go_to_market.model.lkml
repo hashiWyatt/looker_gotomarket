@@ -286,8 +286,8 @@ explore:  opportunity_revenue_amounts {
   label: "Opportunity Revenue"
 }
 
-explore: mql_sal_by_cam {
-  label: "Monthly MQL, SAL by CAM"
+explore: revenue_metrics_by_cam {
+  label: "Monthly MQL, SAL, SQO, Closed by CAM"
 }
 
 explore:  leads_newworking_g2000 {}
