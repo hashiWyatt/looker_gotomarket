@@ -21,7 +21,7 @@ view: closed_opportunities {
            OR users.name = 'Jeremy Truvillion'
            OR users.name = 'Nedim Mekanic'
            OR users.name = 'Samantha Lee'
-        );
+        )
        ;;
   }
 
