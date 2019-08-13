@@ -246,6 +246,9 @@ explore: products {
 explore:  content_blog_pages {
   label: "Content: Blog Pages"
 }
+explore:  content_resource_pages {
+  label: "Content: Resource Pages"
+}
 explore:  clearbit_companies {
   label: "Clearbit Companies"
 }
