@@ -244,7 +244,7 @@ explore: products {
 
 # explore:  salesforce_qualified_leads{}
 explore:  content_blog_pages {
-  label: "Blog Posts"
+  label: "Content: Blog Pages"
 }
 explore:  clearbit_companies {
   label: "Clearbit Companies"
