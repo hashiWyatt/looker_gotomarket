@@ -243,6 +243,9 @@ explore: products {
 # }
 
 # explore:  salesforce_qualified_leads{}
+explore:  content_blog_pages {
+  label: "Blog Posts"
+}
 explore:  clearbit_companies {
   label: "Clearbit Companies"
 }
