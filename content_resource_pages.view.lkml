@@ -20,6 +20,7 @@ view: content_resource_pages {
   dimension_group: received_at {
     type: time
     timeframes: [
+      day_of_month,
       week,
       month,
       quarter,
@@ -31,6 +32,7 @@ view: content_resource_pages {
   dimension_group: published_date {
     type: time
     timeframes: [
+      day_of_month,
       week,
       month,
       quarter,
