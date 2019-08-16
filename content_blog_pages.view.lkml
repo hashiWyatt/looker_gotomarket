@@ -20,7 +20,7 @@ view: content_blog_pages {
   dimension_group: received_at {
     type: time
     timeframes: [
-      day_of_month,
+      date,
       week,
       month,
       quarter,
@@ -32,7 +32,7 @@ view: content_blog_pages {
   dimension_group: published_date {
     type: time
     timeframes: [
-      day_of_month,
+      date,
       week,
       month,
       quarter,
