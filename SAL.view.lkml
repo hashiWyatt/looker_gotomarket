@@ -14,7 +14,7 @@ view: SAL {
           SAL_stage_date_c - INTERVAL '7 hours' >= '2019-02-01'
           AND is_deleted = False
           GROUP BY
-          SAL_stage_month,
+          SAL_stage_date,
           id,
           company,
           lead_owner_c,

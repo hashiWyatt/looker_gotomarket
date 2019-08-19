@@ -14,7 +14,7 @@ view: MQL {
           lead_stage_date_c - INTERVAL '7 hours' >= '2019-02-01'
           AND is_deleted = False
           GROUP BY
-          lead_stage_month,
+          lead_stage_date,
           id,
           company,
           lead_owner_c,
