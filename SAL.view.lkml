@@ -1,7 +1,7 @@
-view: MQL {
+view: SAL {
   derived_table: {
     sql: SELECT
-          lead_stage_date_c - INTERVAL '7 hours' AS lead_stage_date,
+          SAL_stage_date_c - INTERVAL '7 hours'  AS SAL_stage_date,
           id,
           lead_owner_c,
           Owner_Territory_c,
@@ -11,10 +11,10 @@ view: MQL {
           FROM
           salesforce.leads
           WHERE
-          lead_stage_date_c - INTERVAL '7 hours' >= '2019-02-01'
+          SAL_stage_date_c - INTERVAL '7 hours' >= '2019-02-01'
           AND is_deleted = False
           GROUP BY
-          lead_stage_month,
+          SAL_stage_month,
           id,
           company,
           lead_owner_c,
@@ -24,7 +24,7 @@ view: MQL {
  ;;
   }
 
-  measure: MQLs {
+  measure: SALs {
     type: count
     drill_fields: [detail*]
   }
@@ -47,10 +47,10 @@ view: MQL {
     }
   }
 
-  dimension_group: lead_stage_date {
+  dimension_group: SAL_stage_date {
     type: time
     timeframes: [date, week, month, year]
-    sql: ${TABLE}.lead_stage_date ;;
+    sql: ${TABLE}.SAL_stage_date ;;
   }
 
   dimension: lead_owner {

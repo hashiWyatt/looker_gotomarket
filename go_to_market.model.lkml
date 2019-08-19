@@ -25,7 +25,11 @@ explore: accounts {
 }
 
 explore: MQL {
-  label: "Revenue Waterfall"
+  label: "MQL"
+}
+
+explore: SAL {
+  label: "SAL"
 }
 # explore: campaign_members {
 #   join: contacts {
