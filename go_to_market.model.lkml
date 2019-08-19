@@ -24,6 +24,9 @@ explore: accounts {
   }
 }
 
+explore: MQL {
+  label: "Revenue Waterfall"
+}
 # explore: campaign_members {
 #   join: contacts {
 #     type: left_outer

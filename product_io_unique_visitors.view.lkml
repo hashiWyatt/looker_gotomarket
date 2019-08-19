@@ -25,6 +25,14 @@ count(distinct(anonymous_id)) AS unique_visitors,
 'Terraform' AS product
 FROM terraform_oss_site.pages
 WHERE visitor_month >= '2019-02-01'
+GROUP BY visitor_month)
+UNION
+(SELECT
+date_trunc('month', timestamp) AS visitor_month,
+count(distinct(anonymous_id)) AS unique_visitors,
+'Nomad' AS product
+FROM nomad_oss_site.pages
+WHERE visitor_month >= '2019-02-01'
 GROUP BY visitor_month))
 WHERE visitor_month != '2029-02-01'
              ;;
