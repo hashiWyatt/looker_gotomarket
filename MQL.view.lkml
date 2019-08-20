@@ -6,6 +6,7 @@ view: MQL {
           lead_owner_c,
           Owner_Territory_c,
           Lead_Owner_Region_c,
+          Lead_Owner_Job_Role_c,
           company,
           status
           FROM
@@ -20,6 +21,7 @@ view: MQL {
           lead_owner_c,
           Owner_Territory_c,
           Lead_Owner_Region_c,
+          Lead_Owner_Job_Role_c,
           status
  ;;
   }
@@ -58,6 +60,11 @@ view: MQL {
     sql: ${TABLE}.lead_owner_c ;;
   }
 
+  dimension: lead_owner_job_role {
+    type: string
+    sql: ${TABLE}.Lead_Owner_Job_Role_c ;;
+  }
+
   dimension: owner_territory {
     type: string
     sql: ${TABLE}.owner_territory_c ;;
@@ -80,6 +87,6 @@ view: MQL {
   }
 
   set: detail {
-    fields: [lead_owner, company, status, owner_territory, lead_owner_region ]
+    fields: [lead_owner, company, status, owner_territory, lead_owner_region, lead_owner_job_role]
   }
 }

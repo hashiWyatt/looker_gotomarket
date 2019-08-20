@@ -6,6 +6,7 @@ view: SAL {
           lead_owner_c,
           Owner_Territory_c,
           Lead_Owner_Region_c,
+          lead_owner_job_role_c,
           company,
           status
           FROM
@@ -20,6 +21,7 @@ view: SAL {
           lead_owner_c,
           Owner_Territory_c,
           Lead_Owner_Region_c,
+          lead_owner_job_role_c,
           status
  ;;
   }
@@ -68,6 +70,11 @@ view: SAL {
     sql: ${TABLE}.lead_owner_region_c ;;
   }
 
+  dimension: lead_owner_job_role {
+    type: string
+    sql: ${TABLE}.lead_owner_job_role_c ;;
+  }
+
 
   dimension: company {
     type: string
@@ -80,6 +87,6 @@ view: SAL {
   }
 
   set: detail {
-    fields: [lead_owner, company, status, owner_territory, lead_owner_region ]
+    fields: [lead_owner, company, status, owner_territory, lead_owner_region, lead_owner_job_role]
   }
 }
