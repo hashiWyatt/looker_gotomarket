@@ -428,6 +428,16 @@ view: opportunities {
     sql: ${TABLE}.owner_id ;;
   }
 
+  dimension: owner_job_role {
+    type: string
+    sql: ${TABLE}.owner_job_role_c ;;
+  }
+
+  dimension: owner_territory {
+    type: string
+    sql: ${TABLE}.owner_territory_c ;;
+  }
+
   dimension: partner_2_c {
     type: string
     sql: ${TABLE}.partner_2_c ;;
@@ -725,7 +735,11 @@ view: opportunities {
       campaigns.name,
       campaigns.id,
       accounts.name,
-      accounts.id
+      accounts.id,
+      owner_job_role,
+      owner_territory,
+      amount,
+      users.name
     ]
   }
 }
