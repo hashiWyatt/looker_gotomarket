@@ -31,6 +31,9 @@ explore: MQL {
 explore: SAL {
   label: "SAL"
 }
+  explore: SQO {
+    label: "SQO"
+}
 # explore: campaign_members {
 #   join: contacts {
 #     type: left_outer
