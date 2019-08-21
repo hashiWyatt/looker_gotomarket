@@ -378,6 +378,20 @@ view: leads {
     sql: ${TABLE}.lead_assigned_date_c ;;
   }
 
+  dimension_group: lead_stage_date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.lead_stage_date_c - interval '7 hours' ;;
+  }
+
   dimension: lead_product_c {
     type: string
     sql: ${TABLE}.lead_product_c ;;
@@ -512,6 +526,20 @@ view: leads {
     sql: ${TABLE}.received_at ;;
   }
 
+  dimension_group: SAL_stage_date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.SAL_stage_date_c - interval '7 hours' ;;
+  }
+
   dimension: salutation {
     type: string
     sql: ${TABLE}.salutation ;;
@@ -572,7 +600,7 @@ view: leads {
       quarter,
       year
     ]
-    sql: ${TABLE}.unqualified_stage_date_c ;;
+    sql: ${TABLE}.unqualified_stage_date_c - interval '7 hours' ;;
   }
 
   dimension: user_count_c {
