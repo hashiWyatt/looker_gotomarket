@@ -148,7 +148,7 @@ explore: opportunities {
   }
   join: users {
     type: left_outer
-    sql_on: ${users.id} = ${opportunities.owner_id} ;;
+    sql_on: ${users.id} = ${opportunities.created_by_id} ;;
     relationship: many_to_one
   }
   join: opportunity_product_fullinfo {
