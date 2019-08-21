@@ -38,9 +38,10 @@ view: opportunities {
     sql: ${TABLE}.agreement_type_c ;;
   }
 
-  dimension: amount {
-    type: string
+  measure: amount {
+    type: sum
     sql: ${TABLE}.amount ;;
+    value_format_name: usd
   }
 
   dimension: approved_by_c {
@@ -99,7 +100,7 @@ view: opportunities {
       quarter,
       year
     ]
-    sql: ${TABLE}.created_date ;;
+    sql: ${TABLE}.created_date - interval '7 hours' ;;
   }
 
   dimension: current_acv_c {
