@@ -291,6 +291,11 @@ view: users {
     sql: ${TABLE}.receives_info_emails ;;
   }
 
+  dimension: region {
+    type: string
+    sql: ${TABLE}.territory_c ;;
+  }
+
   dimension: sender_name {
     type: string
     sql: ${TABLE}.sender_name ;;
@@ -768,6 +773,7 @@ view: users {
       name,
       username,
       last_name,
+      region,
       community_nickname,
       company_name,
       first_name,
