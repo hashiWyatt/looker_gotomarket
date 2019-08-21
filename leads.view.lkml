@@ -708,7 +708,7 @@ view: leads {
   set: detail {
     fields: [
       id,
-      middle_name,
+      company,
       name,
       first_name,
       last_name,
