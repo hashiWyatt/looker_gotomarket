@@ -146,11 +146,20 @@ explore: opportunities {
     sql_on: ${opportunity_product.opportunity_id}= ${opportunities.id} ;;
     relationship: one_to_many
   }
-  join: users {
+  join: owner {
+    from:  users
     type: left_outer
-    sql_on: ${users.id} = ${opportunities.created_by_id} ;;
+    sql_on: ${owner.id} = ${opportunities.owner_id} ;;
     relationship: many_to_one
   }
+
+  join: created_by {
+    from:  users
+    type: left_outer
+    sql_on: ${created_by.id} = ${opportunities.created_by_id} ;;
+    relationship: many_to_one
+  }
+
   join: opportunity_product_fullinfo {
     type: left_outer
     sql_on: ${opportunity_product_fullinfo.opportunity_id}= ${opportunities.id} ;;
