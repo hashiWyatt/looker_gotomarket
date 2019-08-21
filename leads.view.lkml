@@ -393,6 +393,21 @@ view: leads {
     sql: ${TABLE}.lead_type_c ;;
   }
 
+  dimension: lead_owner {
+    type: string
+    sql: ${TABLE}.lead_owner_c ;;
+  }
+
+  dimension: lead_owner_job_role {
+    type: string
+    sql: ${TABLE}.lead_owner_job_role_c ;;
+  }
+
+  dimension: lead_owner_region {
+    type: string
+    sql: ${TABLE}.lead_owner_region_c ;;
+  }
+
   dimension: lifecycle_stage_c {
     type: string
     sql: ${TABLE}.lifecycle_stage_c ;;
@@ -436,6 +451,11 @@ view: leads {
   dimension: owner_id {
     type: string
     sql: ${TABLE}.owner_id ;;
+  }
+
+  dimension: owner_territory {
+    type: string
+    sql: ${TABLE}.owner_territory_c ;;
   }
 
   dimension: partner_contact_mgtrx_c {
@@ -539,6 +559,20 @@ view: leads {
   dimension: unqualified_reason_c {
     type: string
     sql: ${TABLE}.unqualified_reason_c ;;
+  }
+
+  dimension_group: unqualified_stage_date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.unqualified_stage_date_c ;;
   }
 
   dimension: user_count_c {
@@ -650,7 +684,10 @@ view: leads {
       name,
       first_name,
       last_name,
-      campaign_members.count
+      campaign_members.count,
+      lead_owner,
+      lead_owner_job_role,
+      lead_owner_region
     ]
   }
 }
