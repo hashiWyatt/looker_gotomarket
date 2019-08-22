@@ -701,30 +701,35 @@ view: opportunities {
     sql: ${TABLE}.x1_y_acv_c ;;
   }
 
-  dimension: y_1_acv_c {
-    type: number
-    sql: to_number(${TABLE}.y_1_acv_c, '9G999G999.9') ;;
+  measure: y_1_acv_c {
+    type: sum
+    sql: ${TABLE}.y_1_acv_c;;
+    value_format_name: usd
   }
 
-  dimension: y_2_acv_c {
-    type: string
-    sql: ${TABLE}.y_2_acv_c ;;
+  measure: y_2_acv_c {
+    type: sum
+    sql: ${TABLE}.y_2_acv_c;;
+      value_format_name: usd
   }
 
-  dimension: y_3_acv_c {
-    type: string
-    sql: ${TABLE}.y_3_acv_c ;;
+
+  measure: y_3_acv_c {
+    type: sum
+    sql: ${TABLE}.y_3_acv_c;;
+      value_format_name: usd
   }
+
 
   measure: count {
     type: count
     drill_fields: [detail*]
   }
 
-  measure: total_y_1_acv_c {
-    type: sum
-    sql: ${y_1_acv_c};;
-  }
+# measure: total_y_1_acv_c {
+#    type: sum
+#    sql: ${y_1_acv_c};;
+#  }
 
   # ----- Sets of fields for drilling ------
   set: detail {
