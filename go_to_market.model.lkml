@@ -7,7 +7,7 @@ include: "*.view"
 include: "*.dashboard"
 
 fiscal_month_offset: -11
-#week_start_day: friday
+
 # explore: _group {}
 
 explore: accounts {
