@@ -413,3 +413,12 @@ explore: eam1_conversions {
 explore: eam2_conversions {
   label: "EAM 2 Conversions"
 }
+explore: na_waterfall_conversions {
+  label: "NA Conversions"
+}
+explore: emea_waterfall_conversions {
+  label: "EMEA Conversions"
+}
+explore: apac_waterfall_conversions {
+  label: "APAC Conversions"
+}
