@@ -24,14 +24,6 @@ explore: accounts {
   }
 }
 
-explore: MQL {
-  label: "MQL"
-}
-
-explore: SAL {
-  label: "SAL"
-}
-
 # explore: campaign_members {
 #   join: contacts {
 #     type: left_outer
@@ -413,4 +405,8 @@ explore: terraform_cloud_state_version_created_counts {
 
 explore: tracks {
   label: "Terraform Cloud Tracks"
+}
+
+explore: eam1_conversions {
+  label: "EAM 1 Conversions"
 }
