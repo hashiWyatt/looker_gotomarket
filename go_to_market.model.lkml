@@ -422,3 +422,6 @@ explore: emea_waterfall_conversions {
 explore: apac_waterfall_conversions {
   label: "APAC Conversions"
 }
+explore: cam_waterfall_conversions {
+  label: "CAM Conversions"
+}
