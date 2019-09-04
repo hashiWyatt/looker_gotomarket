@@ -42,6 +42,7 @@ view: opportunities {
     type: sum
     sql: ${TABLE}.amount ;;
     value_format_name: usd
+    drill_fields: [detail*]
   }
 
   dimension: approved_by_c {
@@ -705,6 +706,7 @@ view: opportunities {
     type: sum
     sql: ${TABLE}.y_1_acv_c;;
     value_format_name: usd
+    drill_fields: [detail*]
   }
 
   measure: y_2_acv_c {
@@ -745,6 +747,7 @@ view: opportunities {
       owner_job_role,
       owner_territory,
       amount,
+      y_1_acv_c,
       users.name
     ]
   }
