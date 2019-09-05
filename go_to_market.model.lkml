@@ -16,6 +16,12 @@ explore: accounts {
     sql_on: ${accounts.id} = ${opportunities.account_id} ;;
     relationship: one_to_many
   }
+  join: owner {
+    from:  users
+    type: left_outer
+    sql_on: ${owner.id} = ${opportunities.owner_id} ;;
+    relationship: many_to_one
+  }
   join: opportunity_product {
     type: left_outer
     sql_on: ${opportunity_product.opportunity_id}= ${opportunities.id} ;;
