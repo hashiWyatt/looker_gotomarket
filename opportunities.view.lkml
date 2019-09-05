@@ -739,6 +739,8 @@ view: opportunities {
       id,
       forecast_category_name,
       name,
+      products.family,
+      products.product_code,
       stage_name,
       campaigns.name,
       campaigns.id,
