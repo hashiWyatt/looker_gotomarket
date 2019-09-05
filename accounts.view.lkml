@@ -598,6 +598,8 @@ view: accounts {
     fields: [
       id,
       name,
+      products.family,
+      products.product_code,
       contacts.count,
       contracts.count,
       events.count,
