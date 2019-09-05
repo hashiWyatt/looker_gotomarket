@@ -16,6 +16,16 @@ explore: accounts {
     sql_on: ${accounts.id} = ${opportunities.account_id} ;;
     relationship: one_to_many
   }
+  join: opportunity_product {
+    type: left_outer
+    sql_on: ${opportunity_product.opportunity_id}= ${opportunities.id} ;;
+    relationship: one_to_many
+  }
+  join: products {
+    type: left_outer
+    sql_on: ${opportunity_product.product_2_id}= ${products.id} ;;
+    relationship: one_to_one
+  }
 
   join: forbes_global2000 {
     type:  left_outer
