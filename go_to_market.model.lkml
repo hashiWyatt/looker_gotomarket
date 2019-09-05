@@ -141,7 +141,7 @@ explore: opportunities {
   join: products {
     type: left_outer
     sql_on: ${opportunity_product.product_2_id}= ${products.id} ;;
-    relationship: one_to_many
+    relationship: one_to_one
   }
 
   join: owner {

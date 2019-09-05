@@ -40,7 +40,7 @@ view: opportunities {
 
   measure: amount {
     type: sum
-    sql: ${TABLE}.amount ;;
+    sql: ${TABLE}.amount::numeric ;;
     value_format_name: usd
     drill_fields: [detail*]
   }
@@ -704,7 +704,7 @@ view: opportunities {
 
   measure: y_1_acv_c {
     type: sum
-    sql: ${TABLE}.y_1_acv_c;;
+    sql: ${TABLE}.y_1_acv_c::numeric;;
     value_format_name: usd
     drill_fields: [detail*]
   }
