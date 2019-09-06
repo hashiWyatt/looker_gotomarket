@@ -177,9 +177,10 @@ view: opportunity_product {
     sql: ${TABLE}.uuid_ts ;;
   }
 
-  dimension: y_1_acv_c {
-    type: string
-    sql: ${TABLE}.y_1_acv_c ;;
+  measure: y_1_acv_c {
+    type: sum
+    sql: ${TABLE}.y_1_acv_c::numeric;;
+    value_format_name: usd
   }
 
   dimension: y_2_acv_c {

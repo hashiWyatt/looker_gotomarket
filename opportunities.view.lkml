@@ -749,7 +749,7 @@ view: opportunities {
       owner_job_role,
       owner_territory,
       amount,
-      y_1_acv_c,
+      opportunity_product.y_1_acv_c,
       users.name
     ]
   }
