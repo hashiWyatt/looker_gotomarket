@@ -353,6 +353,10 @@ explore:  user_profiles {
 
 explore:  lead_to_opp_funnel {}
 
+explore:terraform_cloud_signup_funnel_pageviews {
+  label: "Terraform Cloud Signup Funnel Pageviews"
+}
+
 explore:  terraform_cloud_sales_rollup {
   label: "Terraform Cloud Sales Rollup"
 }
