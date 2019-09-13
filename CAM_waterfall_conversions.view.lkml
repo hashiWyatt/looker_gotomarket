@@ -1,7 +1,7 @@
 view: cam_waterfall_conversions {
   derived_table: {
     sql: SELECT
-        lead_stage_month AS month,
+        lead_stage_date AS day_date,
         MQL_count,
         sal_count,
         sqo_count,
@@ -13,8 +13,8 @@ view: cam_waterfall_conversions {
           (
             SELECT
               date_trunc(
-                'month', lead_stage_date_c - INTERVAL '7 hours'
-              ) AS lead_stage_month,
+                'day', lead_stage_date_c - INTERVAL '7 hours'
+              ) AS lead_stage_date,
               count(
                 distinct(id)
               ) AS MQL_count
@@ -25,13 +25,13 @@ view: cam_waterfall_conversions {
               AND lead_owner_region_c = 'Inside Sales'
               AND lead_stage_date_c - INTERVAL '7 hours' >= '2019-03-01'
             GROUP BY
-              lead_stage_month
+              lead_stage_date
           ) mql
           LEFT JOIN (
             SELECT
               date_trunc(
-                'month', sal_stage_date_c - INTERVAL '7 hours'
-              ) AS sal_stage_month,
+                'day', sal_stage_date_c - INTERVAL '7 hours'
+              ) AS sal_stage_date,
               count(
                 distinct(id)
               ) AS SAL_count
@@ -42,13 +42,13 @@ view: cam_waterfall_conversions {
               AND lead_owner_region_c = 'Inside Sales'
               AND sal_stage_date_c - INTERVAL '7 hours' >= '2019-03-01'
             GROUP BY
-              sal_stage_month
-          ) sal ON mql.lead_stage_month = sal.sal_stage_month
+              sal_stage_date
+          ) sal ON mql.lead_stage_date = sal.sal_stage_date
           LEFT JOIN (
             SELECT
               date_trunc(
-                'month', created_date - INTERVAL '7 hours'
-              ) AS sqo_month,
+                'day', created_date - INTERVAL '7 hours'
+              ) AS sqo_date,
               count(
                 distinct(id)
               ) AS SQO_count,
@@ -67,11 +67,11 @@ view: cam_waterfall_conversions {
               AND is_deleted = False
               AND created_date - INTERVAL '7 hours' > '2019-03-01'
             GROUP BY
-              sqo_month
-          ) sqo ON sal.sal_stage_month = sqo.sqo_month
+              sqo_date
+          ) sqo ON sal.sal_stage_date = sqo.sqo_date
           LEFT JOIN (
             SELECT
-              date_trunc('month', close_date) AS close_month,
+              date_trunc('day', close_date) AS close_date,
               count(
                 distinct(id)
               ) AS CWO_count,
@@ -91,8 +91,8 @@ view: cam_waterfall_conversions {
                   territory_c = 'Inside Sales'
               )
             GROUP BY
-              close_month
-          ) cwo ON sqo.sqo_month = cwo.close_month
+              close_date
+          ) cwo ON sqo.sqo_date = cwo.close_date
         )
        ;;
   }
@@ -102,46 +102,46 @@ view: cam_waterfall_conversions {
     drill_fields: [detail*]
   }
 
-  dimension_group: month {
+  dimension_group: date {
     type: time
-    sql: ${TABLE}.month ;;
+    sql: ${TABLE}.day_date ;;
   }
 
   measure: mql_count {
-    type: max
+    type: sum
     sql: ${TABLE}.mql_count ;;
   }
 
   measure: sal_count {
-    type: max
+    type: sum
     sql: ${TABLE}.sal_count ;;
   }
 
   measure: sqo_count {
-    type: max
+    type: sum
     sql: ${TABLE}.sqo_count ;;
   }
 
   measure: amount {
-    type: max
+    type: sum
     sql: ${TABLE}.amount ;;
     value_format_name: usd
   }
 
   measure: cwo_count {
-    type: max
+    type: sum
     sql: ${TABLE}.cwo_count ;;
   }
 
   measure: y1_acv_won {
-    type: max
+    type: sum
     sql: ${TABLE}.y1_acv_won ;;
     value_format_name: usd
   }
 
   set: detail {
     fields: [
-      month_time,
+      date_date,
       mql_count,
       sal_count,
       sqo_count,
