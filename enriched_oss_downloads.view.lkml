@@ -195,11 +195,20 @@ view: enriched_oss_downloads {
 
   measure: downloads_count {
     type: count
-    drill_fields: [id, product]
+    drill_fields: [detail*]
   }
 
   measure: downloads_count_unique_ips {
     type: count_distinct
     sql: ${ip_address} ;;
+    drill_fields: [detail*]
+  }
+
+  set: detail {
+    fields: [
+      id,
+      company_legal_name,
+      product
+    ]
   }
 }
