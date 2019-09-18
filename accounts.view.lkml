@@ -342,6 +342,11 @@ view: accounts {
     type: string
     sql: ${TABLE}.owner_id ;;
   }
+  dimension: owner_territory {
+    type: string
+    sql: ${TABLE}.owner_territory_c ;;
+  }
+
 
   dimension: parent_id {
     type: string
