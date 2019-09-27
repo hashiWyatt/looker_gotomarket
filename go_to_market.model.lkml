@@ -365,6 +365,10 @@ explore:  terraform_cloud_utm_funnel {
   label: "Terraform Cloud UTM Funnel"
 }
 
+explore: terraform_cloud_enterprise_saas_opportunity_overlap  {
+  label: "Terraform Cloud / Enterprise Saas: Opportunity Overlap"
+}
+
 explore: create_account {
   label: "Terraform Cloud Create Account"
 }
