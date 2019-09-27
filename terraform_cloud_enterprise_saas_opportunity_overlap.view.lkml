@@ -47,8 +47,8 @@ view: terraform_cloud_enterprise_saas_opportunity_overlap {
   }
 
   measure: account_count {
-    type: count
+    type: count_distinct
     drill_fields: [salesforce_account_id]
-  }
-
+    sql: ${TABLE}.salesforce_account_id;;
+    }
 }
