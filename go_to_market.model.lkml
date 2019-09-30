@@ -295,9 +295,6 @@ explore: enriched_product_pageviews {
 explore:  named_account_penetration {
   label: "Named Account Penetration"
 }
-explore:  named_account_penetration_v2 {
-  label: "Named Account Penetration V2"
-}
 
 explore: monthly_funnel_metrics {
   label: "Monthly Funnel Metrics"
