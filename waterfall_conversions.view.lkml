@@ -64,6 +64,34 @@ FROM (
           AND close_date >= '2019-03-01'
           AND stage_name = 'Closed/Won'
 )
+UNION
+SELECT *
+FROM
+  (SELECT
+  id,
+  create_date_time_c - INTERVAL '7 hours' AS stage_date,
+  lead_owner_region_c as region,
+  'known name' as stage
+  FROM salesforce.leads
+  WHERE
+    (mkto_71_acquisition_program_c ISNULL
+    OR lower(mkto_71_acquisition_program_c) NOT LIKE '%terraform cloud%'
+    )
+    AND is_deleted = False
+    AND create_date_time_c - INTERVAL '7 hours'>= '2019-03-01')
+UNION
+SELECT *
+FROM
+  (SELECT
+  id,
+  unqualified_stage_date_c - INTERVAL '7 hours' AS stage_date,
+  lead_owner_region_c as region,
+  'unqualified' as stage
+  FROM salesforce.leads
+  WHERE
+    is_deleted = False
+    AND status = 'Unqualified'
+    AND Create_Date_Time_c >= '2018-02-01')
        ;;
   }
   dimension:  id {
