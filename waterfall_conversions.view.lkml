@@ -11,6 +11,8 @@ FROM (
     FROM salesforce.leads
     WHERE
       is_deleted = False
+      AND lower(lead_owner_c) != 'pre-sales'
+    AND lower(lead_owner_c) != 'isaac wyatt'
       AND lead_stage_date_c - INTERVAL '7 hours' >= '2019-03-01'
 )
 UNION
@@ -25,7 +27,10 @@ FROM (
     FROM salesforce.leads
     WHERE
       is_deleted = False
-      AND sal_stage_date_c - INTERVAL '7 hours' >= '2019-03-01'
+      AND lower(lead_owner_c) != 'pre-sales'
+      AND lower(lead_owner_c) != 'isaac wyatt'
+      AND lower(lead_owner_c) != 'frank hane'
+    AND sal_stage_date_c - INTERVAL '7 hours' >= '2019-03-01'
 )
 UNION
 SELECT *
@@ -46,6 +51,7 @@ FROM (
         FROM salesforce.opportunities
         WHERE
           is_deleted = False
+          AND type = 'New Business'
           AND created_date - INTERVAL '7 hours' > '2019-03-01'
     ) as opportunity_sqo_stage
     LEFT JOIN salesforce.users on (opportunity_sqo_stage.owner_id = users.id)
@@ -53,6 +59,7 @@ FROM (
 UNION
 SELECT *
 FROM (
+  -- CWO
   SELECT
       id,
       close_date AS stage_date,
@@ -63,10 +70,12 @@ FROM (
           is_deleted = False
           AND close_date >= '2019-03-01'
           AND stage_name = 'Closed/Won'
+          AND type = 'New Business'
 )
 UNION
 SELECT *
 FROM
+  --Known Names
   (SELECT
   id,
   create_date_time_c - INTERVAL '7 hours' AS stage_date,
