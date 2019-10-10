@@ -292,6 +292,9 @@ explore:  enriched_oss_downloads {
 explore: enriched_product_pageviews {
   label: "Enriched Product Pageviews"
 }
+explore:  datocms_publishes {
+  label: "DatoCMS Publishes"
+}
 explore:  named_account_penetration {
   label: "Named Account Penetration"
 }
