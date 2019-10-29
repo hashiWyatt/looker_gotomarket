@@ -13,6 +13,10 @@ explore:  content_resource_pages {
   label: "Resource Pages"
 }
 
+explore:  content_learn_pages {
+  label: "Learn Pages"
+}
+
 explore:  content_consul_demo_resource_funnel {
   label: "Demo Resource Funnel"
 }
