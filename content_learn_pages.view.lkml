@@ -48,6 +48,6 @@ view: content_learn_pages {
 
   measure: pageviews_count {
     type: count
-    drill_fields: [id]
+    drill_fields: [page_title, product, path, published_date_date]
   }
 }
