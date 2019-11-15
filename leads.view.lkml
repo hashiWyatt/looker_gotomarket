@@ -472,6 +472,25 @@ view: leads {
     sql: ${TABLE}.owner_territory_c ;;
   }
 
+  dimension: out_of_sla {
+    type: yesno
+    sql: ${TABLE}.out_of_sla_c ;;
+  }
+
+  dimension_group: out_of_sla_date_c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.out_of_sla_date_c ;;
+  }
+
   dimension: partner_contact_mgtrx_c {
     type: string
     sql: ${TABLE}.partner_contact_mgtrx_c ;;
