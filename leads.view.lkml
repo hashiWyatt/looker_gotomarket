@@ -392,6 +392,11 @@ view: leads {
     sql: ${TABLE}.lead_stage_date_c - interval '7 hours' ;;
   }
 
+  dimension: lead_owner_active {
+    type: yesno
+    sql: ${TABLE}.lead_owner_active_c ;;
+  }
+
   dimension: lead_product_c {
     type: string
     sql: ${TABLE}.lead_product_c ;;
