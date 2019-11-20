@@ -392,6 +392,11 @@ view: leads {
     sql: ${TABLE}.lead_stage_date_c - interval '7 hours' ;;
   }
 
+  dimension: lead_owner_active {
+    type: yesno
+    sql: ${TABLE}.lead_owner_active_c ;;
+  }
+
   dimension: lead_product_c {
     type: string
     sql: ${TABLE}.lead_product_c ;;
@@ -470,6 +475,25 @@ view: leads {
   dimension: owner_territory {
     type: string
     sql: ${TABLE}.owner_territory_c ;;
+  }
+
+  dimension: out_of_sla {
+    type: yesno
+    sql: ${TABLE}.out_of_sla_c ;;
+  }
+
+  dimension_group: out_of_sla_date_c {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.out_of_sla_date_c ;;
   }
 
   dimension: partner_contact_mgtrx_c {
