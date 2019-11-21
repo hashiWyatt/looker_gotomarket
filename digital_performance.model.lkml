@@ -9,3 +9,7 @@ fiscal_month_offset: 1
 explore: digital_io_sites_users {
   label: ".io Site Users"
 }
+
+explore: digital_learn_site_users {
+  label: "Learn Site Users"
+}
