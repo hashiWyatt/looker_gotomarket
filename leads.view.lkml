@@ -472,6 +472,11 @@ view: leads {
     sql: ${TABLE}.owner_id ;;
   }
 
+  dimension: owner_job_role {
+    type: string
+    sql: ${TABLE}.owner_job_role_c ;;
+  }
+
   dimension: owner_territory {
     type: string
     sql: ${TABLE}.owner_territory_c ;;
@@ -524,6 +529,20 @@ view: leads {
   dimension: primary_infrastructure_provider_c {
     type: string
     sql: ${TABLE}.primary_infrastructure_provider_c ;;
+  }
+
+  dimension_group: qualified_stage_date {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.qualified_stage_date_c ;;
   }
 
   dimension: rating {
