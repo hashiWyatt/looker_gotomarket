@@ -1,6 +1,7 @@
 view: waterfall_conversions {
   derived_table: {
-    sql: SELECT *
+    sql:
+SELECT *
 FROM (
     -- MQL stage
     SELECT
@@ -101,6 +102,21 @@ FROM
     is_deleted = False
     AND status = 'Unqualified'
     AND Create_Date_Time_c >= '2018-02-01')
+UNION
+SELECT *
+FROM
+  (SELECT
+  id,
+  lead_stage_date_c - INTERVAL '7 hours' AS stage_date,
+  lead_owner_region_c as region,
+  'converted contact' as stage
+  FROM salesforce.leads
+  WHERE
+  is_converted = True
+  AND lower(lead_owner_c) != 'frank hane'
+  AND lower(lead_owner_c) != 'isaac wyatt'
+  AND lower(lead_owner_c) != 'pre-sales'
+  AND lead_stage_date_c >= '2019-02-01')
        ;;
   }
   dimension:  id {
