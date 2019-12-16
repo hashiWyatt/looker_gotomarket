@@ -32,6 +32,6 @@ view: g2k_first_oss_downloads_by_product {
   measure: company_count {
     type: count_distinct
     sql: ${TABLE}.company_id ;;
-    drill_fields: [company_id]
+    drill_fields: [company_id, company_name, product, download_timestamp_date]
   }
 }

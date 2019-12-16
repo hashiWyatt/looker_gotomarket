@@ -12,6 +12,11 @@ view: g2k_first_oss_downloads {
     sql: ${TABLE}.company_name;;
   }
 
+  dimension: product {
+    type:  string
+    sql: ${TABLE}.product;;
+  }
+
   dimension_group: download_timestamp {
     type: time
     timeframes: [
@@ -27,6 +32,6 @@ view: g2k_first_oss_downloads {
   measure: company_count {
     type: count_distinct
     sql: ${TABLE}.company_id ;;
-    drill_fields: [company_id]
+    drill_fields: [company_id, company_name, product, download_timestamp_date]
   }
 }
