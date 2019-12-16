@@ -13,3 +13,11 @@ explore: digital_io_sites_users {
 explore: digital_learn_site_users {
   label: "Learn Site Users"
 }
+
+explore:  g2k_first_oss_downloads {
+  label: "G2K First OSS Downloads"
+}
+
+explore: g2k_first_oss_downloads_by_product {
+  label: "G2K First OSS Downloads (by Product)"
+}
