@@ -12,6 +12,12 @@ view: leads {
     sql: ${TABLE}.accept_terms_mgtrx_c ;;
   }
 
+  dimension: acquisition_program_c {
+    type: string
+    sql: ${TABLE}.mkto_71_acquisition_program_c ;;
+  }
+
+
   dimension: campaign_id_c {
     type: string
     sql: ${TABLE}.campaign_id_c ;;
@@ -105,6 +111,20 @@ view: leads {
   dimension: created_by_id {
     type: string
     sql: ${TABLE}.created_by_id ;;
+  }
+
+  dimension_group: create_date_time {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.create_date_time_c ;;
   }
 
   dimension_group: created {
@@ -499,6 +519,11 @@ view: leads {
       year
     ]
     sql: ${TABLE}.out_of_sla_date_c ;;
+  }
+
+  dimension: terraform {
+    type: yesno
+    sql: ${TABLE}.terraform_c ;;
   }
 
   dimension: partner_contact_mgtrx_c {
