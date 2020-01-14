@@ -339,6 +339,11 @@ explore: leads_per_product {
   label: "Leads Per Product"
 }
 
+explore: unqualified_leads_per_product {
+  label: "Unqualified Leads Per Product"
+}
+
+
 explore:  leads_newworking_g2000 {}
 explore:  leads_qualified_g2000 {}
 explore:  opportunities_created_g2000 {}
