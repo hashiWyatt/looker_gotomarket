@@ -331,6 +331,10 @@ explore: revenue_metrics_by_cam {
   label: "Monthly MQL, SAL, SQO, Closed by CAM"
 }
 
+explore: revenue_metrics_by_name {
+  label: "Monthly MQL, SAL, SQO, Closed by Lead Owner Name"
+}
+
 explore: closed_opportunities {
   label: "Closed Opportunities"
 }
