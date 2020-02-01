@@ -331,9 +331,22 @@ explore: revenue_metrics_by_cam {
   label: "Monthly MQL, SAL, SQO, Closed by CAM"
 }
 
+explore: revenue_metrics_by_name {
+  label: "Monthly MQL, SAL, SQO, Closed by Lead Owner Name"
+}
+
 explore: closed_opportunities {
   label: "Closed Opportunities"
 }
+
+explore: leads_per_product {
+  label: "Leads Per Product"
+}
+
+explore: unqualified_leads_per_product {
+  label: "Unqualified Leads Per Product"
+}
+
 
 explore:  leads_newworking_g2000 {}
 explore:  leads_qualified_g2000 {}
