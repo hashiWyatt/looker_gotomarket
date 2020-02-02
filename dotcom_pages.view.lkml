@@ -1,5 +1,5 @@
 view: dotcom_pages {
-  sql_table_name:  hashicorp_com_production.pages ;;
+  sql_table_name:  content_performance.dotcom_pages ;;
 
   dimension: id {
     primary_key: yes
