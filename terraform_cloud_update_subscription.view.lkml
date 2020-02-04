@@ -1,4 +1,4 @@
-view: update_subscription {
+view: terraform_cloud_update_subscription {
   sql_table_name: terraform_cloud.update_subscription ;;
 
   dimension: id {

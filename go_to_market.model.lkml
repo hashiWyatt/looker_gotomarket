@@ -454,6 +454,10 @@ explore: terraform_cloud_state_version_created_counts {
   label: "Terraform Cloud State Version Created Counts"
 }
 
+explore: terraform_cloud_update_subscription {
+  label: "Terraform Cloud Update Subscription"
+}
+
 explore: tracks {
   label: "Terraform Cloud Tracks"
 }
