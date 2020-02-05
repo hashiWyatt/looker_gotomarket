@@ -289,6 +289,11 @@ explore:  oss_downloads {
 explore:  enriched_oss_downloads {
   label: "Enriched OSS Downloads"
 }
+
+explore:  enriched_oss_downloads_sfdc {
+  label: "Enriched OSS Downloads SFDC"
+}
+
 explore: enriched_product_pageviews {
   label: "Enriched Product Pageviews"
 }
