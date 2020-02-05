@@ -6,6 +6,10 @@ include: "*.dashboard.lookml"  # include all dashboards in this project
 week_start_day: saturday
 fiscal_month_offset: 1
 
+explore: digital_dotcom_site_users {
+  label: "Dotcom Site Users"
+}
+
 explore: digital_io_sites_users {
   label: ".io Site Users"
 }
