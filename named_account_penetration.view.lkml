@@ -469,7 +469,7 @@ view: named_account_penetration {
 
   dimension: status {
     type: string
-    sql: CASE WHEN ${TABLE}.of_contacts_c = 0 AND ${TABLE}.number_of_open_deals_c = 0 AND ${TABLE}.number_of_closed_won_deals_c = 0 THEN 'Inactive'
+    sql: CASE WHEN (${TABLE}.of_contacts_c = 0 OR ${TABLE}.of_contacts_c is null) AND ${TABLE}.number_of_open_deals_c = 0 AND ${TABLE}.number_of_closed_won_deals_c = 0 THEN 'Inactive'
         WHEN ${TABLE}.of_contacts_c > 0 AND ${TABLE}.number_of_open_deals_c = 0 AND ${TABLE}.number_of_closed_won_deals_c = 0 THEN 'Active'
         WHEN ${TABLE}.number_of_open_deals_c > 0 AND ${TABLE}.number_of_closed_won_deals_c = 0 THEN 'Oppty'
         WHEN ${TABLE}.number_of_closed_won_deals_c > 0 THEN 'Won'
