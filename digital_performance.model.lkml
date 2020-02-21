@@ -14,6 +14,10 @@ explore: digital_io_sites_users {
   label: ".io Site Users"
 }
 
+explore: digital_io_sites_pageviews {
+  label: ".io Site Pageviews"
+}
+
 explore: digital_learn_site_users {
   label: "Learn Site Users"
 }
