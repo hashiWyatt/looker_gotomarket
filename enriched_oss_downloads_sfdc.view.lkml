@@ -211,9 +211,9 @@ view: enriched_oss_downloads_sfdc {
     sql: ${TABLE}.sfdc_account_owner ;;
   }
 
-  dimension: sfdc_theater_geo_segment {
+  dimension: sfdc_geo_segment {
     type: string
-    sql: ${TABLE}.sfdc_theater_geo_segment ;;
+    sql: ${TABLE}.sfdc_geo_segment ;;
   }
 
   set: detail {
@@ -259,7 +259,7 @@ view: enriched_oss_downloads_sfdc {
       sfdc_account_id,
       sfdc_target_account,
       sfdc_account_owner,
-      sfdc_theater_geo_segment
+      sfdc_geo_segment
     ]
   }
 }
