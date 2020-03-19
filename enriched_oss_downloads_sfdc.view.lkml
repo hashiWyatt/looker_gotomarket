@@ -211,6 +211,11 @@ view: enriched_oss_downloads_sfdc {
     sql: ${TABLE}.sfdc_account_owner ;;
   }
 
+  dimension: sfdc_theater_geo_segment {
+    type: string
+    sql: ${TABLE}.sfdc_theater_geo_segment ;;
+  }
+
   set: detail {
     fields: [
       ip_address,
@@ -253,7 +258,8 @@ view: enriched_oss_downloads_sfdc {
       company_id,
       sfdc_account_id,
       sfdc_target_account,
-      sfdc_account_owner
+      sfdc_account_owner,
+      sfdc_theater_geo_segment
     ]
   }
 }
