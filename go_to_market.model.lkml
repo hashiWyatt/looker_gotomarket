@@ -391,6 +391,10 @@ explore: terraform_cloud_enterprise_saas_opportunity_overlap  {
   label: "Terraform Cloud / Enterprise Saas: Opportunity Overlap"
 }
 
+explore: terraform_cloud_users_enterprise_sfdc_accounts  {
+  label: "Terraform Cloud Users (Enterprise SFDC Accounts)"
+}
+
 explore: create_account {
   label: "Terraform Cloud Create Account"
 }
