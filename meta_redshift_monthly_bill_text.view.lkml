@@ -18,6 +18,7 @@ view: meta_redshift_monthly_bill_text {
           ELSE 'Decemnber'
         END as "billing_by_month.month_text"
       FROM public.billing_by_month  AS billing_by_month
+      ORDER BY billing_by_month.month_int
 
       --ORDER BY 1
       --LIMIT 500
