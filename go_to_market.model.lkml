@@ -492,3 +492,11 @@ explore: cam_waterfall_conversions {
 explore: waterfall_conversions {
   label: "Waterfall Conversions"
 }
+
+explore: billing_by_month {
+  label: "Meta Redshift Monthly Bill"
+}
+
+explore: top_10_schemas_by_data_retention {
+  label: "Meta Redshift Schemas by Data"
+}
