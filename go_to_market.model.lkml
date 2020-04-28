@@ -493,7 +493,7 @@ explore: waterfall_conversions {
   label: "Waterfall Conversions"
 }
 
-explore: billing_by_month {
+explore: meta_redshift_monthly_bill_text {
   label: "Meta Redshift Monthly Bill"
 }
 
