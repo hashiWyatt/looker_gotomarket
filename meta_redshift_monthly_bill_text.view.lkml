@@ -30,14 +30,16 @@ view: meta_redshift_monthly_bill_text {
     drill_fields: [detail*]
   }
 
-  measure: sum {
+  measure: total_bill {
     type: sum
-    drill_fields: [detail*]
+    sql: ${billing_by_month_bill} ;;
+    value_format_name: usd
   }
 
   dimension: billing_by_month_bill {
     type: number
     sql: ${TABLE}."billing_by_month.bill" ;;
+    value_format_name: usd
   }
 
   dimension: billing_by_month_month_int {
