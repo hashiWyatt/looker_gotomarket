@@ -4,7 +4,7 @@ connection: "cdp"
 include: "*.view"
 
 # include all the dashboards
-include: "*.dashboard"
+#include: "*.dashboard"
 
 fiscal_month_offset: -11
 
