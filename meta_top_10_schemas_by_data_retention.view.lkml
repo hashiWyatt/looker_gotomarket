@@ -9,6 +9,11 @@ view: top_10_schemas_by_data_retention {
     drill_fields: [detail*]
   }
 
+  measure: total_mb_all {
+    type: sum
+    sql: ${total_mb} ;;
+  }
+
   dimension: schemaname {
     type: string
     sql: ${TABLE}.schemaname ;;
