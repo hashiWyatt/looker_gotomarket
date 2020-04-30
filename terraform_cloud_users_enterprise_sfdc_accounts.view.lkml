@@ -16,6 +16,21 @@ view: terraform_cloud_users_enterprise_sfdc_accounts {
     sql: ${TABLE}.accountowneremail ;;
   }
 
+  dimension: accountownertheater {
+    type: string
+    sql: ${TABLE}.accountownertheater ;;
+  }
+
+  dimension: accountownergeo {
+    type: string
+    sql: ${TABLE}.accountownergeo ;;
+  }
+
+  dimension: accountownersegment {
+    type: string
+    sql: ${TABLE}.accountownersegment ;;
+  }
+
   dimension: name {
     type: string
     sql: ${TABLE}.name ;;
@@ -49,6 +64,11 @@ view: terraform_cloud_users_enterprise_sfdc_accounts {
   dimension: tfc_userid {
     type: string
     sql: ${TABLE}.tfc_userid ;;
+  }
+
+  dimension: tfc_account_created_date {
+    type:  date
+    sql:  ${TABLE}.tfc_account_created_date ;;
   }
 
   measure: count {
