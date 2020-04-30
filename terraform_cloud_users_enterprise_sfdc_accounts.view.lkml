@@ -66,6 +66,11 @@ view: terraform_cloud_users_enterprise_sfdc_accounts {
     sql: ${TABLE}.tfc_userid ;;
   }
 
+  dimension_group: tfc_account_created_date_group {
+    type: time
+    sql:  ${TABLE}.tfc_account_created_date ;;
+}
+
   dimension: tfc_account_created_date {
     type:  date
     sql:  ${TABLE}.tfc_account_created_date ;;
