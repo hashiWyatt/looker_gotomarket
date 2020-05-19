@@ -21,9 +21,9 @@ view: usage_by_schema_snapshots {
     sql: ${TABLE}.snapshot_date ;;
   }
 
-  dimension: total_mb {
+  measure: total_mb {
     type: number
-    sql: ${TABLE}.total_mb ;;
+    sql: SUM(${TABLE}.total_mb) ;;
   }
 
   measure: count {
