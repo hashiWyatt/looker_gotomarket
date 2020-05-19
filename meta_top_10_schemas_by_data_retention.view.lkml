@@ -1,6 +1,6 @@
 view: top_10_schemas_by_data_retention {
   derived_table: {
-    sql: SELECT * FROM public.usage_by_schema WHERE schemaname NOT LIKE 'pg_temp%' ORDER BY total_mb DESC
+    sql: SELECT * FROM public.usage_by_schema WHERE schemaname NOT LIKE 'pg_temp%' ORDER BY total_mb DESC LIMIT 10
       ;;
   }
 
