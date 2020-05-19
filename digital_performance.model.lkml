@@ -18,6 +18,10 @@ explore: digital_io_sites_pageviews {
   label: ".io Site Pageviews"
 }
 
+explore: digital_journey {
+  label: "Digital Journey"
+}
+
 explore: digital_learn_site_users {
   label: "Learn Site Users"
 }
