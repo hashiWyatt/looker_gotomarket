@@ -26,6 +26,10 @@ explore: digital_learn_site_users {
   label: "Learn Site Users"
 }
 
+explore: enriched_learn_pages {
+  label: "Learn Pages (enriched)"
+}
+
 explore:  g2k_first_oss_downloads {
   label: "G2K First OSS Downloads"
 }
