@@ -16,3 +16,11 @@ explore:  hashiconf_eu_ticket_funnel {
 explore:  hashiconf_us_ticket_funnel {
   label: "US Ticket Funnel"
 }
+
+explore: hashiconf_digital_platform_core_user_funnel {
+  label: "Digital Platform User Funnel"
+}
+
+explore: hashiconf_digital_platform_pages {
+  label: "Digital Platform Pageviews"
+}
