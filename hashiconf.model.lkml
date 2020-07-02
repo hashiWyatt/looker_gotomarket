@@ -24,3 +24,7 @@ explore: hashiconf_digital_platform_core_user_funnel {
 explore: hashiconf_digital_platform_pages {
   label: "Digital Platform Pageviews"
 }
+
+explore: hashiconf_digital_platform_livestream_views {
+  label: "Digital Platform Livestream Views"
+}
