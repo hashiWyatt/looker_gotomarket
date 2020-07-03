@@ -467,6 +467,27 @@ explore: terraform_cloud_update_subscription {
   label: "Terraform Cloud Update Subscription"
 }
 
+explore: terraform_cloud_active_users {
+  label: "Terraform Cloud Active Users"
+}
+
+explore: terraform_cloud_active_practitioners {
+  label: "Terraform Cloud Active Practitioners"
+}
+explore: terraform_cloud_active_practitioners_retention {
+  label: "Terraform Cloud Retained Practitioners"
+}
+explore: terraform_cloud_active_orgs{
+  label: "Terraform Cloud Active Organizations"
+}
+
+explore: terraform_cloud_active_orgs_retention {
+  label: "Terraform Cloud Retained Organizations"
+}
+
+explore: terraform_cloud_aggregated_revenue {
+  label: "Terrafrom Cloud Aggregated Revenue"
+}
 explore: tracks {
   label: "Terraform Cloud Tracks"
 }
