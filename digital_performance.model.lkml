@@ -6,8 +6,12 @@ include: "*.view.lkml"         # include all views in this project
 week_start_day: saturday
 fiscal_month_offset: 1
 
-explore: digital_dotcom_site_users {
-  label: "Dotcom Site Users"
+explore: hashiconf_digital_platform_core_user_funnel {
+  label: "Hashiconf Digital Platform Core User Funnel"
+}
+
+explore: hashiconf_digital_platform_pages {
+  label: "Hashiconf Digital Platform Pages"
 }
 
 explore: digital_io_sites_users {
@@ -24,6 +28,10 @@ explore: digital_journey {
 
 explore: digital_learn_site_users {
   label: "Learn Site Users"
+}
+
+explore: enriched_learn_pages {
+  label: "Learn Pages (enriched)"
 }
 
 explore:  g2k_first_oss_downloads {

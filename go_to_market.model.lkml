@@ -521,3 +521,7 @@ explore: meta_redshift_monthly_bill_text {
 explore: top_10_schemas_by_data_retention {
   label: "Meta Redshift Schemas by Data"
 }
+
+explore: usage_by_schema_snapshots {
+  label: "Meta Redshift Data Growth"
+}
