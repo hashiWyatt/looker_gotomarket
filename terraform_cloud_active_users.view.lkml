@@ -71,6 +71,7 @@ view: terraform_cloud_active_users {
           org_user_actions.event_at = org_applies.event_at
           and org_user_actions.organization_id = org_applies.organization_id
           and (email_domain <> 'hashicorp.com' or email_domain is null)
+          and (is_service_account is false or is_service_account is null)
       )
 
       select * from org_activity
