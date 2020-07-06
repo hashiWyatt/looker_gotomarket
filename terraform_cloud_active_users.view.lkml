@@ -37,9 +37,13 @@ view: terraform_cloud_active_users {
       ),
       users as (
         select
-          user_id,
-          to_char(date_trunc('week', sent_at), 'YYYY-MM-DD') as user_cohort
+          coalesce(create_account.user_id, users.id) as user_id,
+          to_char(date_trunc('week', sent_at), 'YYYY-MM-DD') as user_cohort,
+          email,
+          email_domain
         from terraform_cloud.create_account
+        full outer join terraform_cloud.users
+        on create_account.user_id = users.id
       ),
       org_activity as (
         select
@@ -48,6 +52,8 @@ view: terraform_cloud_active_users {
           to_char(date_trunc('week', org_created_organization.sent_at), 'YYYY-MM-DD') as org_cohort,
           org_user_actions.user_id,
           user_cohort,
+          email,
+          email_domain,
           subscriptions.plan,
           org_applies.count as applies
         from org_applies, org_user_actions
@@ -64,6 +70,7 @@ view: terraform_cloud_active_users {
         where
           org_user_actions.event_at = org_applies.event_at
           and org_user_actions.organization_id = org_applies.organization_id
+          and (email_domain <> 'hashicorp.com' or email_domain is null)
       )
 
       select * from org_activity

@@ -43,6 +43,16 @@ view: terraform_cloud_active_orgs {
         and update_org_subscription.sent_at < next_plan.start_at
         group by 1, 2, 3
       ),
+      users as (
+        select
+          coalesce(create_account.user_id, users.id) as user_id,
+          to_char(date_trunc('week', sent_at), 'YYYY-MM-DD') as user_cohort,
+          email,
+          email_domain
+        from terraform_cloud.create_account
+        full outer join terraform_cloud.users
+        on create_account.user_id = users.id
+      ),
       org_activity as (
         select
           org_active_users.event_at,
@@ -52,12 +62,16 @@ view: terraform_cloud_active_orgs {
           org_applies.count as applies,
           org_active_users.count as active_users
         from org_active_users, org_applies, subscriptions, terraform_cloud.org_created_organization
+        left join
+        users
+        on org_created_organization.user_id = users.user_id
         where
           org_active_users.event_at = org_applies.event_at
           and org_active_users.organization_id = org_applies.organization_id
           and org_active_users.organization_id = subscriptions.organization_id
           and subscriptions.start_at <= org_active_users.event_at and (org_active_users.event_at <= subscriptions.end_at OR subscriptions.end_at is null)
           and org_active_users.organization_id = org_created_organization.organization_id
+          and (email_domain <> 'hashicorp.com' or email_domain is null)
           and plan not in ('Free', 'Trial', 'Self-serve Preview', 'Limited User Preview')
           and active_users >= 2
       )
