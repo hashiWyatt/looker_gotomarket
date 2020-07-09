@@ -40,7 +40,8 @@ view: terraform_cloud_active_users {
           coalesce(create_account.user_id, users.id) as user_id,
           to_char(date_trunc('week', sent_at), 'YYYY-MM-DD') as user_cohort,
           email,
-          email_domain
+          email_domain,
+          is_service_account
         from terraform_cloud.create_account
         full outer join terraform_cloud.users
         on create_account.user_id = users.id

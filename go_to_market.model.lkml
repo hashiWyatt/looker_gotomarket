@@ -488,6 +488,9 @@ explore: terraform_cloud_active_orgs_retention {
 explore: terraform_cloud_aggregated_revenue {
   label: "Terrafrom Cloud Aggregated Revenue"
 }
+explore: terraform_cloud_learn_content_read {
+  label: "Terraform Cloud Learn Content Read"
+}
 explore: tracks {
   label: "Terraform Cloud Tracks"
 }
