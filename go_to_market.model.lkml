@@ -484,7 +484,12 @@ explore: terraform_cloud_active_orgs{
 explore: terraform_cloud_active_orgs_retention {
   label: "Terraform Cloud Retained Organizations"
 }
-
+explore: terraform_cloud_stripe_charges {
+  label: "Terrafrom Cloud Stripe Charges"
+}
+explore: terraform_cloud_salesforce_bookings {
+  label: "Terrafrom Cloud Salesforce Bookings"
+}
 explore: terraform_cloud_aggregated_revenue {
   label: "Terrafrom Cloud Aggregated Revenue"
 }
