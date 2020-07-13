@@ -53,6 +53,11 @@ view: terraform_cloud_aggregated_revenue {
     sql: ${TABLE}.acv_dollars ;;
   }
 
+  measure: max_acv_dollars {
+    type: max
+    sql: ${TABLE}.acv_dollars ;;
+  }
+
   set: detail {
     fields: [reporting_day_time, acv_dollars]
   }

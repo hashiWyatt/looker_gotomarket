@@ -8,7 +8,8 @@ view: terraform_cloud_salesforce_bookings {
           opportunities.type,
           opportunities.y_1_acv_c::decimal(14,2) as acv,
           (close_date)::date as start_at,
-          (close_date + '365 days'::interval)::date as end_at
+          (close_date + '365 days'::interval)::date as end_at,
+          accounts.id as customer_id
           from salesforce.opportunity_product, salesforce.products, salesforce.opportunities, salesforce.accounts
         where
           products.name like 'Terraform Cloud %'

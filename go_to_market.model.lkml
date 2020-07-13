@@ -493,6 +493,12 @@ explore: terraform_cloud_salesforce_bookings {
 explore: terraform_cloud_aggregated_revenue {
   label: "Terrafrom Cloud Aggregated Revenue"
 }
+explore: terraform_cloud_salesforce_acv_waterfall {
+  label: " Terraform Cloud Salesforce ACV Waterfall"
+}
+explore: terraform_cloud_enterprise_saas_opportunity_overlap {
+  label: " Terraform Cloud Stripe ACV Waterfall"
+}
 explore: terraform_cloud_learn_content_read {
   label: "Terraform Cloud Learn Content Read"
 }

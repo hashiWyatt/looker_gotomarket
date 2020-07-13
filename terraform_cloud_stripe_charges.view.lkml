@@ -4,7 +4,8 @@ view: terraform_cloud_stripe_charges {
         ((select
             period_start as start_at,
             period_end as end_at,
-            total::decimal(20,2)/100 as total_dollars
+            total::decimal(20,2)/100 as total_dollars,
+            customer_id
           from
             tf_cloud_stripe.invoices
           where paid
@@ -13,7 +14,8 @@ view: terraform_cloud_stripe_charges {
         (select
             current_period_start as start_at,
             current_period_end as end_at,
-            (quantity::decimal(20,2) * amount::decimal(20,2))/100 as total_dollars
+            (quantity::decimal(20,2) * amount::decimal(20,2))/100 as total_dollars,
+            customer_id
           from
             tf_cloud_stripe.subscriptions, tf_cloud_stripe.plans
           where
