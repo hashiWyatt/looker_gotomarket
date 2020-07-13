@@ -496,7 +496,7 @@ explore: terraform_cloud_aggregated_revenue {
 explore: terraform_cloud_salesforce_acv_waterfall {
   label: " Terraform Cloud Salesforce ACV Waterfall"
 }
-explore: terraform_cloud_enterprise_saas_opportunity_overlap {
+explore: terraform_cloud_stripe_acv_waterfall {
   label: " Terraform Cloud Stripe ACV Waterfall"
 }
 explore: terraform_cloud_learn_content_read {
