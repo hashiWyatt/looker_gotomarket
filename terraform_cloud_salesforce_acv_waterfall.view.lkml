@@ -23,7 +23,7 @@ view: terraform_cloud_salesforce_acv_waterfall {
         case
           when isnull(previous.acv,0) = 0 then 'new'
           when isnull(current.acv,0) = 0 then 'churned'
-          when current.acv = previous.acv then 'unchanged'
+          when current.acv = previous.acv then 'starting'
           when current.acv > previous.acv then 'expansion'
           when previous.acv > current.acv then 'contraction'
         end as type

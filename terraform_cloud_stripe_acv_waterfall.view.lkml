@@ -11,21 +11,18 @@ view: terraform_cloud_stripe_acv_waterfall {
     sql:
       select
         coalesce(current.day, previous.day) as day,
-        coalesce(current.name, previous.name) as name,
         coalesce(current.customer_id, previous.customer_id) as customer_id,
-        current.acv as current_acv,
+        current.total_dollars*12 as current_acv,
         case
-          when current.acv = previous.acv then current.acv
-          else (isnull(current.acv,0) - isnull(previous.acv,0))
+          when current.total_dollars = previous.total_dollars then current.total_dollars * 12
+          else (isnull(current.total_dollars,0) - isnull(previous.total_dollars,0)) * 12
         end as type_acv,
-        --{% parameter start_at %} as start_at,
-       -- {% parameter end_at %} as end_at,
         case
-          when isnull(previous.acv,0) = 0 then 'new'
-          when isnull(current.acv,0) = 0 then 'churned'
-          when current.acv = previous.acv then 'unchanged'
-          when current.acv > previous.acv then 'expansion'
-          when previous.acv > current.acv then 'contraction'
+          when isnull(previous.total_dollars,0) = 0 then 'new'
+          when isnull(current.total_dollars,0) = 0 then 'churned'
+          when current.total_dollars = previous.total_dollars then 'starting'
+          when current.total_dollars > previous.total_dollars then 'expansion'
+          when previous.total_dollars > current.total_dollars then 'contraction'
         end as type
       from
         (select
