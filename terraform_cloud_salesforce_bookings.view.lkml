@@ -16,7 +16,7 @@ view: terraform_cloud_salesforce_bookings {
           and opportunity_product.opportunity_id = opportunities.id
           and opportunities.account_id = accounts.id
           and is_won)
-      as sfdc, , ${reporting_all_day_intervals.SQL_TABLE_NAME} as reporting
+      as sfdc, ${reporting_all_day_intervals.SQL_TABLE_NAME} as reporting
       where
       sfdc.start_at <= reporting.day and sfdc.end_at >= reporting.day
       ;;

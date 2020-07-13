@@ -6,8 +6,7 @@ view: terraform_cloud_aggregated_revenue {
         select * from ${terraform_cloud_salesforce_bookings.SQL_TABLE_NAME}
       ),
       stripe_charges as (
-        select * from
-        ${terraform_cloud_stripe_charges.SQL_TABLE_NAME}
+        select * from ${terraform_cloud_stripe_charges.SQL_TABLE_NAME}
       ),
       aggregated_charges as (
         select
