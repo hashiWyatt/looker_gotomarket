@@ -1,6 +1,7 @@
 view: terraform_cloud_salesforce_bookings {
   derived_table: {
     sql:
+      select * from (
         select distinct
           opportunity_id,
           accounts.name,
@@ -14,7 +15,10 @@ view: terraform_cloud_salesforce_bookings {
           and opportunity_product.product_2_id = products.id
           and opportunity_product.opportunity_id = opportunities.id
           and opportunities.account_id = accounts.id
-          and is_won
+          and is_won)
+      as sfdc, , ${reporting_all_day_intervals.SQL_TABLE_NAME} as reporting
+      where
+      sfdc.start_at <= reporting.day and sfdc.end_at >= reporting.day
       ;;
   }
 
@@ -43,6 +47,10 @@ view: terraform_cloud_salesforce_bookings {
   dimension_group: end_at {
     type: time
     sql: ${TABLE}.end_at ;;
+  }
+  dimension_group: reporting_day {
+    type: time
+    sql: ${TABLE}.day ;;
   }
   measure: sum_acv {
     type: sum

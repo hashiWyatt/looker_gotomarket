@@ -1,7 +1,7 @@
 view: terraform_cloud_stripe_charges {
   derived_table: {
     sql: select * from
-        (select
+        ((select
             period_start as start_at,
             period_end as end_at,
             total::decimal(20,2)/100 as total_dollars
@@ -19,7 +19,10 @@ view: terraform_cloud_stripe_charges {
           where
             subscriptions.plan_id = plans.id
             and current_period_start >= date_trunc('month', getdate())
-        )
+        ))
+as stripe, ${reporting_all_day_intervals.SQL_TABLE_NAME} as reporting
+where
+stripe.start_at <= reporting.day and stripe.end_at >= reporting.day
       ;;
   }
 
@@ -37,6 +40,11 @@ view: terraform_cloud_stripe_charges {
   dimension_group: end_at {
     type: time
     sql: ${TABLE}.end_at ;;
+  }
+
+  dimension_group: reporting_day {
+    type: time
+    sql: ${TABLE}.day ;;
   }
 
   measure: sum_total_dollars {

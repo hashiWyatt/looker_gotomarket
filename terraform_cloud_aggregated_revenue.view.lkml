@@ -9,31 +9,26 @@ view: terraform_cloud_aggregated_revenue {
         select * from
         ${terraform_cloud_stripe_charges.SQL_TABLE_NAME}
       ),
-      intervals as (
-        select distinct date_trunc('month', start_at)::date as month
-        FROM stripe_charges
-      ),
       aggregated_charges as (
         select
-          month,
+          day,
           sum(acv_dollars) as acv_dollars
         from
           (
             (select
-              date_trunc('month', start_at) as month,
+              day,
               sum(total_dollars)*12 as acv_dollars
             from
               stripe_charges
             group by 1)
             union all
             (select
-              month,
+              day,
               sum(acv) as acv_dollars
-            from intervals, salesforce_bookings
-            where intervals.month >= start_at and intervals.month <= end_at
+            from salesforce_bookings
             group by 1)
           )
-        group by month
+        group by day
       )
 
       select * from aggregated_charges
@@ -49,9 +44,9 @@ view: terraform_cloud_aggregated_revenue {
     drill_fields: [detail*]
   }
 
-  dimension_group: month {
+  dimension_group: reporting_day {
     type: time
-    sql: ${TABLE}.month ;;
+    sql: ${TABLE}.day ;;
   }
 
   dimension: acv_dollars {
@@ -60,6 +55,6 @@ view: terraform_cloud_aggregated_revenue {
   }
 
   set: detail {
-    fields: [month_time, acv_dollars]
+    fields: [reporting_day_time, acv_dollars]
   }
 }
