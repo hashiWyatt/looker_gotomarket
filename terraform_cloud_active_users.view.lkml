@@ -1,21 +1,65 @@
 view: terraform_cloud_active_users {
   derived_table: {
-    sql: with org_user_actions as (
+    sql: with org_events as (
+  select organization_id, name, min(created_at) over (partition by organization_id, name) as created_at, coalesce(lead(created_at) over (partition by name order by created_at), getdate()+'1 day'::interval) as end_at from (
+    select organization_id, organization as name, min(sent_at) as created_at, max(sent_at) as end_at from terraform_cloud.org_created_workspace where organization_id is not null group by organization_id, organization
+    union
+    select organization_id, organization as name, min(sent_at) as created_at, max(sent_at) as end_at from terraform_cloud.show_workspace where organization_id is not null group by organization_id, organization
+  )
+),
+matched_org_ids as (
+  select
+      user_id as organization_id,
+      organization as name,
+      sent_at as created_at,
+      coalesce(lead(sent_at) over (partition by organization order by sent_at), getdate()+'1 day'::interval) as end_at
+    from terraform_cloud.org_created_organization
+
+    union
+
+    select organization_id, name, min(created_at) as created_at, max(end_at) as end_at from org_events group by organization_id, name
+),
+backfilled_org_ids as (
+  select
+    organization_id,
+    name,
+    min(created_at) as created_at,
+    max(end_at) as end_at
+  from matched_org_ids
+  group by organization_id, name
+),
+org_id_lookups as (
+  select organization_id, name, created_at, end_at, min(created_at) over (partition by name) as earliest_at, max(end_at) over (partition by name) as latest_at from backfilled_org_ids
+),
+user_org_state_versions as (
+  select
+    sent_at,
+    user_id,
+    organization,
+    org_id_lookups.organization_id
+  from terraform_cloud.state_version_created
+  left join org_id_lookups
+  on state_version_created.organization = org_id_lookups.name and
+    (
+      (state_version_created.sent_at < org_id_lookups.earliest_at and
+      org_id_lookups.created_at = org_id_lookups.earliest_at
+      ) OR
+      (state_version_created.sent_at >= org_id_lookups.created_at and
+       state_version_created.sent_at < org_id_lookups.end_at
+      ) OR
+      (state_version_created.sent_at >= org_id_lookups.latest_at and
+      org_id_lookups.end_at = org_id_lookups.latest_at)
+    )
+
+),
+      user_applies as (
         select
           date_trunc('day', sent_at) as event_at,
-          organization_id,
           user_id,
-          count(*) as count
-        from terraform_cloud.show_workspace
-        group by 1, 2, 3
-      ),
-      org_applies as (
-        select
-          date_trunc('day', sent_at) as event_at,
           organization_id,
           count(*) as count
-        from terraform_cloud.org_created_state_version
-        group by 1, 2
+        from user_org_state_versions
+        group by 1, 2, 3
       ),
       subscriptions as (
         select
@@ -46,36 +90,34 @@ view: terraform_cloud_active_users {
         full outer join terraform_cloud.users
         on create_account.user_id = users.id
       ),
-      org_activity as (
+      user_activity as (
         select
-          org_user_actions.event_at,
-          org_user_actions.organization_id,
+          user_applies.event_at,
+          user_applies.organization_id,
           to_char(date_trunc('week', org_created_organization.sent_at), 'YYYY-MM-DD') as org_cohort,
-          org_user_actions.user_id,
+          user_applies.user_id,
           user_cohort,
           email,
           email_domain,
           subscriptions.plan,
-          org_applies.count as applies
-        from org_applies, org_user_actions
+          user_applies.count as applies
+        from user_applies
         left join subscriptions
         on
-          org_user_actions.organization_id = subscriptions.organization_id and
-          subscriptions.start_at <= org_user_actions.event_at and (org_user_actions.event_at <= subscriptions.end_at OR subscriptions.end_at is null)
+          user_applies.organization_id = subscriptions.organization_id and
+          subscriptions.start_at <= user_applies.event_at and (user_applies.event_at <= subscriptions.end_at OR subscriptions.end_at is null)
         left join terraform_cloud.org_created_organization
         on
-          org_user_actions.organization_id = org_created_organization.organization_id
+          user_applies.organization_id = org_created_organization.organization_id
         left join users
         on
-          org_user_actions.user_id = users.user_id
+          user_applies.user_id = users.user_id
         where
-          org_user_actions.event_at = org_applies.event_at
-          and org_user_actions.organization_id = org_applies.organization_id
-          and (email_domain <> 'hashicorp.com' or email_domain is null)
+          (email_domain <> 'hashicorp.com' or email_domain is null)
           and (is_service_account is false) -- or is_service_account is null)
       )
 
-      select * from org_activity
+      select * from user_activity
        ;;
   }
 
