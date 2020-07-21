@@ -502,6 +502,9 @@ explore: terraform_cloud_stripe_acv_waterfall {
 explore: terraform_cloud_learn_content_read {
   label: "Terraform Cloud Learn Content Read"
 }
+explore: terraform_cloud_referenced_learn_content {
+  label: "Terraform Cloud Learn Content Referenced while using TFC"
+}
 explore: tracks {
   label: "Terraform Cloud Tracks"
 }
