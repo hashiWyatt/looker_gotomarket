@@ -114,7 +114,7 @@ user_org_state_versions as (
           user_applies.user_id = users.user_id
         where
           (email_domain <> 'hashicorp.com' or email_domain is null)
-          and (is_service_account is false) -- or is_service_account is null)
+          and (is_service_account is false)
       )
 
       select * from user_activity
