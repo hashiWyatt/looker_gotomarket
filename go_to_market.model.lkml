@@ -505,6 +505,9 @@ explore: terraform_cloud_learn_content_read {
 explore: terraform_cloud_referenced_learn_content {
   label: "Terraform Cloud Learn Content Referenced while using TFC"
 }
+explore: terraform_cloud_activations_in_local_timezone {
+  label: "Terraform Cloud Activations localized to users timezone"
+}
 explore: tracks {
   label: "Terraform Cloud Tracks"
 }
