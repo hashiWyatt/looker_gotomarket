@@ -471,6 +471,47 @@ explore: terraform_cloud_update_subscription {
   label: "Terraform Cloud Update Subscription"
 }
 
+explore: terraform_cloud_active_users {
+  label: "Terraform Cloud Active Users"
+}
+
+explore: terraform_cloud_active_practitioners {
+  label: "Terraform Cloud Active Practitioners"
+}
+explore: terraform_cloud_active_practitioners_retention {
+  label: "Terraform Cloud Retained Practitioners"
+}
+explore: terraform_cloud_active_orgs{
+  label: "Terraform Cloud Active Organizations"
+}
+
+explore: terraform_cloud_active_orgs_retention {
+  label: "Terraform Cloud Retained Organizations"
+}
+explore: terraform_cloud_stripe_charges {
+  label: "Terrafrom Cloud Stripe Charges"
+}
+explore: terraform_cloud_salesforce_bookings {
+  label: "Terrafrom Cloud Salesforce Bookings"
+}
+explore: terraform_cloud_aggregated_revenue {
+  label: "Terrafrom Cloud Aggregated Revenue"
+}
+explore: terraform_cloud_salesforce_acv_waterfall {
+  label: " Terraform Cloud Salesforce ACV Waterfall"
+}
+explore: terraform_cloud_stripe_acv_waterfall {
+  label: " Terraform Cloud Stripe ACV Waterfall"
+}
+explore: terraform_cloud_learn_content_read {
+  label: "Terraform Cloud Learn Content Read"
+}
+explore: terraform_cloud_referenced_learn_content {
+  label: "Terraform Cloud Learn Content Referenced while using TFC"
+}
+explore: terraform_cloud_activations_in_local_timezone {
+  label: "Terraform Cloud Activations localized to users timezone"
+}
 explore: tracks {
   label: "Terraform Cloud Tracks"
 }
