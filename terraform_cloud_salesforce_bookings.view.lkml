@@ -2,20 +2,20 @@ view: terraform_cloud_salesforce_bookings {
   derived_table: {
     sql:
       select * from (
-        select distinct
+select distinct
           opportunity_id,
-          accounts.name,
-          opportunities.type,
-          opportunities.y_1_acv_c::decimal(14,2) as acv,
+          account.name,
+          opportunity.type,
+          opportunity.y_1_acv_clari_c::decimal(14,2) as acv,
           (close_date)::date as start_at,
           (close_date + '365 days'::interval)::date as end_at,
-          accounts.id as customer_id
-          from salesforce.opportunity_product, salesforce.products, salesforce.opportunities, salesforce.accounts
+          account.id as customer_id
+          from salesforce_v2.opportunity_line_item, salesforce_v2.product_2 as product, salesforce_v2.opportunity, salesforce_v2.account
         where
-          products.name like 'Terraform Cloud %'
-          and opportunity_product.product_2_id = products.id
-          and opportunity_product.opportunity_id = opportunities.id
-          and opportunities.account_id = accounts.id
+          product.name like 'Terraform Cloud %'
+          and opportunity_line_item.product_2_id = product.id
+          and opportunity_line_item.opportunity_id = opportunity.id
+          and opportunity.account_id = account.id
           and is_won)
       as sfdc, ${reporting_all_day_intervals.SQL_TABLE_NAME} as reporting
       where
