@@ -283,6 +283,10 @@ explore:  content_resource_pages {
 explore:  clearbit_companies {
   label: "Clearbit Companies"
 }
+explore:  sfdc_account_superview {
+  label: "SFDC Account OSS-TFC-HCS Superview (VERY SLOW - Full OSS download data for trailing 180 days)"
+}
+
 explore:  oss_downloads {
   label: "OSS Downloads"
 }

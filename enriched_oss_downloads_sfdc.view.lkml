@@ -228,6 +228,10 @@ view: enriched_oss_downloads_sfdc {
     type: string
     sql: ${TABLE}.sfdc_theater ;;
   }
+  dimension: sfdc_account_type {
+    type: string
+    sql: ${TABLE}.sfdc_account_type ;;
+  }
 
   set: detail {
     fields: [
