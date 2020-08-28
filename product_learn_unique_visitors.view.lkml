@@ -48,6 +48,14 @@ count(distinct(anonymous_id)) AS unique_visitors,
 FROM hashicorp_learn.pages
 WHERE url like '%learn.hashicorp.com/vagrant/%'
 GROUP BY visitor_month)
+UNION
+(SELECT
+date_trunc('month', timestamp) as visitor_month,
+count(distinct(anonymous_id)) AS unique_visitors,
+'All Products' as product
+FROM hashicorp_learn.pages
+WHERE url like '%learn.hashicorp.com/%'
+GROUP BY visitor_month)
        ;;
   }
 
