@@ -72,8 +72,6 @@ view: terraform_cloud_active_orgs {
           and subscriptions.start_at <= org_active_users.event_at and (org_active_users.event_at <= subscriptions.end_at OR subscriptions.end_at is null)
           and org_active_users.organization_id = org_created_organization.organization_id
           and (email_domain <> 'hashicorp.com' or email_domain is null)
-          and plan not in ('Free', 'Trial', 'Self-serve Preview', 'Limited User Preview')
-          and active_users >= 2
       )
 
       select * from org_activity
