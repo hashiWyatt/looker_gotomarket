@@ -512,6 +512,21 @@ explore: terraform_cloud_referenced_learn_content {
 explore: terraform_cloud_activations_in_local_timezone {
   label: "Terraform Cloud Activations localized to users timezone"
 }
+explore: terraform_cloud_user_org_events_with_plan {
+  label: "Terraform Cloud Events (Users + Orgs with plan details)"
+}
+explore: terraform_cloud_org_events_with_plan_daily {
+  label: "Terraform Cloud Events Daily Aggregated (Users + Orgs with plan details)"
+}
+explore: terraform_cloud_org_events_with_plan_retention_daily {
+  label: "Terraform Cloud Events Daily Aggregated Retention (Users + Orgs with plan details)"
+}
+explore: terraform_cloud_rolling_retention_cohort_events_3mo_retained_status {
+  label: "Terraform Cloud Rolling 3mo Retention Event Analysis"
+}
+explore: terraform_cloud_rolling_retention_feature_frequency_analysis {
+  label: "Terraform Cloud Rolling 3mo Retention Event Frequency (first month) Analysis"
+}
 explore: tracks {
   label: "Terraform Cloud Tracks"
 }
