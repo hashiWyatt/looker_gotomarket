@@ -83,9 +83,19 @@ view: terraform_cloud_active_orgs {
     drill_fields: [detail*]
   }
 
-  measure: sum {
+  measure: sum_applies {
     type: sum
-    drill_fields: [applies, active_users]
+    drill_fields: [applies]
+  }
+
+  measure: median_active_users {
+    type: median
+    drill_fields: [active_users]
+  }
+
+  measure: min_active_users {
+    type: min
+    drill_fields: [active_users]
   }
 
   measure: percentile80 {
