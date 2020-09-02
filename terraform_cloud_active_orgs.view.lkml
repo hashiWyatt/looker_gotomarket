@@ -85,23 +85,28 @@ view: terraform_cloud_active_orgs {
 
   measure: sum_applies {
     type: sum
-    drill_fields: [applies]
+    sql: ${applies};;
   }
 
   measure: median_active_users {
     type: median
-    drill_fields: [active_users]
+     sql: ${active_users};;
   }
 
   measure: min_active_users {
     type: min
-    drill_fields: [active_users]
+     sql: ${active_users};;
   }
 
-  measure: percentile80 {
+  measure: percentile80_applies {
     type:  percentile
     percentile: 80
-    drill_fields: [applies, active_users]
+     sql: ${applies};;
+  }
+  measure: percentile80_active_users {
+    type:  percentile
+    percentile: 80
+    sql: ${active_users};;
   }
 
   measure: distinct_orgs {
