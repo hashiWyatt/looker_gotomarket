@@ -3,7 +3,7 @@ view: terraform_cloud_rolling_retention_cohort_events {
     sql:
       select * from ${terraform_cloud_user_org_events_with_plan.SQL_TABLE_NAME}
       where entity_id in (select distinct entity_id from ${terraform_cloud_user_org_events_with_plan.SQL_TABLE_NAME}
-    where entity_type = 'user' and entity_cohort between (getdate() - '120 days'::interval) and (getdate() - '90 days'::interval))
+    where entity_cohort between (getdate() - '120 days'::interval) and (getdate() - '90 days'::interval))
       ;;
   }
 
