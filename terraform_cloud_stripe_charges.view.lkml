@@ -40,11 +40,15 @@ view: terraform_cloud_stripe_charges {
         ) as latest_billing_country
         on stripe.customer_id = latest_billing_country.customer_id
         left join (
-          select customers.id, customers.email, create_organization.organization_id, create_organization.organization
+          select customers.id, customers.email, orgs.organization_id, orgs.organization
           from tf_cloud_stripe.customers
           left join
-          terraform_cloud.create_organization
-          on customers.description = create_organization.organization_id
+            (select organization_id, organization, rank() over (partition by organization_id) as rank from
+              (select organization_id, organization from terraform_cloud.create_organization
+                union
+               select distinct organization_id, organization from terraform_cloud.state_version_created
+              ) as org_map
+          ) as orgs on customers.description = orgs.organization_id and orgs.rank = 1
         ) as customer_info
         on stripe.customer_id = customer_info.id
       ;;
