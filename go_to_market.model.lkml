@@ -553,6 +553,10 @@ explore: waterfall_conversions {
   label: "Waterfall Conversions"
 }
 
+explore: fastly_metrics {
+  label: "OSS Downloads (New)"
+}
+
 explore: meta_redshift_monthly_bill_text {
   label: "Meta Redshift Monthly Bill"
 }
