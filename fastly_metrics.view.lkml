@@ -26,6 +26,11 @@ view: fastly_metrics {
     sql: ${TABLE}.product ;;
   }
 
+  dimension: core_product {
+    type: string
+    sql: ${TABLE}.core_product ;;
+  }
+
   dimension: referer {
     type: string
     sql: ${TABLE}.referer ;;
