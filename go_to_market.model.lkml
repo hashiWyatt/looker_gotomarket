@@ -554,12 +554,16 @@ explore: waterfall_conversions {
 }
 
 explore: fastly_metrics {
-  label: "OSS Downloads (New)"
+  label: "OSS Downloads (v2)"
   join: companies_with_ip_addresses{
     type: left_outer
     sql_on: ${companies_with_ip_addresses.ip_address} = ${fastly_metrics.remote_ip} ;;
     relationship: many_to_one
   }
+}
+
+explore: dockerhub_downloads {
+  label: "DockerHub Downloads"
 }
 
 explore: meta_redshift_monthly_bill_text {
