@@ -15,10 +15,10 @@ view: dockerhub_downloads {
     sql: ${TABLE}.last_updated ;;
   }
 
-  dimension: pull_count {
-    type: number
-    sql: ${TABLE}.pull_count ;;
-  }
+  # dimension: pull_count {
+  #   type: number
+  #   sql: ${TABLE}.pull_count ;;
+  # }
 
   dimension_group: recorded {
     type: time
@@ -39,9 +39,14 @@ view: dockerhub_downloads {
     sql: ${TABLE}.repo_name ;;
   }
 
-  dimension: star_count {
-    type: number
-    sql: ${TABLE}.star_count ;;
+  measure: star_count {
+    type: sum
+    drill_fields: [star_count]
+  }
+
+  measure: pull_count {
+    type: sum
+    drill_fields: [pull_count]
   }
 
   measure: count {
