@@ -20,8 +20,8 @@ view: dockerhub_downloads {
     sql: ${TABLE}.pull_count ;;
   }
 
-  dimension: new_pulls {
-    type: number
+  measure: new_pulls {
+    type: sum
     sql: ${TABLE}.new_pulls ;;
   }
 
