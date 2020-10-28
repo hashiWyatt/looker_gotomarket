@@ -1,5 +1,5 @@
 view: dockerhub_downloads {
-  sql_table_name: releases_etl.dockerhub_downloads ;;
+  sql_table_name: releases_etl_reporting.dockerhub_downloads ;;
 
   dimension_group: last_updated {
     type: time
@@ -19,6 +19,11 @@ view: dockerhub_downloads {
   #   type: number
   #   sql: ${TABLE}.pull_count ;;
   # }
+
+  measure: new_pulls {
+    type: sum
+    sql: ${TABLE}.new_pulls ;;
+  }
 
   dimension_group: recorded {
     type: time
