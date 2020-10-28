@@ -562,6 +562,9 @@ explore: fastly_metrics {
   }
 }
 
+explore: licenses_saved {
+  label:  "Licenses Saved"
+}
 explore: dockerhub_downloads {
   label: "DockerHub Downloads"
 }
