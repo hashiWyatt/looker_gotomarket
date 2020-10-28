@@ -40,12 +40,12 @@ view: dockerhub_downloads {
   }
 
   measure: star_count {
-    type: sum
+    type: number
     drill_fields: [star_count]
   }
 
   measure: pull_count {
-    type: sum
+    type: number
     drill_fields: [pull_count]
   }
 
