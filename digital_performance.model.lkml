@@ -26,6 +26,10 @@ explore: digital_journey {
   label: "Digital Journey"
 }
 
+explore: digital_practitioner_journey {
+  label:  "Practitioner Digital Journey"
+}
+
 explore: digital_learn_site_users {
   label: "Learn Site Users"
 }
