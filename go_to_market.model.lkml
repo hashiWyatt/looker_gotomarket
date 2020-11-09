@@ -577,6 +577,10 @@ explore: top_10_schemas_by_data_retention {
   label: "Meta Redshift Schemas by Data"
 }
 
+explore: hcs_users_marketo {
+  label: "HCS Users Marketo"
+}
+
 explore: usage_by_schema_snapshots {
   label: "Meta Redshift Data Growth"
 }
