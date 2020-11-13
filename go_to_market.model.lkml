@@ -569,6 +569,10 @@ explore: dockerhub_downloads {
   label: "DockerHub Downloads"
 }
 
+explore: s3_binary_sfdc {
+  label: "Unlocked S3 Enterprise Binary Downloads"
+}
+
 explore: meta_redshift_monthly_bill_text {
   label: "Meta Redshift Monthly Bill"
 }
