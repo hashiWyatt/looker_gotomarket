@@ -562,6 +562,8 @@ explore: fastly_metrics {
   }
 }
 
+
+# These need to be organized and replace the Releases setup
 explore: licenses_saved {
   label:  "Licenses Saved"
 }
@@ -581,10 +583,11 @@ explore: top_10_schemas_by_data_retention {
   label: "Meta Redshift Schemas by Data"
 }
 
+# These need to be migrated into HCP project
 explore: hcs_users_marketo {
   label: "HCS Users Marketo"
 }
 
-explore: usage_by_schema_snapshots {
-  label: "Meta Redshift Data Growth"
+explore: hcp_users_accounts_sfdc {
+  label: "HCP Users Salesforce Accounts"
 }
