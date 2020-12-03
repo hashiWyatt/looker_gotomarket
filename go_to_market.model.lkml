@@ -427,6 +427,10 @@ explore: create_workspace {
   label: "Terraform Cloud Create Workspace"
 }
 
+explore: delete_workspace {
+  label: "Terraform Cloud Delete Workspace"
+}
+
 explore: identifies {
   label: "Terraform Cloud Identifies"
 }
