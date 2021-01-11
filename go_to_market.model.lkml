@@ -530,6 +530,9 @@ explore: terraform_cloud_rolling_retention_feature_frequency_analysis {
 explore: zendesk_ticket_detail {
   label: "Zendesk Ticket Detail"
 }
+explore: zendesk_word_frequency {
+  label: "Zendesk Ticket Word Frequency"
+}
 
 explore: tracks {
   label: "Terraform Cloud Tracks"
