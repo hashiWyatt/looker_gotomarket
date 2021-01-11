@@ -29,6 +29,7 @@ view: zendesk_word_frequency {
         zendesk_ticket_detail.id as ticket_id,
         zendesk_ticket_detail.created_at,
         zendesk_ticket_detail.custom_product  AS "zendesk_ticket_detail.custom_product",
+        zendesk_ticket_detail.description,
         lower(SPLIT_PART(zendesk_ticket_detail.description, ' ', numbers.n+1)) as word
       from zendesk_ticket_detail, numbers
       WHERE
@@ -1358,6 +1359,10 @@ view: zendesk_word_frequency {
     sql: ${TABLE}."zendesk_ticket_detail.custom_product" ;;
   }
 
+  dimension: description {
+    type: string
+    sql: ${TABLE}."zendesk_ticket_detail.description" ;;
+  }
   dimension: word {
     type: string
     sql: ${TABLE}.word ;;
@@ -1371,6 +1376,7 @@ view: zendesk_word_frequency {
     fields: [
       ticket_id,
       created_at_time,
+      description,
       zendesk_ticket_detail_custom_product,
       word
     ]
