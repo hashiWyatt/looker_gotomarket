@@ -1361,7 +1361,7 @@ view: zendesk_word_frequency {
 
   dimension: description {
     type: string
-    sql: ${TABLE}."zendesk_ticket_detail.description" ;;
+    sql: ${TABLE}.description ;;
   }
   dimension: word {
     type: string
