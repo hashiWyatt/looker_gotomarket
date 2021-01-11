@@ -527,6 +527,10 @@ explore: terraform_cloud_rolling_retention_cohort_events_3mo_retained_status {
 explore: terraform_cloud_rolling_retention_feature_frequency_analysis {
   label: "Terraform Cloud Rolling 3mo Retention Event Frequency (first month) Analysis"
 }
+explore: zendesk_ticket_detail {
+  label: "Zendesk Ticket Detail"
+}
+
 explore: tracks {
   label: "Terraform Cloud Tracks"
 }
