@@ -1368,7 +1368,7 @@ view: zendesk_word_frequency {
     sql: ${TABLE}.word ;;
     link: {
       label: "Zendesk Tickets"
-      url: "/looks/1254?&f[zendesk_ticket_detail.description]=%25{{value | url_encode}}%25&f[zendesk_ticket_detail.custom_product]={{_filters['zendesk_ticket_detail_custom_product'] | url_encode }}"
+      url: "{% assign words = '%feature request%, %' | append: value | append: '%' %}/looks/1254?&f[zendesk_ticket_detail.created_at_date]={{_filters['created_at_date'] | url_encode}}&f[zendesk_ticket_detail.description]={{words | url_encode}}&f[zendesk_ticket_detail.custom_product]={{_filters['zendesk_ticket_detail_custom_product'] | url_encode }}"
     }
   }
 
