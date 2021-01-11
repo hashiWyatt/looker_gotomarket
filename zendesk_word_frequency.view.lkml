@@ -35,7 +35,7 @@ view: zendesk_word_frequency {
       LENGTH(zendesk_ticket_detail.description) - LENGTH(REPLACE(zendesk_ticket_detail.description, ' ', '')) >= numbers.n
       and word not in
         (' ',
-        '=','-','{','}',
+        '=','-','{','}','error','error:','1','2','3','4','5','6','7','8','9','0','files:','[info]','file','hashicorp',
         '''ll',
 '''tis',
 '''twas',
@@ -1361,8 +1361,11 @@ view: zendesk_word_frequency {
   dimension: word {
     type: string
     sql: ${TABLE}.word ;;
+    link: {
+      label: "Zendesk Tickets"
+      url: "/looks/1254?&f[zendesk_ticket_detail.description]=%25{{value | url_encode}}%25&f[zendesk_ticket_detail.custom_product]={{_filters['zendesk_ticket_detail_custom_product'] | url_encode }}"
+    }
   }
-
 
   set: detail {
     fields: [
