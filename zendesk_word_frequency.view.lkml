@@ -36,7 +36,7 @@ view: zendesk_word_frequency {
       LENGTH(zendesk_ticket_detail.description) - LENGTH(REPLACE(zendesk_ticket_detail.description, ' ', '')) >= numbers.n
       and word not in
         (' ',
-        '=','-','{','}','error','error:','1','2','3','4','5','6','7','8','9','0','files:','[info]','file','hashicorp',
+        '=','-','{','}','{ ','&','ticket','path','question','value ---','response','hashi','|','questions','error','error:','1','2','3','4','5','6','7','8','9','0','files:','[info]','file','hashicorp',
         '''ll',
 '''tis',
 '''twas',
