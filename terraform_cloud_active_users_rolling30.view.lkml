@@ -15,9 +15,9 @@ view: terraform_cloud_active_users_rolling30 {
        ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [detail*]
+  measure: max {
+    type: max
+    sql: ${TABLE}.events ;;
   }
 
   dimension_group: day {
