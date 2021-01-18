@@ -61,6 +61,15 @@ user_org_state_versions as (
         from user_org_state_versions
         group by 1, 2, 3
       ),
+      events as (
+        select
+          date_trunc('day', sent_at) as event_at,
+          user_id,
+          '' as organization_id,
+          count(*) as count
+        from terraform_cloud.tracks
+        group by 1, 2, 3
+      ),
       subscriptions as (
         select
           update_org_subscription.organization_id,
@@ -92,26 +101,29 @@ user_org_state_versions as (
       ),
       user_activity as (
         select
-          user_applies.event_at,
-          user_applies.organization_id,
+          user_events.event_at,
+          user_events.organization_id,
           to_char(date_trunc('week', org_created_organization.sent_at), 'YYYY-MM-DD') as org_cohort,
-          user_applies.user_id,
+          user_events.user_id,
           user_cohort,
           email,
           email_domain,
           subscriptions.plan,
-          user_applies.count as applies
-        from user_applies
+          user_events.count as actions
+        from
+          (select * from user_applies
+           union
+           select * from events) as user_events
         left join subscriptions
         on
-          user_applies.organization_id = subscriptions.organization_id and
-          subscriptions.start_at <= user_applies.event_at and (user_applies.event_at <= subscriptions.end_at OR subscriptions.end_at is null)
+          user_events.organization_id = subscriptions.organization_id and
+          subscriptions.start_at <= user_events.event_at and (user_events.event_at <= subscriptions.end_at OR subscriptions.end_at is null)
         left join terraform_cloud.org_created_organization
         on
-          user_applies.organization_id = org_created_organization.organization_id
+          user_events.organization_id = org_created_organization.organization_id
         left join users
         on
-          user_applies.user_id = users.user_id
+          user_events.user_id = users.user_id
         where
           (email_domain <> 'hashicorp.com' or email_domain is null)
           and (is_service_account is false)
@@ -172,9 +184,9 @@ user_org_state_versions as (
     sql: ${TABLE}.plan ;;
   }
 
-  dimension: applies {
+  dimension: actions {
     type: number
-    sql: ${TABLE}.applies ;;
+    sql: ${TABLE}.actions ;;
   }
 
   set: detail {
@@ -185,7 +197,7 @@ user_org_state_versions as (
       user_id,
       user_cohort,
       plan,
-      applies
+      actions
     ]
   }
 }
