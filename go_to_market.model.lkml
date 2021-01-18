@@ -475,6 +475,9 @@ explore: terraform_cloud_active_users {
   label: "Terraform Cloud Active Users"
 }
 
+explore: terraform_cloud_active_users_rolling30 {
+  label: "Terraform Cloud Active Users (Rolling 30 days)"
+}
 explore: terraform_cloud_active_practitioners {
   label: "Terraform Cloud Active Practitioners"
 }
