@@ -536,7 +536,9 @@ explore: zendesk_ticket_detail {
 explore: zendesk_word_frequency {
   label: "Zendesk Ticket Word Frequency"
 }
-
+explore: terraform_cloud_zendesk_tickets_matched_users {
+  label: "Terraform Cloud Zendesk Tickets & Matched Users"
+}
 explore: tracks {
   label: "Terraform Cloud Tracks"
 }
