@@ -134,8 +134,8 @@ view: cloud_organization_usage_c {
     sql: ${TABLE}.name ;;
   }
 
-  dimension: quantity_c {
-    type: number
+  measure: quantity_c {
+    type: sum
     sql: ${TABLE}.quantity_c ;;
   }
 
