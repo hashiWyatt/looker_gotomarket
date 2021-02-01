@@ -2,8 +2,11 @@ view: terraform_cloud_aggregated_revenue {
   derived_table: {
     sql:
       with
-      salesforce_bookings as (
+      tfc_salesforce_bookings as (
         select *, 'tfcb'::text as revenue_type from ${terraform_cloud_salesforce_bookings.SQL_TABLE_NAME}
+      ),
+      tfe_salesforce_bookings as (
+        select *, 'tfe'::text as revenue_type from ${terraform_enterprise_salesforce_bookings.SQL_TABLE_NAME}
       ),
       stripe_charges as (
         select *, 'self-serve'::text as revenue_type from ${terraform_cloud_stripe_charges.SQL_TABLE_NAME}
@@ -27,7 +30,14 @@ view: terraform_cloud_aggregated_revenue {
               day,
               revenue_type,
               sum(acv) as acv_dollars
-            from salesforce_bookings
+            from tfc_salesforce_bookings
+            group by 1, 2)
+            union all
+            (select
+              day,
+              revenue_type,
+              sum(acv) as acv_dollars
+            from tfe_salesforce_bookings
             group by 1, 2)
           )
         group by day, revenue_type
