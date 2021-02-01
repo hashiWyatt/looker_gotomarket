@@ -3,31 +3,34 @@ view: terraform_cloud_aggregated_revenue {
     sql:
       with
       salesforce_bookings as (
-        select * from ${terraform_cloud_salesforce_bookings.SQL_TABLE_NAME}
+        select *, 'tfcb'::text as revenue_type from ${terraform_cloud_salesforce_bookings.SQL_TABLE_NAME}
       ),
       stripe_charges as (
-        select * from ${terraform_cloud_stripe_charges.SQL_TABLE_NAME}
+        select *, 'self-serve'::text as revenue_type from ${terraform_cloud_stripe_charges.SQL_TABLE_NAME}
       ),
       aggregated_charges as (
         select
           day,
+          revenue_type,
           sum(acv_dollars) as acv_dollars
         from
           (
             (select
               day,
+              revenue_type,
               sum(total_dollars)*12 as acv_dollars
             from
               stripe_charges
-            group by 1)
+            group by 1, 2)
             union all
             (select
               day,
+              revenue_type,
               sum(acv) as acv_dollars
             from salesforce_bookings
-            group by 1)
+            group by 1, 2)
           )
-        group by day
+        group by day, revenue_type
       )
 
       select * from aggregated_charges
@@ -48,6 +51,10 @@ view: terraform_cloud_aggregated_revenue {
     sql: ${TABLE}.day ;;
   }
 
+  dimension: revenue_type {
+    type:  string
+    sql:  ${TABLE}.revenue_type ;;
+  }
   dimension: acv_dollars {
     type: number
     sql: ${TABLE}.acv_dollars ;;
@@ -59,6 +66,6 @@ view: terraform_cloud_aggregated_revenue {
   }
 
   set: detail {
-    fields: [reporting_day_time, acv_dollars]
+    fields: [reporting_day_time, revenue_type, acv_dollars]
   }
 }
