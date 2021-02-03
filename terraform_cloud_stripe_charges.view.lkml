@@ -108,6 +108,11 @@ view: terraform_cloud_stripe_charges {
     sql: ${total_dollars} ;;
   }
 
+  measure: orgs {
+    type:  count_distinct
+    sql: ${organization_id} ;;
+  }
+
   set: detail {
     fields: [
       country,
