@@ -131,7 +131,7 @@ view: terraform_cloud_user_activity_states {
                 and (is_service_account is false)
             )
 
-      select user_id, email, signup_at, getdate() as today, max(event_at) as last_active_at as days_since_active from user_activity
+      select user_id, email, signup_at, getdate() as today, max(event_at) as last_active_at from user_activity
       where signup_at is not null
       group by user_id, email, signup_at
        ;;
