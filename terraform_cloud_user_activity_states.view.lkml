@@ -91,7 +91,7 @@ view: terraform_cloud_user_activity_states {
             users as (
               select
                 coalesce(create_account.user_id, users.id) as user_id,
-                to_char(date_trunc('week', sent_at), 'YYYY-MM-DD') as user_cohort,
+                sent_at as signup_at,
                 email,
                 email_domain,
                 is_service_account
@@ -102,30 +102,16 @@ view: terraform_cloud_user_activity_states {
             user_activity as (
               select
                 user_events.event_at,
-                user_events.organization_id,
-                to_char(date_trunc('week', org_created_organization.sent_at), 'YYYY-MM-DD') as org_cohort,
                 user_events.user_id,
-                user_cohort,
                 email,
-                email_domain,
-                subscriptions.plan,
-                ca.sent_at as signup_at,
+                signup_at,
                 user_events.count as actions
               from
+              users
+              left join
                 (select * from user_applies
                  ) as user_events
-              left join subscriptions
-              on
-                user_events.organization_id = subscriptions.organization_id and
-                subscriptions.start_at <= user_events.event_at and (user_events.event_at <= subscriptions.end_at OR subscriptions.end_at is null)
-              left join terraform_cloud.create_account ca
-              on user_events.user_id = ca.user_id
-              left join terraform_cloud.org_created_organization
-              on
-                user_events.organization_id = org_created_organization.organization_id
-              left join users
-              on
-                user_events.user_id = users.user_id
+              on users.user_id = user_events.user_id
               where
                 (email_domain <> 'hashicorp.com' or email_domain is null)
                 and (is_service_account is false)
