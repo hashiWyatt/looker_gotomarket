@@ -25,3 +25,9 @@ explore: cloud_organization_c {
   }
 
 }
+
+explore: g2k_matched_accounts_tfc {}
+
+explore: g2k_matched_accounts_hcp {}
+
+explore: paid_tier_sfdc_matches {}
