@@ -46,6 +46,26 @@ view: hcp_users_accounts_sfdc {
     sql: ${TABLE}.sfdc_account_id ;;
   }
 
+  dimension: vault_cluster_org_member {
+    type: yesno
+    sql: ${TABLE}.vault_cluster_org_member ;;
+  }
+
+  dimension: consul_cluster_org_member {
+    type: yesno
+    sql: ${TABLE}.consul_cluster_org_member ;;
+  }
+
+  dimension: has_any_opportunity {
+    type: yesno
+    sql: ${TABLE}.has_any_opportunity ;;
+  }
+
+  dimension: most_recent_opportunity_amount {
+    type: number
+    sql: ${TABLE}.most_recent_opportunity_amount ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
