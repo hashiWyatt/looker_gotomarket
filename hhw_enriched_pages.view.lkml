@@ -52,6 +52,11 @@ view: hhw_enriched_pages {
 
   measure: count {
     type: count
-    drill_fields: [id, user_id]
+    drill_fields: [id]
+  }
+
+  measure: count_unique {
+    type: count
+    drill_fields: [user_id]
   }
 }
