@@ -475,6 +475,9 @@ explore: terraform_cloud_active_users {
   label: "Terraform Cloud Active Users"
 }
 
+explore: terraform_cloud_active_users_rolling30 {
+  label: "Terraform Cloud Active Users (Rolling 30 days)"
+}
 explore: terraform_cloud_active_practitioners {
   label: "Terraform Cloud Active Practitioners"
 }
@@ -527,6 +530,18 @@ explore: terraform_cloud_rolling_retention_cohort_events_3mo_retained_status {
 explore: terraform_cloud_rolling_retention_feature_frequency_analysis {
   label: "Terraform Cloud Rolling 3mo Retention Event Frequency (first month) Analysis"
 }
+explore: terraform_cloud_user_activity_states {
+  label: "Terraform Cloud User Activity States"
+}
+explore: zendesk_ticket_detail {
+  label: "Zendesk Ticket Detail"
+}
+explore: zendesk_word_frequency {
+  label: "Zendesk Ticket Word Frequency"
+}
+explore: terraform_cloud_zendesk_tickets_matched_users {
+  label: "Terraform Cloud Zendesk Tickets & Matched Users"
+}
 explore: tracks {
   label: "Terraform Cloud Tracks"
 }
@@ -562,11 +577,17 @@ explore: fastly_metrics {
   }
 }
 
+
+# These need to be organized and replace the Releases setup
 explore: licenses_saved {
   label:  "Licenses Saved"
 }
 explore: dockerhub_downloads {
   label: "DockerHub Downloads"
+}
+
+explore: s3_binary_sfdc {
+  label: "Unlocked S3 Enterprise Binary Downloads"
 }
 
 explore: meta_redshift_monthly_bill_text {
@@ -577,6 +598,11 @@ explore: top_10_schemas_by_data_retention {
   label: "Meta Redshift Schemas by Data"
 }
 
-explore: usage_by_schema_snapshots {
-  label: "Meta Redshift Data Growth"
+# These need to be migrated into HCP project
+explore: hcs_users_marketo {
+  label: "HCS Users Marketo"
+}
+
+explore: hcp_users_accounts_sfdc {
+  label: "HCP Users Salesforce Accounts"
 }

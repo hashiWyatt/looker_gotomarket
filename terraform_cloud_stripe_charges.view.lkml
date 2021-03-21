@@ -8,7 +8,8 @@ view: terraform_cloud_stripe_charges {
           customer_info.organization,
           customer_info.email
         from
-        ((select
+        (
+        (select
             period_start as start_at,
             period_end as end_at,
             total::decimal(20,2)/100 as total_dollars,
@@ -27,7 +28,7 @@ view: terraform_cloud_stripe_charges {
             tf_cloud_stripe.subscriptions, tf_cloud_stripe.plans
           where
             subscriptions.plan_id = plans.id
-            and current_period_start >= date_trunc('month', getdate())
+            --and current_period_start >= date_trunc('month', getdate())
         ))
         as stripe
         inner join ${reporting_all_day_intervals.SQL_TABLE_NAME} as reporting
@@ -105,6 +106,11 @@ view: terraform_cloud_stripe_charges {
   measure: sum_total_dollars {
     type: sum
     sql: ${total_dollars} ;;
+  }
+
+  measure: orgs {
+    type:  count_distinct
+    sql: ${organization_id} ;;
   }
 
   set: detail {

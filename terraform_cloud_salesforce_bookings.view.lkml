@@ -12,7 +12,7 @@ select distinct
           account.id as customer_id
           from salesforce_v2.opportunity_line_item, salesforce_v2.product_2 as product, salesforce_v2.opportunity, salesforce_v2.account
         where
-          product.name like 'Terraform Cloud %'
+          (product.name like 'Terraform Cloud %' or product.name like '%Terraform Pro %' or product.name like '%Terraform %SaaS%')
           and opportunity_line_item.product_2_id = product.id
           and opportunity_line_item.opportunity_id = opportunity.id
           and opportunity.account_id = account.id
