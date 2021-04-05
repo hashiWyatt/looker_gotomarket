@@ -31,3 +31,5 @@ explore: g2k_matched_accounts_tfc {}
 explore: g2k_matched_accounts_hcp {}
 
 explore: paid_tier_sfdc_matches {}
+
+explore: time_to_sync_org_today {}
