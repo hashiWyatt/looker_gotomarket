@@ -606,3 +606,12 @@ explore: hcs_users_marketo {
 explore: hcp_users_accounts_sfdc {
   label: "HCP Users Salesforce Accounts"
 }
+
+explore: bi_leads {
+  label: "BI Leads"
+  join: bi_opportunities {
+    type: left_outer
+    sql_on: ${bi_opportunities.opportunity_id} = ${bi_leads.converted_opportunity_id} ;;
+    relationship: many_to_one
+  }
+}
