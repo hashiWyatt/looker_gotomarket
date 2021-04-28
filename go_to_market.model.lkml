@@ -610,3 +610,7 @@ explore: hcp_users_accounts_sfdc {
 explore: weekly_m100 {
   label: "M100_weekly"
 }
+
+explore: lead_v2 {
+  label: "leads (v2)"
+}
