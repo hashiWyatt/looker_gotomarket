@@ -606,3 +606,7 @@ explore: hcs_users_marketo {
 explore: hcp_users_accounts_sfdc {
   label: "HCP Users Salesforce Accounts"
 }
+
+explore: weekly_m100 {
+  label: "M100_weekly"
+}
