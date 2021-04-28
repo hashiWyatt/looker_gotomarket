@@ -3941,6 +3941,6 @@ view: lead_v2 {
 
   measure: count {
     type: count
-    drill_fields: [id, name, middle_name, first_name, last_name]
+    drill_fields: [id, status, name, middle_name, first_name, last_name]
   }
 }
