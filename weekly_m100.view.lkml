@@ -83,6 +83,6 @@ view: weekly_m100 {
 
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [mqls,names]
   }
 }
