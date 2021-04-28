@@ -1,4 +1,4 @@
-view: lead {
+view: lead_v2 {
   sql_table_name: salesforce_v2.lead ;;
   drill_fields: [id]
 
