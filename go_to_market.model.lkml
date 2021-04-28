@@ -283,6 +283,10 @@ explore:  content_resource_pages {
 explore:  clearbit_companies {
   label: "Clearbit Companies"
 }
+explore:  sfdc_account_superview {
+  label: "SFDC Account OSS-TFC-HCS Superview (VERY SLOW - Full OSS download data for trailing 180 days)"
+}
+
 explore:  oss_downloads {
   label: "OSS Downloads"
 }
@@ -467,6 +471,77 @@ explore: terraform_cloud_update_subscription {
   label: "Terraform Cloud Update Subscription"
 }
 
+explore: terraform_cloud_active_users {
+  label: "Terraform Cloud Active Users"
+}
+
+explore: terraform_cloud_active_users_rolling30 {
+  label: "Terraform Cloud Active Users (Rolling 30 days)"
+}
+explore: terraform_cloud_active_practitioners {
+  label: "Terraform Cloud Active Practitioners"
+}
+explore: terraform_cloud_active_practitioners_retention {
+  label: "Terraform Cloud Retained Practitioners"
+}
+explore: terraform_cloud_active_orgs{
+  label: "Terraform Cloud Active Organizations"
+}
+
+explore: terraform_cloud_active_orgs_retention {
+  label: "Terraform Cloud Retained Organizations"
+}
+explore: terraform_cloud_stripe_charges {
+  label: "Terrafrom Cloud Stripe Charges"
+}
+explore: terraform_cloud_salesforce_bookings {
+  label: "Terrafrom Cloud Salesforce Bookings"
+}
+explore: terraform_cloud_aggregated_revenue {
+  label: "Terrafrom Cloud Aggregated Revenue"
+}
+explore: terraform_cloud_salesforce_acv_waterfall {
+  label: " Terraform Cloud Salesforce ACV Waterfall"
+}
+explore: terraform_cloud_stripe_acv_waterfall {
+  label: " Terraform Cloud Stripe ACV Waterfall"
+}
+explore: terraform_cloud_learn_content_read {
+  label: "Terraform Cloud Learn Content Read"
+}
+explore: terraform_cloud_referenced_learn_content {
+  label: "Terraform Cloud Learn Content Referenced while using TFC"
+}
+explore: terraform_cloud_activations_in_local_timezone {
+  label: "Terraform Cloud Activations localized to users timezone"
+}
+explore: terraform_cloud_user_org_events_with_plan {
+  label: "Terraform Cloud Events (Users + Orgs with plan details)"
+}
+explore: terraform_cloud_org_events_with_plan_daily {
+  label: "Terraform Cloud Events Daily Aggregated (Users + Orgs with plan details)"
+}
+explore: terraform_cloud_org_events_with_plan_retention_daily {
+  label: "Terraform Cloud Events Daily Aggregated Retention (Users + Orgs with plan details)"
+}
+explore: terraform_cloud_rolling_retention_cohort_events_3mo_retained_status {
+  label: "Terraform Cloud Rolling 3mo Retention Event Analysis"
+}
+explore: terraform_cloud_rolling_retention_feature_frequency_analysis {
+  label: "Terraform Cloud Rolling 3mo Retention Event Frequency (first month) Analysis"
+}
+explore: terraform_cloud_user_activity_states {
+  label: "Terraform Cloud User Activity States"
+}
+explore: zendesk_ticket_detail {
+  label: "Zendesk Ticket Detail"
+}
+explore: zendesk_word_frequency {
+  label: "Zendesk Ticket Word Frequency"
+}
+explore: terraform_cloud_zendesk_tickets_matched_users {
+  label: "Terraform Cloud Zendesk Tickets & Matched Users"
+}
 explore: tracks {
   label: "Terraform Cloud Tracks"
 }
@@ -493,6 +568,28 @@ explore: waterfall_conversions {
   label: "Waterfall Conversions"
 }
 
+explore: fastly_metrics {
+  label: "OSS Downloads (v2)"
+  join: companies_with_ip_addresses{
+    type: left_outer
+    sql_on: ${companies_with_ip_addresses.ip_address} = ${fastly_metrics.remote_ip} ;;
+    relationship: many_to_one
+  }
+}
+
+
+# These need to be organized and replace the Releases setup
+explore: licenses_saved {
+  label:  "Licenses Saved"
+}
+explore: dockerhub_downloads {
+  label: "DockerHub Downloads"
+}
+
+explore: s3_binary_sfdc {
+  label: "Unlocked S3 Enterprise Binary Downloads"
+}
+
 explore: meta_redshift_monthly_bill_text {
   label: "Meta Redshift Monthly Bill"
 }
@@ -501,6 +598,11 @@ explore: top_10_schemas_by_data_retention {
   label: "Meta Redshift Schemas by Data"
 }
 
-explore: usage_by_schema_snapshots {
-  label: "Meta Redshift Data Growth"
+# These need to be migrated into HCP project
+explore: hcs_users_marketo {
+  label: "HCS Users Marketo"
+}
+
+explore: hcp_users_accounts_sfdc {
+  label: "HCP Users Salesforce Accounts"
 }
