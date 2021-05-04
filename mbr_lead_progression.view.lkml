@@ -52,24 +52,14 @@ mqls as (
   dimension: owner_account_segment {
     type: string
     sql: ${TABLE}.owner_account_segment ;;
-    order_by_field: owner_account_segment_sort
   }
-
-dimension: owner_account_segment_sort {
-  type:  number
-  sql:  CASE WHEN ${owner_account_segment} = 'G1' THEN 1
-  WHEN ${owner_account_segment} = 'E1' THEN 2
-  WHEN ${owner_account_segment} = 'E2' THEN 3
-  WHEN ${owner_account_segment} = 'C1' THEN 4
-  ELSE 5 END;;
-}
 
   dimension: owner_account_theater {
     type: string
     sql: ${TABLE}.owner_account_theater ;;
   }
 
-  dimension_group: created_date_pst {
+  dimension_group: created_date {
     type: time
     sql: ${TABLE}.created_date_pst ;;
   }
@@ -115,6 +105,6 @@ dimension: owner_account_segment_sort {
   }
 
   set: detail {
-    fields: [owner_account_segment, owner_account_theater, created_date_pst_time, measure, value]
+    fields: [owner_account_segment, owner_account_theater, created_date_time, measure, value]
   }
 }
