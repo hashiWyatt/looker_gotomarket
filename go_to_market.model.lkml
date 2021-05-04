@@ -616,6 +616,10 @@ explore: bi_leads {
   }
 }
 
+explore: mbr_lead_progression {
+  label: "MBR Lead Progression"
+}
+
 explore: lead_v2 {
   label: "leads (v2)"
 }
