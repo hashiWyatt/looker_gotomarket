@@ -33,3 +33,11 @@ explore: g2k_matched_accounts_hcp {}
 explore: paid_tier_sfdc_matches {}
 
 explore: time_to_sync_org_today {}
+
+explore: hcp_monthly_revenue {
+  label: "HCP Monthly Revenue"
+  join: cloud_organization_opportunity_c {
+    relationship: many_to_one
+    sql_on: ${hcp_monthly_revenue.cloud_organization_sfdc_id_c} = ${cloud_organization_opportunity_c.sfdc_cloud_organization_c} ;;
+  }
+}
