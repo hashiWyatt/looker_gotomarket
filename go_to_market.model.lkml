@@ -2,6 +2,7 @@ connection: "cdp"
 
 # include all the views
 include: "*.view"
+include: "views/*.view"
 
 # include all the dashboards
 #include: "*.dashboard"
@@ -605,4 +606,24 @@ explore: hcs_users_marketo {
 
 explore: hcp_users_accounts_sfdc {
   label: "HCP Users Salesforce Accounts"
+}
+
+# explore: hcp_organizations_billable_usage {
+#   label: "HCP Organizations Billable Hours Usage Reports"
+# }
+explore: bi_leads {
+  label: "BI Leads and Opportunities"
+  join: bi_opportunities {
+    type: left_outer
+    sql_on: ${bi_opportunities.opportunity_id} = ${bi_leads.converted_opportunity_id} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: mbr_lead_progression {
+  label: "MBR Lead Progression"
+}
+
+explore: lead_v2 {
+  label: "leads (v2)"
 }
