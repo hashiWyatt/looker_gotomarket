@@ -2,15 +2,18 @@ view: hcp_monthly_revenue {
   sql_table_name: cloud_product_bi_data_mart.hcp_monthly_revenue ;;
 
   dimension: account_owner_email_c {
-    label: "Account Owner"
     type: string
     sql: ${TABLE}.account_owner_email_c ;;
   }
 
   dimension: billed_amount {
-    label: "Monthly Bill"
     type: number
     sql: ${TABLE}.billed_amount ;;
+  }
+
+  dimension: cloud_organization_sfdc_id_c {
+    type: string
+    sql: ${TABLE}.cloud_organization_sfdc_id_c ;;
   }
 
   dimension_group: cluster_deleted {
@@ -27,17 +30,33 @@ view: hcp_monthly_revenue {
     sql: ${TABLE}.cluster_deleted_time ;;
   }
 
-  dimension: geo_account_c {
+  dimension: contraction {
+    type: number
+    sql: ${TABLE}.contraction ;;
+  }
 
-    label: "Account Geo"
+  dimension: expansion {
+    type: number
+    sql: ${TABLE}.expansion ;;
+  }
+
+  dimension: geo_account_c {
     type: string
     sql: ${TABLE}.geo_account_c ;;
   }
 
+  dimension: last_month_total {
+    type: number
+    sql: ${TABLE}.last_month_total ;;
+  }
+
   dimension_group: month_ts {
-    label: "Month"
     type: time
     timeframes: [
+      raw,
+      time,
+      date,
+      week,
       month,
       quarter,
       year
@@ -46,9 +65,13 @@ view: hcp_monthly_revenue {
   }
 
   dimension: name {
-    label: "Account Name"
     type: string
     sql: ${TABLE}.name ;;
+  }
+
+  dimension: net {
+    type: number
+    sql: ${TABLE}.net ;;
   }
 
   dimension: organization_id {
@@ -67,7 +90,6 @@ view: hcp_monthly_revenue {
   }
 
   dimension: region_account_c {
-    label: "Account Region"
     type: string
     sql: ${TABLE}.region_account_c ;;
   }
@@ -78,27 +100,13 @@ view: hcp_monthly_revenue {
   }
 
   dimension: segment_account_c {
-    label: "Account Segment"
     type: string
     sql: ${TABLE}.segment_account_c ;;
   }
 
   dimension: theater_account_c {
-    label: "Account Theater"
     type: string
     sql: ${TABLE}.theater_account_c ;;
-  }
-
-  dimension: cloud_organization_sfdc_id_c {
-    label: "Cloud Organization SFDC Id"
-    type:  string
-    sql:  ${TABLE}.cloud_organization_sfdc_id_c ;;
-  }
-
-  dimension: expansion {
-    label: "Expansion or Contraction"
-    type: number
-    sql:  ${TABLE}.expansion ;;
   }
 
   measure: count {
@@ -107,16 +115,27 @@ view: hcp_monthly_revenue {
   }
 
   measure: sum {
-    label: "Sum of Billing Amount"
     type: sum
-    sql: ${billed_amount} ;;
-    value_format_name: usd
+    sql:  ${billed_amount} ;;
+    value_format_name:usd
   }
 
-  measure: sum_expansion {
-    label: "Sum of Expansion"
-    type: sum
+  measure: sum_expansion{
+    type:  sum
     sql: ${expansion} ;;
     value_format_name: usd
   }
+
+  measure: sum_contraction{
+    type:  sum
+    sql: ${contraction} ;;
+    value_format_name: usd
+  }
+
+  measure: sum_net{
+    type:  sum
+    sql: ${net} ;;
+    value_format_name: usd
+  }
+
 }
