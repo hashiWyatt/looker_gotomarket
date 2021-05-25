@@ -3,6 +3,7 @@ connection: "cdp"
 # include all the views
 include: "*.view"
 include: "/Terraform_Cloud/*.view.lkml"
+include: "views/*.view"
 
 # include all the dashboards
 #include: "*.dashboard"
@@ -625,4 +626,23 @@ explore: tfc_users_signups {
 explore: tfc_users_active {
   group_label: "Terraform Cloud"
   label: "User Activity"
+}
+# explore: hcp_organizations_billable_usage {
+#   label: "HCP Organizations Billable Hours Usage Reports"
+# }
+explore: bi_leads {
+  label: "BI Leads and Opportunities"
+  join: bi_opportunities {
+    type: left_outer
+    sql_on: ${bi_opportunities.opportunity_id} = ${bi_leads.converted_opportunity_id} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: mbr_lead_progression {
+  label: "MBR Lead Progression"
+}
+
+explore: lead_v2 {
+  label: "leads (v2)"
 }

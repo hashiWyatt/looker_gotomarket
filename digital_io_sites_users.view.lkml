@@ -10,6 +10,7 @@ view: digital_io_sites_users {
     type: time
     timeframes: [
       date,
+      week,
       month,
       fiscal_quarter,
       fiscal_year,

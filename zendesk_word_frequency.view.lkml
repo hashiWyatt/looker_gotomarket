@@ -1344,6 +1344,11 @@ view: zendesk_word_frequency {
     drill_fields: [detail*]
   }
 
+  measure: count_tickets {
+    type:  count_distinct
+    sql: ${TABLE}.ticket_id;;
+  }
+
   dimension: ticket_id {
     type: number
     sql: ${TABLE}.ticket_id ;;
