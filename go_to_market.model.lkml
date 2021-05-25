@@ -2,6 +2,7 @@ connection: "cdp"
 
 # include all the views
 include: "*.view"
+include: "/Terraform_Cloud/*.view.lkml"
 
 # include all the dashboards
 #include: "*.dashboard"
@@ -605,4 +606,23 @@ explore: hcs_users_marketo {
 
 explore: hcp_users_accounts_sfdc {
   label: "HCP Users Salesforce Accounts"
+}
+
+
+# glenngillen going to move these into the TFC model ASAP:
+explore: tfc_users_funnel_signups_retention {
+  group_label: "Terraform Cloud"
+  label: "Users Funnel"
+}
+explore: tfc_organizations_funnel_signups_retention {
+  group_label: "Terraform Cloud"
+  label: "Organizations Funnel"
+}
+explore: tfc_users_signups {
+  group_label: "Terraform Cloud"
+  label: "User Signups"
+}
+explore: tfc_users_active {
+  group_label: "Terraform Cloud"
+  label: "User Activity"
 }
