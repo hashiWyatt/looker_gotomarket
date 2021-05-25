@@ -5,24 +5,19 @@ view: tfc_users_funnel_signups_retention {
         select 'signups'::text as stage, count(distinct user_id) as users from ${tfc_users_signups.SQL_TABLE_NAME} where created_at > getdate() - '30 days'::interval
       ),
       active_30 as (
-        select 'active'::text as stage, count(distinct user_id) as users from ${tfc_users_active.SQL_TABLE_NAME} where event_at > getdate() - '30 days'::interval
-      ),
-      active_cur as (
-        select active_30.stage, active_30.users - signups.users as users
-        from active_30
-        cross join signups
+        select 'active'::text as stage, count(distinct user_id) as users from ${tfc_users_activity.SQL_TABLE_NAME} where new_signup = false and event_at > getdate() - '30 days'::interval
       ),
       active_prev as (
-        select 'active'::text as stage, count(distinct user_id) as users from ${tfc_users_active.SQL_TABLE_NAME}
-        where event_at > getdate() - '60 days'::interval and event_at <= getdate() - '30 days'::interval
+        select 'active'::text as stage, count(distinct user_id) as users from ${tfc_users_activity.SQL_TABLE_NAME}
+        where new_signup = false and event_at > getdate() - '60 days'::interval and event_at <= getdate() - '30 days'::interval
       ),
       churned as (
-        select 'churned' as stage, (b.users - a.users) as users from active_cur a, active_prev b where a.stage = b.stage
+        select 'churned' as stage, (b.users - a.users) as users from active_30 a, active_prev b where a.stage = b.stage
       )
 
       select stage, users from signups
       union
-      select stage, users from active_cur
+      select stage, users from active_30
       union
       select stage, users * -1 from churned
        ;;

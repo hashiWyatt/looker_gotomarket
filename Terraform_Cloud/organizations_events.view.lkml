@@ -13,7 +13,7 @@ view: tfc_organizations_events {
           -- cli_version
 
         select
-          original_timestamp as event_at,
+          date_trunc('day', original_timestamp) as event_at,
           user_id,
           event,
           organization_id,
@@ -22,13 +22,16 @@ view: tfc_organizations_events {
           created_by_service_account,
           null as client,
           api_client,
-          cli_version
+          cli_version,
+          count(*)
         from terraform_cloud.create_run
+        where original_timestamp > getdate() - '60 days'::interval
+        group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
         union
 
         select
-          original_timestamp as event_at,
+          date_trunc('day', original_timestamp) as event_at,
           user_id,
           event,
           organization_id,
@@ -37,14 +40,17 @@ view: tfc_organizations_events {
           false as created_by_service_account,
           client,
           api_client,
-          null as cli_version
+          null as cli_version,
+          count(*)
         from
         terraform_cloud.create_team
+        where original_timestamp > getdate() - '60 days'::interval
+        group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
         union
 
         select
-          original_timestamp as event_at,
+          date_trunc('day', original_timestamp) as event_at,
           user_id,
           event,
           organization_id,
@@ -53,13 +59,16 @@ view: tfc_organizations_events {
           false as created_by_service_account,
           client,
           api_client,
-          cli_version
+          cli_version,
+          count(*)
         from terraform_cloud.create_workspace
+        where original_timestamp > getdate() - '60 days'::interval
+        group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
         union
 
         select
-          original_timestamp as event_at,
+          date_trunc('day', original_timestamp) as event_at,
           user_id,
           event,
           organization_id,
@@ -68,13 +77,16 @@ view: tfc_organizations_events {
           false as created_by_service_account,
           client,
           api_client,
-          null as cli_version
+          null as cli_version,
+          count(*)
         from terraform_cloud.org_created_registry_module
+        where original_timestamp > getdate() - '60 days'::interval
+        group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
         union
 
         select
-          original_timestamp as event_at,
+          date_trunc('day', original_timestamp) as event_at,
           user_id,
           event,
           organization_id,
@@ -83,13 +95,16 @@ view: tfc_organizations_events {
           false as created_by_service_account,
           client,
           api_client,
-          cli_version
+          cli_version,
+          count(*)
         from terraform_cloud.org_created_state_version
+        where original_timestamp > getdate() - '60 days'::interval
+        group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
         union
 
         select
-          original_timestamp as event_at,
+          date_trunc('day', original_timestamp) as event_at,
           user_id,
           event,
           organization_id,
@@ -98,8 +113,12 @@ view: tfc_organizations_events {
           false as created_by_service_account,
           client,
           api_client,
-          cli_version
+          cli_version,
+          count(*)
         from terraform_cloud.show_workspace
+        where original_timestamp > getdate() - '60 days'::interval
+        group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
       ),
       paid_org_events as (
         select oe.*
