@@ -2,6 +2,7 @@ connection: "cdp"
 
 # include all the views
 include: "*.view"
+include: "/Terraform_Cloud/*.view.lkml"
 include: "views/*.view"
 
 # include all the dashboards
@@ -606,6 +607,49 @@ explore: hcs_users_marketo {
 
 explore: hcp_users_accounts_sfdc {
   label: "HCP Users Salesforce Accounts"
+}
+
+
+# glenngillen going to move these into the TFC model ASAP:
+explore: tfc_users_funnel_signups_retention {
+  group_label: "Terraform Cloud"
+  label: "Users Funnel"
+}
+explore: tfc_organizations_active {
+  group_label: "Terraform Cloud"
+  label: "Weekly Active Organizations"
+}
+explore: tfc_organizations_funnel_signups_retention {
+  group_label: "Terraform Cloud"
+  label: "Organizations Funnel"
+}
+explore: tfc_users_signups {
+  group_label: "Terraform Cloud"
+  label: "User Signups"
+}
+explore: tfc_users_activity {
+  group_label: "Terraform Cloud"
+  label: "User Activity"
+}
+
+explore: tfc_users_rolling_signups_retention {
+  group_label: "Terraform Cloud"
+  label: "Users - Rolling Signup/Active/Churned"
+}
+
+explore: tfc_users_activation_ratios {
+  group_label: "Terraform Cloud"
+  label: "User Activation Rate (first 30 days)"
+}
+
+explore: stripe_retention {
+  group_label: "Terraform Cloud"
+  label: "Self-serve Monthly Paid Retenion"
+}
+
+explore: stripe_revenue_retention {
+  group_label: "Terraform Cloud"
+  label: "Self-serve Net Revenue Retention"
 }
 
 # explore: hcp_organizations_billable_usage {

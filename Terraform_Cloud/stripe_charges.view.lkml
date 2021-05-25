@@ -108,6 +108,11 @@ view: terraform_cloud_stripe_charges {
     sql: ${total_dollars} ;;
   }
 
+  measure: sum_total_arr_dollars {
+    type: sum
+    sql: ${total_dollars} * 12 ;;
+  }
+
   measure: orgs {
     type:  count_distinct
     sql: ${organization_id} ;;
