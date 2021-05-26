@@ -3,7 +3,7 @@ view: terraform_cloud_aggregated_revenue {
     sql:
       with
       tfc_salesforce_bookings as (
-        select *, 'tfcb'::text as revenue_type from ${terraform_cloud_salesforce_bookings.SQL_TABLE_NAME}
+        select *, 'tfcb'::text as revenue_type from ${tfc_salesforce_bookings.SQL_TABLE_NAME}
       ),
       tfe_salesforce_bookings as (
         select *, 'tfe'::text as revenue_type from ${terraform_enterprise_salesforce_bookings.SQL_TABLE_NAME}

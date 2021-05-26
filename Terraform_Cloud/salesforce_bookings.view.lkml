@@ -1,8 +1,12 @@
-view: terraform_cloud_salesforce_bookings {
+view: tfc_salesforce_bookings {
   derived_table: {
     sql:
-      select * from (
-select distinct
+      select
+        sfdc.*,
+        reporting.*,
+        org_opp_mapping.organization_id
+      from (
+        select distinct
           opportunity_id,
           account.name,
           opportunity.type,
@@ -16,13 +20,20 @@ select distinct
           and opportunity_line_item.product_2_id = product.id
           and opportunity_line_item.opportunity_id = opportunity.id
           and opportunity.account_id = account.id
-          and is_won)
-      as sfdc, ${reporting_all_day_intervals.SQL_TABLE_NAME} as reporting
-      where
-      sfdc.start_at <= reporting.day and sfdc.end_at >= reporting.day
+          and is_won
+      ) as sfdc
+      inner join ${reporting_all_day_intervals.SQL_TABLE_NAME} as reporting
+      on sfdc.start_at <= reporting.day and sfdc.end_at >= reporting.day
+      left join
+      (select distinct organization_id, contract_opportunity_id from terraform_cloud.update_subscription where new_subscription_plan = 'Business' and contract_opportunity_id is not null) as org_opp_mapping
+      on sfdc.opportunity_id = org_opp_mapping.contract_opportunity_id
+
       ;;
   }
-
+  dimension: organization_id {
+    type: string
+    sql: ${TABLE}.organization_id ;;
+  }
   dimension: opportunity_id {
     type: string
     sql: ${TABLE}.opportunity_id ;;

@@ -496,9 +496,7 @@ explore: terraform_cloud_active_orgs_retention {
 explore: terraform_cloud_stripe_charges {
   label: "Terrafrom Cloud Stripe Charges"
 }
-explore: terraform_cloud_salesforce_bookings {
-  label: "Terrafrom Cloud Salesforce Bookings"
-}
+
 explore: terraform_cloud_aggregated_revenue {
   label: "Terrafrom Cloud Aggregated Revenue"
 }
@@ -650,6 +648,14 @@ explore: stripe_retention {
 explore: stripe_revenue_retention {
   group_label: "Terraform Cloud"
   label: "Self-serve Net Revenue Retention"
+}
+explore: tfc_salesforce_bookings {
+  group_label: "Terraform Cloud"
+  label: "Salesforce Bookings"
+}
+explore: tfc_salesforce_customer_acv_monthly {
+  group_label: "Terraform Cloud"
+  label: "Salesforce Bookings - Monthly"
 }
 
 # explore: hcp_organizations_billable_usage {
