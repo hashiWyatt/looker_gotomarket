@@ -665,6 +665,10 @@ explore: organization_activation_status {
   group_label: "Terraform Cloud"
   label: "Paid Organizations Activation Status"
 }
+explore: tfc_business_pqls {
+  group_label: "Terraform Cloud"
+  label: "Product Qualified Leads (PQLs) - Business Tier"
+}
 
 # explore: hcp_organizations_billable_usage {
 #   label: "HCP Organizations Billable Hours Usage Reports"
