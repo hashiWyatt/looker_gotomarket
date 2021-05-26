@@ -1,13 +1,6 @@
 view: tfc_business_pqls {
   derived_table: {
-    sql: with
-
-      billing_details as (
-        select c.description as organization_id, c.email as billing_email, cc.country from tfc_stripe.customer c
-        inner join tfc_stripe.card cc
-        on c.default_card_id = cc.id
-      )
-
+    sql:
       select
         a.organization_id,
         cp.organization,
@@ -20,7 +13,7 @@ view: tfc_business_pqls {
       ${tfc_organizations_active.SQL_TABLE_NAME} a
       inner join ${tfc_organizations_current_plan.SQL_TABLE_NAME} cp
       on a.organization_id = cp.organization_id
-      left join billing_details b
+      left join ${billing_details.SQL_TABLE_NAME} b
       on a.organization_id = b.organization_id
       where plan not in ('Business','Legacy Paid Accounts')
       and date_trunc('month', event_at) = date_trunc('month', getdate())

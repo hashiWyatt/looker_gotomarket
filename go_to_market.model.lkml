@@ -669,7 +669,10 @@ explore: tfc_business_pqls {
   group_label: "Terraform Cloud"
   label: "Product Qualified Leads (PQLs) - Business Tier"
 }
-
+explore: tfc_organizations_recent_upsells {
+  group_label: "Terraform Cloud"
+  label: "Recent Upsells"
+}
 # explore: hcp_organizations_billable_usage {
 #   label: "HCP Organizations Billable Hours Usage Reports"
 # }
