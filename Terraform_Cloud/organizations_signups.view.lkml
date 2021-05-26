@@ -2,7 +2,8 @@ view: tfc_organizations_signups {
   derived_table: {
     sql: select
       start_at,
-      organization_id
+      organization_id,
+      plan
     from ${tfc_organizations_subscriptions.SQL_TABLE_NAME}
     where
       organization_id not in (select organization_id from ${tfc_internal_organizations.SQL_TABLE_NAME})
@@ -24,6 +25,11 @@ view: tfc_organizations_signups {
   dimension: organization_id {
     type: string
     sql: ${TABLE}.organization_id ;;
+  }
+
+  dimension: plan {
+    type: string
+    sql: ${TABLE}.plan ;;
   }
 
   set: detail {

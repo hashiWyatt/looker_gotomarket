@@ -661,6 +661,10 @@ explore: tfe_salesforce_customer_acv_monthly {
   group_label: "Terraform Cloud"
   label: "Salesforce Bookings (Self-managed) - Monthly"
 }
+explore: organization_activation_status {
+  group_label: "Terraform Cloud"
+  label: "Paid Organizations Activation Status"
+}
 
 # explore: hcp_organizations_billable_usage {
 #   label: "HCP Organizations Billable Hours Usage Reports"
