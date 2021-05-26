@@ -6,7 +6,7 @@ view: terraform_cloud_aggregated_revenue {
         select *, 'tfcb'::text as revenue_type from ${tfc_salesforce_bookings.SQL_TABLE_NAME}
       ),
       tfe_salesforce_bookings as (
-        select *, 'tfe'::text as revenue_type from ${terraform_enterprise_salesforce_bookings.SQL_TABLE_NAME}
+        select *, 'tfe'::text as revenue_type from ${tfe_salesforce_bookings.SQL_TABLE_NAME}
       ),
       stripe_charges as (
         select *, 'self-serve'::text as revenue_type from ${terraform_cloud_stripe_charges.SQL_TABLE_NAME}

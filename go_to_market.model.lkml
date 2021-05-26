@@ -655,7 +655,11 @@ explore: tfc_salesforce_bookings {
 }
 explore: tfc_salesforce_customer_acv_monthly {
   group_label: "Terraform Cloud"
-  label: "Salesforce Bookings - Monthly"
+  label: "Salesforce Bookings (Cloud) - Monthly"
+}
+explore: tfe_salesforce_customer_acv_monthly {
+  group_label: "Terraform Cloud"
+  label: "Salesforce Bookings (Self-managed) - Monthly"
 }
 
 # explore: hcp_organizations_billable_usage {

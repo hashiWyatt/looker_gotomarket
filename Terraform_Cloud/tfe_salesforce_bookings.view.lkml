@@ -1,4 +1,4 @@
-view: terraform_enterprise_salesforce_bookings {
+view: tfe_salesforce_bookings {
   derived_table: {
     sql: select * from (
       select distinct
