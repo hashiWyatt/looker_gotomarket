@@ -14,6 +14,11 @@ explore: hashiconf_digital_platform_pages {
   label: "Hashiconf Digital Platform Pages"
 }
 
+explore: digital_dotcom_site_users {
+  label: ".com Site Users"
+}
+
+
 explore: digital_io_sites_users {
   label: ".io Site Users"
 }
