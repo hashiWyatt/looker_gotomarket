@@ -4,7 +4,7 @@ include: "*.view.lkml"         # include all views in this project
 #include: "*.dashboard.lookml"  # include all dashboards in this project
 
 week_start_day: saturday
-fiscal_month_offset: 1
+fiscal_month_offset: -11
 
 explore: hashiconf_digital_platform_core_user_funnel {
   label: "Hashiconf Digital Platform Core User Funnel"
@@ -17,7 +17,6 @@ explore: hashiconf_digital_platform_pages {
 explore: digital_dotcom_site_users {
   label: ".com Site Users"
 }
-
 
 explore: digital_io_sites_users {
   label: ".io Site Users"
