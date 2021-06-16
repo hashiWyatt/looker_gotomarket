@@ -43,7 +43,3 @@ view: practitioner_journey_updated {
     drill_fields: [count]
   }
 }
-
-explore: practitioner_journey_updated  {
-  label:  "Practitioner Journey Geo"
-}

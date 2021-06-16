@@ -57,3 +57,7 @@ explore: hhw_enriched_pages {
 explore: internationalized_microsites_pages {
   label: "Internationalized Microsites Pages"
 }
+
+explore: practitioner_journey_updated  {
+  label:  "Practitioner Journey Geo"
+}
