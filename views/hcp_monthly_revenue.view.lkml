@@ -40,6 +40,17 @@ view: hcp_monthly_revenue {
     sql: ${TABLE}.expansion ;;
   }
 
+  dimension: billing_account_internal_id {
+    type:  string
+    sql:  ${TABLE}.billing_account_internal_id ;;
+  }
+
+  dimension: account_type {
+    type:  string
+    sql:  ${TABLE}.acount_type ;;
+    label: "Billing Account Status"
+  }
+
   dimension: geo_account_c {
     type: string
     sql: ${TABLE}.geo_account_c ;;
