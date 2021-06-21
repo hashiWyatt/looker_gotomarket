@@ -47,7 +47,7 @@ view: hcp_monthly_revenue {
 
   dimension: account_type {
     type:  string
-    sql:  ${TABLE}.acount_type ;;
+    sql:  ${TABLE}.account_type ;;
     label: "Billing Account Status"
   }
 
