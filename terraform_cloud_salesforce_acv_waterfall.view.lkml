@@ -30,11 +30,11 @@ view: terraform_cloud_salesforce_acv_waterfall {
       from
         (select
           * from
-          ${terraform_cloud_salesforce_bookings.SQL_TABLE_NAME}
+          ${tfc_salesforce_bookings.SQL_TABLE_NAME}
           where day = {% parameter start_at %}
         ) as previous
       full outer join
-        (select * from ${terraform_cloud_salesforce_bookings.SQL_TABLE_NAME}
+        (select * from ${tfc_salesforce_bookings.SQL_TABLE_NAME}
           where day = {% parameter end_at %}
         ) as current
       on

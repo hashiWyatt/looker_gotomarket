@@ -8,16 +8,25 @@ view: stripe_retention {
           organization_id
         from ${terraform_cloud_stripe_charges.SQL_TABLE_NAME}
         where organization_id is not null
+      ), tfcb_bookings as (
+        select distinct
+          date_trunc('month', start_at) as month,
+          organization_id
+        from ${tfc_salesforce_bookings.SQL_TABLE_NAME}
+        where organization_id is not null
       )
       select
         add_months(i.month, 1) as month,
         count(distinct i.organization_id) as initial,
-        count(distinct r.organization_id) as retained
+        count(distinct coalesce(r.organization_id, t.organization_id)) as retained
       from
         tfc_monthly_stripe_customers i
       left join tfc_monthly_stripe_customers r
       on i.organization_id = r.organization_id
       and add_months(i.month, 1) = r.month
+      left join tfcb_bookings t
+      on i.organization_id = t.organization_id
+      and add_months(i.month, 1) = t.month
       group by 1
        ;;
   }

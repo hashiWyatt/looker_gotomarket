@@ -496,9 +496,7 @@ explore: terraform_cloud_active_orgs_retention {
 explore: terraform_cloud_stripe_charges {
   label: "Terrafrom Cloud Stripe Charges"
 }
-explore: terraform_cloud_salesforce_bookings {
-  label: "Terrafrom Cloud Salesforce Bookings"
-}
+
 explore: terraform_cloud_aggregated_revenue {
   label: "Terrafrom Cloud Aggregated Revenue"
 }
@@ -651,7 +649,30 @@ explore: stripe_revenue_retention {
   group_label: "Terraform Cloud"
   label: "Self-serve Net Revenue Retention"
 }
-
+explore: tfc_salesforce_bookings {
+  group_label: "Terraform Cloud"
+  label: "Salesforce Bookings"
+}
+explore: tfc_salesforce_customer_acv_monthly {
+  group_label: "Terraform Cloud"
+  label: "Salesforce Bookings (Cloud) - Monthly"
+}
+explore: tfe_salesforce_customer_acv_monthly {
+  group_label: "Terraform Cloud"
+  label: "Salesforce Bookings (Self-managed) - Monthly"
+}
+explore: organization_activation_status {
+  group_label: "Terraform Cloud"
+  label: "Paid Organizations Activation Status"
+}
+explore: tfc_business_pqls {
+  group_label: "Terraform Cloud"
+  label: "Product Qualified Leads (PQLs) - Business Tier"
+}
+explore: tfc_organizations_recent_upsells {
+  group_label: "Terraform Cloud"
+  label: "Recent Upsells"
+}
 # explore: hcp_organizations_billable_usage {
 #   label: "HCP Organizations Billable Hours Usage Reports"
 # }
