@@ -39,7 +39,8 @@ view: practitioner_journey_updated {
   }
 
   measure: count {
-    type: count
+    type: sum
+    sql: ${TABLE}.count;;
     drill_fields: [count]
   }
 }

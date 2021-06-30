@@ -58,6 +58,6 @@ explore: internationalized_microsites_pages {
   label: "Internationalized Microsites Pages"
 }
 
-explore: practitioner_journey_updated  {
+explore: practitioner_journey_updated {
   label:  "Practitioner Journey Geo"
 }
