@@ -1,6 +1,6 @@
 view: fastly_metrics {
-  label: "Fastly Metrics (Full History)"
-  sql_table_name: releases_etl_reporting.full_history_releases ;;
+  label: "Fastly Metrics"
+  sql_table_name: releases_etl.fastly_metrics ;;
 
   dimension: arch {
     type: string
