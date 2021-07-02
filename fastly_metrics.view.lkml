@@ -64,7 +64,7 @@ view: fastly_metrics {
       fiscal_quarter,
       fiscal_year
     ]
-    sql: ${TABLE}.ts ;;
+    sql: ${TABLE}.ts::datetime ;;
   }
 
   dimension: user_agent {
