@@ -38,7 +38,7 @@ view: full_releases_w_sfdc_accounts {
       fiscal_quarter,
       fiscal_year
     ]
-    sql: ${TABLE}.download_date ;;
+    sql: ${TABLE}.download_date::datetime ;;
   }
 
   dimension: email_domain {
@@ -69,5 +69,10 @@ view: full_releases_w_sfdc_accounts {
   measure: count {
     type: count
     drill_fields: [account_name]
+  }
+
+  measure: unique_accounts {
+    type: count_distinct
+    sql:  ${TABLE}.account_id ;;
   }
 }
