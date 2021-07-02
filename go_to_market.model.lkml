@@ -697,3 +697,7 @@ explore: mbr_lead_progression {
 explore: lead_v2 {
   label: "leads (v2)"
 }
+
+explore: full_releases_w_sfdc_accounts {
+  label: "OSS Downloads w/SFDC Accounts"
+}

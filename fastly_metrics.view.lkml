@@ -1,5 +1,6 @@
 view: fastly_metrics {
-  sql_table_name: releases_etl.fastly_metrics ;;
+  label: "Fastly Metrics (Full History)"
+  sql_table_name: releases_etl_reporting.full_history_releases ;;
 
   dimension: arch {
     type: string
@@ -59,8 +60,8 @@ view: fastly_metrics {
       date,
       week,
       month,
-      quarter,
-      year
+      fiscal_quarter,
+      fiscal_year
     ]
     sql: ${TABLE}.ts ;;
   }
