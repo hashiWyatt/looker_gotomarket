@@ -2,6 +2,8 @@ connection: "cdp"
 
 # include all the views
 include: "*.view"
+include: "/Terraform_Cloud/*.view.lkml"
+include: "views/*.view"
 
 # include all the dashboards
 #include: "*.dashboard"
@@ -494,9 +496,7 @@ explore: terraform_cloud_active_orgs_retention {
 explore: terraform_cloud_stripe_charges {
   label: "Terrafrom Cloud Stripe Charges"
 }
-explore: terraform_cloud_salesforce_bookings {
-  label: "Terrafrom Cloud Salesforce Bookings"
-}
+
 explore: terraform_cloud_aggregated_revenue {
   label: "Terrafrom Cloud Aggregated Revenue"
 }
@@ -605,4 +605,99 @@ explore: hcs_users_marketo {
 
 explore: hcp_users_accounts_sfdc {
   label: "HCP Users Salesforce Accounts"
+}
+
+
+# glenngillen going to move these into the TFC model ASAP:
+explore: tfc_users_funnel_signups_retention {
+  group_label: "Terraform Cloud"
+  label: "Users Funnel"
+}
+explore: tfc_organizations_active {
+  group_label: "Terraform Cloud"
+  label: "Weekly Active Organizations"
+}
+explore: tfc_organizations_funnel_signups_retention {
+  group_label: "Terraform Cloud"
+  label: "Organizations Funnel"
+}
+explore: tfc_users_signups {
+  group_label: "Terraform Cloud"
+  label: "User Signups"
+}
+explore: tfc_users_activity {
+  group_label: "Terraform Cloud"
+  label: "User Activity"
+}
+
+explore: tfc_users_rolling_signups_retention {
+  group_label: "Terraform Cloud"
+  label: "Users - Rolling Signup/Active/Churned"
+}
+
+explore: tfc_users_activation_ratios {
+  group_label: "Terraform Cloud"
+  label: "User Activation Rate (first 30 days)"
+}
+
+explore: stripe_retention {
+  group_label: "Terraform Cloud"
+  label: "Self-serve Monthly Paid Retenion"
+}
+
+explore: stripe_revenue_retention {
+  group_label: "Terraform Cloud"
+  label: "Self-serve Net Revenue Retention"
+}
+explore: tfc_salesforce_bookings {
+  group_label: "Terraform Cloud"
+  label: "Salesforce Bookings"
+}
+explore: tfc_salesforce_customer_acv_monthly {
+  group_label: "Terraform Cloud"
+  label: "Salesforce Bookings (Cloud) - Monthly"
+}
+explore: tfe_salesforce_customer_acv_monthly {
+  group_label: "Terraform Cloud"
+  label: "Salesforce Bookings (Self-managed) - Monthly"
+}
+explore: organization_activation_status {
+  group_label: "Terraform Cloud"
+  label: "Paid Organizations Activation Status"
+}
+explore: tfc_business_pqls {
+  group_label: "Terraform Cloud"
+  label: "Product Qualified Leads (PQLs) - Business Tier"
+}
+explore: tfc_organizations_recent_upsells {
+  group_label: "Terraform Cloud"
+  label: "Recent Upsells"
+}
+explore: tfc_cohorted_aarrr {
+  group_label: "Terraform Cloud"
+  label: "TFC Cohorted AARRR Metrics"
+}
+
+# explore: hcp_organizations_billable_usage {
+#   label: "HCP Organizations Billable Hours Usage Reports"
+# }
+explore: bi_leads {
+  label: "BI Leads and Opportunities"
+  join: bi_opportunities {
+    type: left_outer
+    sql_on: ${bi_opportunities.opportunity_id} = ${bi_leads.converted_opportunity_id} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: mbr_lead_progression {
+  label: "MBR Lead Progression"
+}
+
+explore: lead_v2 {
+  label: "leads (v2)"
+}
+
+explore: full_releases_w_sfdc_accounts {
+  label: "OSS Downloads w/SFDC Accounts"
 }
