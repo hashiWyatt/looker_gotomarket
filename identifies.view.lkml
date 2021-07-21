@@ -148,4 +148,10 @@ view: identifies {
     type: count
     drill_fields: [id, context_library_name, users.context_library_name, users.id]
   }
+
+  measure: count_distinct_user_id {
+    type: count_distinct
+    sql: ${user_id} ;;
+    drill_fields: [id, context_library_name, users.context_library_name, users.id]
+  }
 }
