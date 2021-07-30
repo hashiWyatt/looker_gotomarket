@@ -673,10 +673,12 @@ explore: tfc_organizations_recent_upsells {
   group_label: "Terraform Cloud"
   label: "Recent Upsells"
 }
-explore: ryan_hall {
-  label: "Ryan's Example"
-  group_label: "Hall Hall Hall"
+
+explore: tfc_cohorted_aarrr {
+  group_label: "Terraform Cloud"
+  label: "TFC Cohorted AARRR Metrics"
 }
+
 # explore: hcp_organizations_billable_usage {
 #   label: "HCP Organizations Billable Hours Usage Reports"
 # }
@@ -695,4 +697,8 @@ explore: mbr_lead_progression {
 
 explore: lead_v2 {
   label: "leads (v2)"
+}
+
+explore: full_releases_w_sfdc_accounts {
+  label: "OSS Downloads w/SFDC Accounts"
 }
