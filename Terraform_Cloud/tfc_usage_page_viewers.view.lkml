@@ -28,7 +28,7 @@ view: tfc_usage_page_viewers {
 
   measure: visitors {
     type: count_distinct
-    drill_fields: [user_id]
+    sql: ${TABLE}.visits ;;
   }
 
   dimension: user_id {
