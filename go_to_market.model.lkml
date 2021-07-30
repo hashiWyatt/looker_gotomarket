@@ -673,6 +673,10 @@ explore: tfc_organizations_recent_upsells {
   group_label: "Terraform Cloud"
   label: "Recent Upsells"
 }
+explore: ryan_hall {
+  label: "Ryan's Example"
+  group_label: "Hall Hall Hall"
+}
 # explore: hcp_organizations_billable_usage {
 #   label: "HCP Organizations Billable Hours Usage Reports"
 # }
