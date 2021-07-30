@@ -702,3 +702,7 @@ explore: lead_v2 {
 explore: full_releases_w_sfdc_accounts {
   label: "OSS Downloads w/SFDC Accounts"
 }
+
+explore: opps_stage_dynamics {
+  label: "Opportunity Stage Dynamics"
+}
