@@ -15,22 +15,34 @@ view: tfc_usage_page_viewers {
         left join user_emails u
         on v.user_id = u.user_id
         where email_domain <> 'hashicorp.com'
-      ), domain_visitors as (
-        select email_domain, count(*) as visitors from user_visits
-        group by email_domain
-      ),
-      org_visitors as (
-        select organization, count(*) as visitors from user_visits
-        group by organization
       )
 
       select * from user_visits
        ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [detail*]
+  measure: visits {
+    type: sum
+    drill_fields: [visits]
+  }
+
+  measure: visitors {
+    type: count_distinct
+    drill_fields: [user_id]
+  }
+
+  dimension: user_id {
+    type: string
+    sql: ${TABLE}.user_id ;;
+  }
+
+  dimension: email  {
+    type: string
+    sql: ${TABLE}.email ;;
+  }
+  dimension: email_domain  {
+    type: string
+    sql: ${TABLE}.email_domain ;;
   }
 
   dimension: organization {
@@ -38,12 +50,8 @@ view: tfc_usage_page_viewers {
     sql: ${TABLE}.organization ;;
   }
 
-  dimension: visitors {
-    type: number
-    sql: ${TABLE}.visitors ;;
-  }
 
   set: detail {
-    fields: [organization, visitors]
+    fields: [organization]
   }
 }
