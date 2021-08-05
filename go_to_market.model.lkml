@@ -2,6 +2,7 @@ connection: "cdp"
 
 # include all the views
 include: "*.view"
+include: "views/*.view"
 
 # include all the dashboards
 #include: "*.dashboard"
@@ -605,4 +606,8 @@ explore: hcs_users_marketo {
 
 explore: hcp_users_accounts_sfdc {
   label: "HCP Users Salesforce Accounts"
+}
+
+explore: hcp_users_by_created_date {
+  label: "HCP Users By Created Date"
 }
