@@ -1,5 +1,6 @@
-view: digital_io_sites_users {
-  sql_table_name:  digital_performance.io_sites_users ;;
+view: digital_cloud_site_users {
+
+  sql_table_name:  digital_performance.cloud_site_users ;;
 
   dimension: site {
     type:  string
@@ -10,7 +11,6 @@ view: digital_io_sites_users {
     type: time
     timeframes: [
       date,
-      week,
       month,
       fiscal_quarter,
       fiscal_year,

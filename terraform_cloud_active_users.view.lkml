@@ -57,6 +57,7 @@ user_org_state_versions as (
           date_trunc('day', sent_at) as event_at,
           user_id,
           organization_id,
+          'apply' as event,
           count(*) as count
         from user_org_state_versions
         group by 1, 2, 3
@@ -66,9 +67,10 @@ user_org_state_versions as (
           date_trunc('day', sent_at) as event_at,
           user_id,
           '' as organization_id,
+          event,
           count(*) as count
         from terraform_cloud.tracks
-        group by 1, 2, 3
+        group by 1, 2, 3, 4
       ),
       subscriptions as (
         select
@@ -109,6 +111,7 @@ user_org_state_versions as (
           email,
           email_domain,
           subscriptions.plan,
+          user_events.event,
           user_events.count as actions
         from
           (select * from user_applies
@@ -169,6 +172,11 @@ user_org_state_versions as (
     sql: ${TABLE}.org_cohort ;;
   }
 
+  dimension: event {
+    type: string
+    sql:  ${TABLE}.event ;;
+  }
+
   dimension: user_id {
     type: string
     sql: ${TABLE}.user_id ;;
@@ -197,7 +205,8 @@ user_org_state_versions as (
       user_id,
       user_cohort,
       plan,
-      actions
+      actions,
+      event
     ]
   }
 }
