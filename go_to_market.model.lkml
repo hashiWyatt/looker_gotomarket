@@ -709,3 +709,8 @@ explore: full_releases_w_sfdc_accounts {
 explore: opps_stage_dynamics {
   label: "Opportunity Stage Dynamics"
 }
+
+
+explore: hcp_organization_by_created_date {
+  label: "HCP Organization By Created Date"
+}
