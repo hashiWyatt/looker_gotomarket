@@ -714,3 +714,7 @@ explore: opps_stage_dynamics {
 explore: hcp_organization_by_created_date {
   label: "HCP Organization By Created Date"
 }
+
+explore: cloud_users_by_latest_subscription_plan {
+  label: "Cloud Users By Latest Subscription Plan"
+}
