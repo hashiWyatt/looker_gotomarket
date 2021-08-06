@@ -718,3 +718,7 @@ explore: hcp_organization_by_created_date {
 explore: cloud_users_by_latest_subscription_plan {
   label: "Cloud Users By Latest Subscription Plan"
 }
+
+explore: hcp_vault_max_daily_client_count {
+  label: "Hcp Vault Max Daily Client Count"
+}
