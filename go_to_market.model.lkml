@@ -722,3 +722,7 @@ explore: cloud_users_by_latest_subscription_plan {
 explore: hcp_vault_max_daily_client_count {
   label: "Hcp Vault Max Daily Client Count"
 }
+
+explore: hcp_vault_mao {
+  label: "Hcp Vault MAO"
+}
