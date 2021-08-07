@@ -726,3 +726,11 @@ explore: hcp_vault_max_daily_client_count {
 explore: hcp_vault_mao {
   label: "Hcp Vault MAO"
 }
+
+explore: hcp_consul_max_daily_count {
+  label: "Hcp Consul Max Daily Count"
+}
+
+explore: hcp_consul_mao {
+  label: "Hcp Consul MAO"
+}
