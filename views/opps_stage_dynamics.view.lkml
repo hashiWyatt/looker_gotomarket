@@ -1,12 +1,12 @@
 view: opps_stage_dynamics {
   label: "Opportunity Stage Dynamics"
   sql_table_name: bi_stage.opps_stage_dynamics ;;
-  drill_fields: [id, url, type, name, stage_name, created_date, created_fiscal_quarter, close_date, close_fiscal_quarter, segment, theater, geo]
+  drill_fields: [opportunity_id, url, type, name, stage_name, created_date, created_fiscal_quarter, close_date, close_fiscal_quarter, segment, theater, region, quote_products]
 
-  dimension: id {
+  dimension: opportunity_id {
     primary_key: yes
     type: string
-    sql: ${TABLE}.id ;;
+    sql: ${TABLE}.opportunity_id ;;
   }
 
   dimension_group: close {
@@ -38,44 +38,51 @@ view: opps_stage_dynamics {
     sql: ${TABLE}.created_date ;;
   }
 
-  dimension: geo {
+  dimension: region {
     type: string
-    sql: ${TABLE}.geo ;;
+    sql: ${TABLE}.region ;;
   }
 
   dimension: moved_past_bookings {
     type: yesno
     sql: ${TABLE}.moved_past_bookings ;;
+    group_label: "Move Past Stage"
   }
 
   dimension: moved_past_business_validation {
     type: yesno
     sql: ${TABLE}.moved_past_business_validation ;;
+    group_label: "Move Past Stage"
   }
 
   dimension: moved_past_deal_review {
     type: yesno
     sql: ${TABLE}.moved_past_deal_review ;;
+    group_label: "Move Past Stage"
   }
 
   dimension: moved_past_discovery {
     type: yesno
     sql: ${TABLE}.moved_past_discovery ;;
+    group_label: "Move Past Stage"
   }
 
   dimension: moved_past_negotiation {
     type: yesno
     sql: ${TABLE}.moved_past_negotiation ;;
+    group_label: "Move Past Stage"
   }
 
   dimension: moved_past_success_planning {
     type: yesno
     sql: ${TABLE}.moved_past_success_planning ;;
+    group_label: "Move Past Stage"
   }
 
   dimension: moved_past_technical_validation {
     type: yesno
     sql: ${TABLE}.moved_past_technical_validation ;;
+    group_label: "Move Past Stage"
   }
 
   dimension: name {
@@ -83,11 +90,10 @@ view: opps_stage_dynamics {
     sql: ${TABLE}.name ;;
   }
 
-  dimension: new_acv_c {
+  dimension: new_acv {
     type: number
     sql: ${TABLE}.new_acv_c ;;
   }
-
 
   dimension: segment {
     type: string
@@ -109,19 +115,23 @@ view: opps_stage_dynamics {
     sql: ${TABLE}.type ;;
   }
 
+  dimension: quote_products {
+    type: string
+    sql: ${TABLE}.quote_products_c ;;
+  }
+
   dimension: url {
     type: string
     sql: ${TABLE}.url ;;
   }
 
-  dimension: y_1_acv_c {
+  dimension: y_1_acv {
     type: number
     sql: ${TABLE}.y_1_acv_c ;;
   }
 
   measure: count {
     type: count
-    drill_fields: [id, name, stage_name]
   }
 
   measure: days_in_discovery_and_qualification {
@@ -154,9 +164,9 @@ view: opps_stage_dynamics {
     group_label: "Avg Days in Stage"
   }
 
-  measure: days_in_negotiotation_and_legal {
+  measure: days_in_negotiation_and_legal {
     type: average
-    sql: ${TABLE}.days_in_negotiotation_and_legal ;;
+    sql: ${TABLE}.days_in_negotiation_and_legal ;;
     group_label: "Avg Days in Stage"
   }
 
@@ -166,6 +176,23 @@ view: opps_stage_dynamics {
     group_label: "Avg Days in Stage"
   }
 
+  measure: days_to_cwo {
+    type: average
+    sql: ${TABLE}.days_to_cwo ;;
+    group_label: "Days From Opp Creation"
+  }
+
+  measure: days_to_close {
+    type: average
+    sql: ${TABLE}.days_to_close ;;
+    group_label: "Days From Opp Creation"
+  }
+
+  measure: age_days {
+    type: average
+    sql: ${TABLE}.age_days ;;
+    group_label: "Days From Opp Creation"
+  }
 
   measure: pipe_in_bookings {
     type: sum
@@ -228,50 +255,45 @@ view: opps_stage_dynamics {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_closed_won} /  ${opps_stage_dynamics.pipe_in_discovery};;
     value_format_name: percent_1
-    group_label: "ACV Conversion to CWO"
+    group_label: "Conversion to CWO"
   }
 
   measure: acv_conversion_business_validation_to_cwo {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_closed_won} /  nullif(${opps_stage_dynamics.pipe_in_business_validation},0);;
     value_format_name: percent_1
-    group_label: "ACV Conversion to CWO"
-
+    group_label: "Conversion to CWO"
   }
   measure: acv_conversion_technical_validation_to_cwo {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_closed_won} /  nullif(${opps_stage_dynamics.pipe_in_technical_validation},0);;
     value_format_name: percent_1
-    group_label: "ACV Conversion to CWO"
-
+    group_label: "Conversion to CWO"
   }
   measure: acv_conversion_success_planning_to_cwo {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_closed_won} /  nullif(${opps_stage_dynamics.pipe_in_success_planning},0);;
     value_format_name: percent_1
-    group_label: "ACV Conversion to CWO"
-
+    group_label: "Conversion to CWO"
   }
   measure: acv_conversion_deal_review_to_cwo {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_closed_won} /  nullif(${opps_stage_dynamics.pipe_in_deal_review},0);;
     value_format_name: percent_1
-    group_label: "ACV Conversion to CWO"
-
+    group_label: "Conversion to CWO"
   }
   measure: acv_conversion_negotiation_to_cwo {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_closed_won} /  nullif(${opps_stage_dynamics.pipe_in_negotiation},0);;
     value_format_name: percent_1
-    group_label: "ACV Conversion to CWO"
+    group_label: "Conversion to CWO"
 
   }
   measure: acv_conversion_bookings_to_cwo {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_closed_won} /  nullif(${opps_stage_dynamics.pipe_in_bookings},0);;
     value_format_name: percent_1
-    group_label: "ACV Conversion to CWO"
-
+    group_label: "Conversion to CWO"
   }
 
   ## conversion to next stage
@@ -279,50 +301,43 @@ view: opps_stage_dynamics {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_business_validation} /  ${opps_stage_dynamics.pipe_in_discovery};;
     value_format_name: percent_1
-    group_label: "ACV Conversion to Next Stage"
+    group_label: "Conversion to Next Stage"
   }
-
   measure: acv_conversion_business_validation_to_technical_validation {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_technical_validation} /  nullif(${opps_stage_dynamics.pipe_in_business_validation},0);;
     value_format_name: percent_1
-    group_label: "ACV Conversion to Next Stage"
-
+    group_label: "Conversion to Next Stage"
   }
   measure: acv_conversion_technical_validation_to_success_planning {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_success_planning} /  nullif(${opps_stage_dynamics.pipe_in_technical_validation},0);;
     value_format_name: percent_1
-    group_label: "ACV Conversion to Next Stage"
-
+    group_label: "Conversion to Next Stage"
   }
   measure: acv_conversion_success_planning_to_deal_review {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_deal_review} /  nullif(${opps_stage_dynamics.pipe_in_success_planning},0);;
     value_format_name: percent_1
-    group_label: "ACV Conversion to Next Stage"
-
+    group_label: "Conversion to Next Stage"
   }
   measure: acv_conversion_deal_review_to_negotiation {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_negotiation} /  nullif(${opps_stage_dynamics.pipe_in_deal_review},0);;
     value_format_name: percent_1
-    group_label: "ACV Conversion to Next Stage"
-
+    group_label: "Conversion to Next Stage"
   }
   measure: acv_conversion_negotiation_to_bookings {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_bookings} /  nullif(${opps_stage_dynamics.pipe_in_negotiation},0);;
     value_format_name: percent_1
-    group_label: "ACV Conversion to Next Stage"
-
+    group_label: "Conversion to Next Stage"
   }
   measure: acv_conversion_bookings_to_cwo_copy {
     type: number
     sql: ${opps_stage_dynamics.pipe_in_closed_won} /  nullif(${opps_stage_dynamics.pipe_in_bookings},0);;
     value_format_name: percent_1
-    group_label: "ACV Conversion to Next Stage"
-
+    group_label: "Conversion to Next Stage"
   }
 
   measure: dummy_null {
