@@ -1,6 +1,6 @@
 view: hcp_revenue_stripe {
   sql_table_name: cloud_gtm.hcp_revenue_stripe ;;
-
+  label: "HCP Monthly Stripe Revenue (Organization-Level)"
   measure: billed_amount {
     label: "Billed Revenue"
     type: sum
@@ -28,7 +28,13 @@ view: hcp_revenue_stripe {
   measure: churn {
     type: sum
     value_format_name: usd
-    sql: ${TABLE}.churn / 100.00
+    sql: ${TABLE}.churn / 100.00;;
+  }
+
+  measure: direct_sales_churn {
+    type: sum
+    value_format_name: usd
+    sql: ${TABLE}.direct_sales_churn / 100.00;;
   }
 
   measure: contraction {

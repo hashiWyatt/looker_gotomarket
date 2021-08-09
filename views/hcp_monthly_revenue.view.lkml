@@ -1,6 +1,6 @@
 view: hcp_monthly_revenue {
   sql_table_name: cloud_product_bi_data_mart.hcp_monthly_revenue ;;
-
+  label: "HCP Monthly Revenue (Cluster-Level)"
   dimension: account_owner_email_c {
     type: string
     sql: ${TABLE}.account_owner_email_c ;;
