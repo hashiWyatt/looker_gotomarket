@@ -608,6 +608,9 @@ explore: hcp_users_accounts_sfdc {
 }
 
 
+explore: hcp_users_by_created_date {
+  label: "HCP Users By Created Date"
+}
 # glenngillen going to move these into the TFC model ASAP:
 explore: tfc_users_funnel_signups_retention {
   group_label: "Terraform Cloud"
@@ -673,6 +676,7 @@ explore: tfc_organizations_recent_upsells {
   group_label: "Terraform Cloud"
   label: "Recent Upsells"
 }
+
 explore: tfc_cohorted_aarrr {
   group_label: "Terraform Cloud"
   label: "TFC Cohorted AARRR Metrics"
@@ -700,4 +704,33 @@ explore: lead_v2 {
 
 explore: full_releases_w_sfdc_accounts {
   label: "OSS Downloads w/SFDC Accounts"
+}
+
+explore: opps_stage_dynamics {
+  label: "Opportunity Stage Dynamics"
+}
+
+
+explore: hcp_organization_by_created_date {
+  label: "HCP Organization By Created Date"
+}
+
+explore: cloud_users_by_latest_subscription_plan {
+  label: "Cloud Users By Latest Subscription Plan"
+}
+
+explore: hcp_vault_max_daily_client_count {
+  label: "Hcp Vault Max Daily Client Count"
+}
+
+explore: hcp_vault_mao {
+  label: "Hcp Vault MAO"
+}
+
+explore: hcp_consul_max_daily_count {
+  label: "Hcp Consul Max Daily Count"
+}
+
+explore: hcp_consul_mao {
+  label: "Hcp Consul MAO"
 }

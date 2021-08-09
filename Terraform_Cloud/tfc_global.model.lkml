@@ -18,3 +18,18 @@ include: "/Terraform_Cloud/*.view.lkml"                # include all views in th
 #     sql_on: ${users.id} = ${orders.user_id} ;;
 #   }
 # }
+
+explore: tfc_usage_page_viewers {
+  group_label: "Terraform Cloud"
+  label: "Usage Page Viewers"
+}
+
+explore: tfc_user_web_engagement {
+  group_label: "Terraform Cloud"
+  label: "Web Engagement"
+}
+
+explore: tfc_user_cli_engagement {
+  group_label: "Terraform Cloud"
+  label: "CLI Engagement"
+}

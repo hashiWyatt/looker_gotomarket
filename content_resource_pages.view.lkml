@@ -12,6 +12,16 @@ view: content_resource_pages {
     sql: ${TABLE}.path;;
   }
 
+  dimension: backend_tags {
+    type: string
+    sql: ${TABLE}.backend_tags ;;
+  }
+
+  dimension: product_tags {
+    type: string
+    sql: ${TABLE}.product_tags ;;
+  }
+
   dimension: page_title {
     type:  string
     sql: ${TABLE}.page_title ;;
