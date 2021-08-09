@@ -3,6 +3,7 @@ view: hcp_contracts {
 
   dimension: acv_monthly {
     type: number
+    value_format:"$#.00;($#.00)"
     sql: ${TABLE}.acv_monthly ;;
   }
 
@@ -67,6 +68,7 @@ view: hcp_contracts {
 
   dimension: y_1_acv {
     type: number
+    value_format:"$#.00;($#.00)"
     sql: ${TABLE}.y_1_acv ;;
   }
 
