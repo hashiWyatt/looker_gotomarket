@@ -9,13 +9,7 @@ view: hcp_revenue_stripe {
   dimension_group: billed_month {
     type: time
     timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
+     month
     ]
     sql: ${TABLE}.billed_month ;;
   }
