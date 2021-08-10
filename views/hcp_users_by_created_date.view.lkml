@@ -1,6 +1,7 @@
 view: hcp_users_by_created_date {
   sql_table_name: cloud_product_bi_data_mart.hcp_users_by_created_date ;;
 
+
   dimension: active_product_interest {
     type: string
     sql: ${TABLE}.active_product_interest ;;
