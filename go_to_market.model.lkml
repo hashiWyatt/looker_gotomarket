@@ -720,17 +720,21 @@ explore: cloud_users_by_latest_subscription_plan {
 }
 
 explore: hcp_vault_max_daily_client_count {
-  label: "Hcp Vault Max Daily Client Count"
+  label: "HCP Vault Max Daily Client Count"
 }
 
 explore: hcp_vault_mao {
-  label: "Hcp Vault MAO"
+  label: "HCP Vault MAO"
 }
 
 explore: hcp_consul_max_daily_count {
-  label: "Hcp Consul Max Daily Count"
+  label: "HCP Consul Max Daily Count"
 }
 
 explore: hcp_consul_mao {
-  label: "Hcp Consul MAO"
+  label: "HCP Consul MAO"
+}
+
+explore: hcp_users_by_plan {
+  label: "HCP Users By Plan"
 }
